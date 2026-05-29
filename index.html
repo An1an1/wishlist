@@ -20,7 +20,7 @@ body {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
   }
 
-  /* Лиловое свечение карточек по контуру */
+  /* Лиловое свечение карточек */
   .wish-card:hover {
     transform: translateY(-8px);
     box-shadow: 
@@ -38,22 +38,25 @@ body {
     color: #1f2937;
   }
 
-  /* ==================== КНОПКА "ПОДАРИТЬ" — ЛИЛОВАЯ ==================== */
+  /* Кнопка "Подарить" */
   .btn-gift {
-    background: #a855f7;           /* красивый лиловый */
+    background: #a855f7;
     color: white;
     box-shadow: 0 4px 15px -3px rgb(168 85 247 / 0.4);
     transition: all 0.3s ease;
     font-weight: 500;
+    min-width: 140px;
+    text-align: center;
   }
 
-  .btn-gift:hover {
-    background: #b37cff;           /* чуть светлее при наведении */
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgb(168 85 247 / 0.5);
+  .btn-gift.added {
+    background: #9ca3af;
+    color: white;
+    cursor: default;
+    box-shadow: none;
   }
 
-  /* ==================== КНОПКИ КАТЕГОРИЙ ==================== */
+  /* Кнопки категорий */
   .category-tab {
     background: white;
     color: #4b5563;
@@ -71,10 +74,9 @@ body {
   }
 
   .category-tab.active {
-    background: #a855f7;           /* лиловый для активной кнопки */
+    background: #a855f7;
     color: white;
     border-color: #a855f7;
-    box-shadow: 0 4px 15px -3px rgb(168 85 247 / 0.4);
   }
 </style>
 </head>
@@ -207,10 +209,10 @@ body {
               <p class="text-gray-500 text-sm mb-4">${item.desc}</p>
               <div class="flex justify-between items-center">
                 <span class="price">${item.price}</span>
-                <a href="${item.link}" target="_blank" 
+                <button onclick="addToCart(this)"
                    class="btn-gift text-white px-7 py-3 rounded-2xl text-sm font-medium flex items-center gap-2">
                   Подарить <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
+                </button>
               </div>
             </div>
           </div>
@@ -233,6 +235,21 @@ body {
 
     // Показываем все при загрузке
     renderItems(items);
+        // Функция добавления в "корзину"
+    function addToCart(button) {
+      if (button.classList.contains('added')) return;
+      
+      button.innerHTML = `
+        Добавлено в корзину <i class="fa-solid fa-check"></i>
+      `;
+      button.classList.add('added');
+      
+      // Небольшая анимация
+      button.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        button.style.transform = 'scale(1)';
+      }, 150);
+    }
   </script>
 
 </body>

@@ -7,7 +7,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-body { 
+<style>
+  body { 
     font-family: 'Segoe UI', system-ui, sans-serif; 
   }
 
@@ -35,7 +36,7 @@ body {
   }
 
   .wish-card:hover::after {
-    opacity: 0.65;
+    opacity: 0.55;   /* чуть уменьшил яркость */
   }
 
   .wish-card:hover {
@@ -43,11 +44,11 @@ body {
     box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
   }
 
-  /* Цена как на luxylist */
+  /* ЦЕНА — теперь МЕНЬШЕ, как на luxylist */
   .price {
-    font-size: 1.85rem;
+    font-size: 1.45rem;        /* было 1.85 — теперь меньше */
     font-weight: 300;
-    letter-spacing: -0.04em;
+    letter-spacing: -0.025em;
     color: #1f2937;
   }
 
@@ -72,6 +73,7 @@ body {
     color: white;
     border-color: #6b21a8;
   }
+</style>
 </style>
 </head>
 <body class="bg-zinc-50 min-h-screen">

@@ -7,54 +7,56 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   
-  <style>
-    body { font-family: 'Segoe UI', system-ui, sans-serif; }
+<style>
+  body { font-family: 'Segoe UI', system-ui, sans-serif; }
 
-    .wish-card {
-      transition: all 0.4s ease;
-    }
-    .wish-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
-    }
+  .wish-card {
+    transition: all 0.4s ease;
+  }
+  .wish-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+  }
 
-    /* Цена */
-    .price {
-      font-size: 1.35rem;
-      font-weight: 600;
-      color: #1f2937;
-    }
+  /* Цена — делаем заметно меньше */
+  .price {
+    font-size: 1.25rem !important;     /* Уменьшили */
+    font-weight: 700;
+    color: #1f2937;
+  }
 
-    /* Кнопка "Подарить" */
-    .gift-btn {
-      background-color: #d4af37;
-      color: #111827;
-      font-weight: 600;
-      padding: 12px 28px;
-      border-radius: 9999px;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-    .gift-btn:hover {
-      background-color: #c19a2e;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    }
+  /* Нежно-розовая кнопка */
+  .gift-btn {
+    background-color: #f8c1d4;        /* Нежно-розовый */
+    color: #4c1d95;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 9999px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+  
+  .gift-btn:hover {
+    background-color: #f5a8c2;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.15);
+  }
 
-    /* Кнопки категорий */
-    .category-tab {
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-    .category-tab.active {
-      background-color: #6b21a8;
-      color: white;
-      border-color: #6b21a8;
-    }
-  </style>
+  /* Кнопки категорий */
+  .category-tab {
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+  .category-tab.active {
+    background-color: #6b21a8;
+    color: white;
+    border-color: #6b21a8;
+  }
+</style>
 </head>
 <body class="bg-zinc-50 min-h-screen">
 

@@ -7,8 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-<style>
-  body { 
+body { 
     font-family: 'Segoe UI', system-ui, sans-serif; 
   }
 
@@ -21,32 +20,19 @@
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
   }
 
-  /* Мягкое розовое свечение по контуру */
-  .wish-card::after {
-    content: '';
-    position: absolute;
-    inset: -12px;
-    background: linear-gradient(135deg, #fce7f3, #f9a8d4, #fb7185);
-    border-radius: 32px;
-    z-index: -1;
-    filter: blur(18px);
-    opacity: 0;
-    transition: all 0.4s ease;
-    pointer-events: none;
-  }
-
-  .wish-card:hover::after {
-    opacity: 0.55;   /* чуть уменьшил яркость */
-  }
-
+  /* Нежное розовое свечение ТОЛЬКО ПО КРАЯМ */
   .wish-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+    box-shadow: 
+      0 20px 25px -5px rgb(0 0 0 / 0.1),
+      0 0 0 8px rgba(249, 168, 212, 0.25),   /* нежно-розовое свечение */
+      0 0 0 14px rgba(249, 168, 212, 0.15),
+      0 0 0 22px rgba(249, 168, 212, 0.08);
   }
 
-  /* ЦЕНА — теперь МЕНЬШЕ, как на luxylist */
+  /* Цена — маленький размер */
   .price {
-    font-size: 1.45rem;        /* было 1.85 — теперь меньше */
+    font-size: 1.45rem;
     font-weight: 300;
     letter-spacing: -0.025em;
     color: #1f2937;
@@ -73,7 +59,6 @@
     color: white;
     border-color: #6b21a8;
   }
-</style>
 </style>
 </head>
 <body class="bg-zinc-50 min-h-screen">

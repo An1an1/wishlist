@@ -3,297 +3,254 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MY Wishlist • An1an1</title>
-  <style>
-    :root {
-      --gold: #d4af37;
-      --pink: #ff69b4;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: #0a0a0a;
-      color: #eee;
-      line-height: 1.6;
-    }
-    header {
-      background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-      padding: 1.5rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 2px solid var(--gold);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .logo { font-size: 2.4rem; font-weight: 800; color: var(--gold); }
-    .cart {
-      position: relative;
-      font-size: 1.9rem;
-      cursor: pointer;
-    }
-    .cart-count {
-      position: absolute;
-      top: -8px;
-      right: -8px;
-      background: #ff1493;
-      color: white;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
+  <title>MY Wishlist</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+body { 
+    font-family: 'Segoe UI', system-ui, sans-serif; 
+  }
 
-    .hero {
-      text-align: center;
-      padding: 5rem 5% 3rem;
-      background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1519681393784-d120267933ba') center/cover;
-    }
-    .hero h1 { font-size: 3.5rem; color: white; }
-    .hero p { font-size: 1.4rem; margin-top: 1rem; opacity: 0.9; }
+  .wish-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0.2, 0.2, 1);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
+  }
 
-    .wishlist {
-      padding: 4rem 5%;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: #1f1f1f;
-      border-radius: 16px;
-      overflow: hidden;
-      transition: all 0.4s;
-    }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 35px rgba(212,175,55,0.2); }
-    .card img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-    }
-    .card-body {
-      padding: 1.5rem;
-    }
-    .card h3 { color: var(--gold); margin-bottom: 0.5rem; }
-    .price { font-size: 1.5rem; font-weight: 700; color: white; margin: 1rem 0; }
-    .add-btn {
-      width: 100%;
-      padding: 12px;
-      background: var(--pink);
-      color: white;
-      border: none;
-      border-radius: 10px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  /* Лиловое свечение карточек */
+  .wish-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 
+      0 20px 25px -5px rgb(0 0 0 / 0.1),
+      0 0 0 8px rgba(168, 85, 247, 0.25),
+      0 0 0 14px rgba(168, 85, 247, 0.15),
+      0 0 0 22px rgba(168, 85, 247, 0.08);
+  }
 
-    /* Корзина */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.95);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-content {
-      background: #1f1f1f;
-      padding: 2rem;
-      border-radius: 16px;
-      width: 90%;
-      max-width: 600px;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: #2a2a2a;
-      padding: 12px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-    .quantity {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .quantity button {
-      width: 30px;
-      height: 30px;
-      background: #333;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-  </style>
+  /* Цена */
+  .price {
+    font-size: 1.45rem;
+    font-weight: 300;
+    letter-spacing: -0.025em;
+    color: #1f2937;
+  }
+
+  /* Кнопка "Подарить" */
+  .btn-gift {
+    background: #a855f7;
+    color: white;
+    box-shadow: 0 4px 15px -3px rgb(168 85 247 / 0.4);
+    transition: all 0.3s ease;
+    font-weight: 500;
+    min-width: 140px;
+    text-align: center;
+  }
+
+  .btn-gift.added {
+    background: #9ca3af;
+    color: white;
+    cursor: default;
+    box-shadow: none;
+  }
+
+  /* Кнопки категорий */
+  .category-tab {
+    background: white;
+    color: #4b5563;
+    border: 1px solid #e5e7eb;
+    transition: all 0.4s cubic-bezier(0.4, 0.2, 0.2, 1);
+    font-weight: 500;
+  }
+
+  .category-tab:hover {
+    box-shadow: 
+      0 0 0 6px rgba(168, 85, 247, 0.25),
+      0 0 0 11px rgba(168, 85, 247, 0.12),
+      0 0 0 18px rgba(168, 85, 247, 0.06);
+    transform: translateY(-2px);
+  }
+
+  .category-tab.active {
+    background: #a855f7;
+    color: white;
+    border-color: #a855f7;
+  }
+</style>
 </head>
-<body>
+<body class="bg-zinc-50 min-h-screen">
 
-  <header>
-    <div class="logo">MYWISHLIST</div>
-    <div class="cart" onclick="showCart()">
-      🛍️ <span id="cart-count" class="cart-count">0</span>
+  <header class="bg-white border-b border-gray-100 py-6">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h1 class="text-4xl font-light tracking-tight text-gray-900">MY Wishlist</h1>
+      <p class="text-gray-500 mt-2">what I dream of ❤️</p>
     </div>
   </header>
 
-  <div class="hero">
-    <h1>@An1an1</h1>
-    <p>what I dream of ❤️</p>
-  </div>
+  <div class="max-w-6xl mx-auto px-6 py-8">
+    <!-- Категории -->
+    <div class="flex flex-wrap gap-3 justify-center mb-10" id="categories">
+      <button onclick="filterCategory('all')" class="category-tab active px-6 py-3 rounded-full border text-sm font-medium">All</button>
+      <button onclick="filterCategory('flowers')" class="category-tab px-6 py-3 rounded-full border text-sm font-medium">🌸 Flowers</button>
+      <button onclick="filterCategory('jewelry')" class="category-tab px-6 py-3 rounded-full border text-sm font-medium">💎 Jewelry</button>
+      <button onclick="filterCategory('realestate')" class="category-tab px-6 py-3 rounded-full border text-sm font-medium">🏠 Realestate</button>
+      <button onclick="filterCategory('cars')" class="category-tab px-6 py-3 rounded-full border text-sm font-medium">🚗 Cars</button>
+      <button onclick="filterCategory('tech')" class="category-tab px-6 py-3 rounded-full border text-sm font-medium">📱 Tech & Gadgets</button>
+      <button onclick="filterCategory('shoes')" class="category-tab px-6 py-3 rounded-full border text-sm font-medium">👠 Shoes</button>
+      <button onclick="filterCategory('lingerie')" class="category-tab px-6 py-3 rounded-full border text-sm font-medium">🩷 Lingerie</button>
+      <button onclick="filterCategory('travel')" class="category-tab px-6 py-3 rounded-full border text-sm font-medium">✈️ Travel</button>
+      <button onclick="filterCategory('bags')" class="category-tab px-6 py-3 rounded-full border text-sm font-medium">👜 Bags</button>
+      <button onclick="filterCategory('money')" class="category-tab px-6 py-3 rounded-full border text-sm font-medium">💰 Money & Crypto</button>
+    </div>
 
-  <div class="wishlist">
-    <h2 style="text-align:center; margin-bottom:3rem; color:var(--gold);">Мой Wishlist</h2>
-    <div class="grid" id="wishlist-grid"></div>
-  </div>
-
-  <!-- Модальное окно корзины -->
-  <div id="cart-modal" class="modal">
-    <div class="modal-content">
-      <h2 style="margin-bottom:1.5rem; text-align:center;">Корзина подарков</h2>
-      <div id="cart-items"></div>
-      <h3 style="text-align:right; margin:1.5rem 0;">Итого: <span id="total-price">0</span> ₽</h3>
-      
-      <button onclick="checkout()" style="width:100%; padding:16px; background:#ff1493; color:white; border:none; border-radius:10px; font-size:1.1rem; font-weight:bold;">
-        Перейти к оплате
-      </button>
-      <button onclick="closeCart()" style="width:100%; margin-top:10px; padding:14px; background:#444; color:white; border:none; border-radius:10px;">
-        Закрыть
-      </button>
+    <!-- Сетка желаний -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="wishlist-grid">
+      <!-- Сюда будут добавляться карточки через JS -->
     </div>
   </div>
 
   <script>
-    let cart = [];
-
     const items = [
       {
-        id: 1,
+        category: "flowers",
+        img: "https://via.placeholder.com/600x600/eee/ddd?text=Букет_роз",
         name: "Большой букет пионов",
-        price: 15000,
-        img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6",
-        desc: "Нежно-розовые"
+        desc: "Нежно-розовые",
+        price: "15 000 ₽",
+        link: "#"
       },
       {
-        id: 2,
-        name: "Cartier Watch",
-        price: 17800,
-        img: "https://picsum.photos/id/201/600/400",
-        desc: "Luxury watch"
-      }
-      // Добавляй сюда свои товары
+        category: "jewelry",
+        img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10625749120071999.jpg",
+        name: "Watch",
+        desc: "Cartie",
+        price: "$17,800.00",
+        link: "#"
+      },
+      {
+        category: "jewelry",
+        img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10907224092417006.jpg",
+        name: "Watch",
+        desc: "Rolex",
+        price: "$51,900.00",
+        link: "#"
+      },
+      {
+        category: "jewelry",
+        img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/15551561209295402.jpg",
+        name: "Watch",
+        desc: "Rolex",
+        price: "$15,400.00",
+        link: "#"
+      },
+      {
+        category: "jewelry",
+        img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/2533343538101877.jpg",
+        name: "Watch",
+        desc: "BvlgarI",
+        price: "$30,000.00",
+        link: "#"
+      },
+      {
+        category: "jewelry",
+        img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/Без%20названия%20(4).jpg",
+        name: "Watch",
+        desc: "Rolex",
+        price: "$120,000.00",
+        link: "#"
+      },
+      {
+        category: "jewelry",
+        img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10625749120071999.jpg",
+        name: "Watch",
+        desc: "Cartie",
+        price: "$17,800.00",
+        link: "#"
+      },
+      {
+        category: "jewelry",
+        img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10625749120071999.jpg",
+        name: "Watch",
+        desc: "Cartie",
+        price: "$17,800.00",
+        link: "#"
+      },
+      {
+        category: "jewelry",
+        img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10625749120071999.jpg",
+        name: "Watch",
+        desc: "Cartie",
+        price: "$17,800.00",
+        link: "#"
+      },
+      {
+        category: "jewelry",
+        img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10625749120071999.jpg",
+        name: "Watch",
+        desc: "Cartie",
+        price: "$17,800.00",
+        link: "#"
+      },
+      // Добавляй сюда свои желания по примеру ниже ↓
     ];
 
-    function renderWishlist() {
+    function renderItems(filteredItems) {
       const grid = document.getElementById('wishlist-grid');
       grid.innerHTML = '';
       
-      items.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `
-          <img src="${item.img}" alt="${item.name}">
-          <div class="card-body">
-            <h3>${item.name}</h3>
-            <p>${item.desc}</p>
-            <div class="price">${item.price.toLocaleString('ru-RU')} ₽</div>
-            <button class="add-btn" onclick="addToCart(${item.id})">Добавить в корзину</button>
+      filteredItems.forEach(item => {
+        grid.innerHTML += `
+          <div class="wish-card bg-white shadow-sm border border-gray-100" data-category="${item.category}">
+            <img src="${item.img}" class="w-full h-80 object-cover" alt="${item.name}">
+            <div class="p-6">
+              <h3 class="font-medium text-xl mb-1">${item.name}</h3>
+              <p class="text-gray-500 text-sm mb-4">${item.desc}</p>
+              <div class="flex justify-between items-center">
+                <span class="price">${item.price}</span>
+                <button onclick="addToCart(this)"
+                   class="btn-gift text-white px-7 py-3 rounded-2xl text-sm font-medium flex items-center gap-2">
+                  Подарить <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+              </div>
+            </div>
           </div>
         `;
-        grid.appendChild(card);
       });
     }
 
-    function addToCart(id) {
-      const item = items.find(i => i.id === id);
-      const existing = cart.find(i => i.id === id);
-      
-      if (existing) {
-        existing.quantity += 1;
+    function filterCategory(cat) {
+      document.querySelectorAll('.category-tab').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${cat}'`));
+      });
+
+      if (cat === 'all') {
+        renderItems(items);
       } else {
-        cart.push({...item, quantity: 1});
+        const filtered = items.filter(item => item.category === cat);
+        renderItems(filtered);
       }
+    }
+
+    // Показываем все при загрузке
+    renderItems(items);
+        // Функция добавления в "корзину"
+    function addToCart(button) {
+      if (button.classList.contains('added')) return;
       
-      updateCartCount();
-      alert(`✅ ${item.name} добавлен в корзину`);
+      button.innerHTML = `
+        Добавлено в корзину <i class="fa-solid fa-check"></i>
+      `;
+      button.classList.add('added');
+      
+      // Небольшая анимация
+      button.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        button.style.transform = 'scale(1)';
+      }, 150);
     }
-
-    function removeFromCart(id) {
-      cart = cart.filter(item => item.id !== id);
-      updateCartCount();
-      showCart();
-    }
-
-    function changeQuantity(id, change) {
-      const item = cart.find(i => i.id === id);
-      if (item) {
-        item.quantity += change;
-        if (item.quantity < 1) item.quantity = 1;
-      }
-      showCart();
-    }
-
-    function updateCartCount() {
-      const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-      document.getElementById('cart-count').textContent = count;
-    }
-
-    function showCart() {
-      const modal = document.getElementById('cart-modal');
-      const container = document.getElementById('cart-items');
-      container.innerHTML = '';
-      let total = 0;
-
-      if (cart.length === 0) {
-        container.innerHTML = '<p style="text-align:center; padding:20px;">Корзина пуста</p>';
-      } else {
-        cart.forEach(item => {
-          const itemTotal = item.price * item.quantity;
-          total += itemTotal;
-
-          container.innerHTML += `
-            <div class="cart-item">
-              <div>
-                <strong>${item.name}</strong><br>
-                <small>${item.price.toLocaleString('ru-RU')} ₽ × ${item.quantity}</small>
-              </div>
-              <div class="quantity">
-                <button onclick="changeQuantity(${item.id}, -1)">–</button>
-                <span style="min-width:30px; text-align:center;">${item.quantity}</span>
-                <button onclick="changeQuantity(${item.id}, 1)">+</button>
-                <button onclick="removeFromCart(${item.id})" style="margin-left:15px; background:#e74c3c;">✕</button>
-              </div>
-            </div>
-          `;
-        });
-      }
-
-      document.getElementById('total-price').textContent = total.toLocaleString('ru-RU');
-      modal.style.display = 'flex';
-    }
-
-    function closeCart() {
-      document.getElementById('cart-modal').style.display = 'none';
-    }
-
-    function checkout() {
-      if (cart.length === 0) return;
-      alert('🎉 Спасибо! Это демо-версия.\nВ будущем здесь можно подключить реальную оплату.');
-    }
-
-    // Запуск
-    renderWishlist();
   </script>
+
 </body>
 </html>

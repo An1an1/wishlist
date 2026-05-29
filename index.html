@@ -20,7 +20,6 @@ body {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
   }
 
-  /* Свечение карточек */
   .wish-card:hover {
     transform: translateY(-8px);
     box-shadow: 
@@ -38,42 +37,42 @@ body {
     color: #1f2937;
   }
 
-  /* Кнопка Подарить */
+  /* ==================== КНОПКА "ПОДАРИТЬ" ==================== */
   .btn-gift {
-    background: linear-gradient(90deg, #f9a8d4, #f472b6, #db2777);
-    box-shadow: 0 4px 15px -3px rgb(236 72 153 / 0.3);
-    transition: all 0.3s ease;
+    background: linear-gradient(90deg, #f8c4d8, #f472b6, #e11d8a);
+    box-shadow: 0 4px 20px -4px rgb(225 29 138 / 0.35);
+    transition: all 0.4s ease;
+    font-weight: 500;
   }
 
   .btn-gift:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgb(236 72 153 / 0.45);
-    background: linear-gradient(90deg, #f472b6, #db2777, #be185d);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px -6px rgb(225 29 138 / 0.45);
+    background: linear-gradient(90deg, #f472b6, #e11d8a, #be185d);
   }
 
   /* ==================== КНОПКИ КАТЕГОРИЙ ==================== */
   .category-tab {
     background: white;
-    color: #4b5563;
-    border: 1px solid #e5e7eb;
+    color: #374151;
+    border: 1px solid #f3e8f5;
     transition: all 0.4s cubic-bezier(0.4, 0.2, 0.2, 1);
     font-weight: 500;
   }
 
   .category-tab:hover {
+    border-color: #f9a8d4;
     box-shadow: 
-      0 0 0 6px rgba(249, 168, 212, 0.25),
-      0 0 0 11px rgba(249, 168, 212, 0.12),
-      0 0 0 18px rgba(249, 168, 212, 0.06);
+      0 0 0 5px rgba(249, 168, 212, 0.18),
+      0 0 0 10px rgba(249, 168, 212, 0.08);
     transform: translateY(-2px);
-    /* Цвет кнопки и текста НЕ меняется */
   }
 
   .category-tab.active {
-    background: linear-gradient(90deg, #f9a8d4, #f472b6, #db2777);
+    background: linear-gradient(90deg, #f8c4d8, #f472b6, #e11d8a);
     color: white;
-    border-color: #db2777;
-    box-shadow: 0 4px 15px -3px rgb(236 72 153 / 0.3);
+    border-color: #e11d8a;
+    box-shadow: 0 4px 20px -4px rgb(225 29 138 / 0.35);
   }
 </style>
 </head>

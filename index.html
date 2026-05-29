@@ -20,17 +20,17 @@ body {
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05);
   }
 
-  /* Нежное розовое свечение ТОЛЬКО ПО КРАЯМ */
+  /* Свечение карточек по контуру */
   .wish-card:hover {
     transform: translateY(-8px);
     box-shadow: 
       0 20px 25px -5px rgb(0 0 0 / 0.1),
-      0 0 0 8px rgba(249, 168, 212, 0.25),   /* нежно-розовое свечение */
+      0 0 0 8px rgba(249, 168, 212, 0.25),
       0 0 0 14px rgba(249, 168, 212, 0.15),
       0 0 0 22px rgba(249, 168, 212, 0.08);
   }
 
-  /* Цена — маленький размер */
+  /* Цена */
   .price {
     font-size: 1.45rem;
     font-weight: 300;
@@ -51,13 +51,30 @@ body {
     background: linear-gradient(90deg, #f472b6, #db2777, #be185d);
   }
 
+  /* ==================== КНОПКИ КАТЕГОРИЙ ==================== */
   .category-tab {
-    transition: all 0.3s ease;
+    background: white;
+    color: #4b5563;
+    border: 1px solid #e5e7eb;
+    transition: all 0.4s cubic-bezier(0.4, 0.2, 0.2, 1);
+    font-weight: 500;
   }
+
+  .category-tab:hover {
+    background: #fff1f7;
+    color: #db2777;
+    border-color: #f9a8d4;
+    box-shadow: 
+      0 0 0 5px rgba(249, 168, 212, 0.2),
+      0 0 0 9px rgba(249, 168, 212, 0.1);
+    transform: translateY(-2px);
+  }
+
   .category-tab.active {
-    background-color: #6b21a8;
+    background: linear-gradient(90deg, #f9a8d4, #f472b6, #db2777);
     color: white;
-    border-color: #6b21a8;
+    border-color: #db2777;
+    box-shadow: 0 4px 15px -3px rgb(236 72 153 / 0.3);
   }
 </style>
 </head>

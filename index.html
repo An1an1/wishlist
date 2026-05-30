@@ -26,41 +26,34 @@
 
     .price { font-size: 1.45rem; font-weight: 300; letter-spacing: -0.025em; color: #1f2937; }
 
-/* Нежно-розовые кнопки */
-  .btn-gift {
-    background: #f8a5c8;
-    color: white;
-    box-shadow: 0 4px 15px -3px rgb(248 165 200 / 0.4);
-    transition: all 0.3s ease;
-    font-weight: 500;
-    min-width: 140px;
-    text-align: center;
-  }
+    .btn-gift, .btn-cart {
+      background: linear-gradient(90deg, #f8c4d8, #f472b6, #e11d8a);
+      box-shadow: 0 4px 20px -4px rgb(225 29 138 / 0.35);
+      transition: all 0.4s ease;
+      font-weight: 500;
+    }
 
-  .btn-gift:hover {
-    background: #f48ab8;
-    transform: translateY(-2px);
-    
+    .btn-gift:hover, .btn-cart:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px -6px rgb(225 29 138 / 0.45);
     }
 
     .category-tab {
       background: white;
-      color: #4b5563;
-      border: 1px solid #e5e7eb;
-      transition: all 0.4s cubic-bezier(0.4, 0.2, 0.2, 1);
+      color: #374151;
+      border: 1px solid #f3e8f5;
+      transition: all 0.4s;
       font-weight: 500;
     }
 
     .category-tab:hover {
-      background: #fce7f3;
       border-color: #f9a8d4;
-      color: #831843;
+      transform: translateY(-2px);
     }
 
     .category-tab.active {
-    background: #f8a5c8;     /* активная кнопка — розовая */
-    color: white;
-    border-color: #f8a5c8;
+      background: linear-gradient(90deg, #f8c4d8, #f472b6, #e11d8a);
+      color: white;
     }
 
     .cart-icon {
@@ -86,11 +79,11 @@
 </head>
 <body class="bg-zinc-50 min-h-screen">
 
-  <header class="bg-black py-6">
-    <div class="max-w-6xl mx-auto px-6 text-center">
+  <header class="bg-white border-b border-gray-100 py-6 sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-6 flex justify-between items-center">
       <div>
-        <h1 class="text-4xl font-light tracking-tight text-white">MY Wishlist</h1>
-        <p class="text-gray-400 mt-2">what I dream of ❤️</p>
+        <h1 class="text-4xl font-light tracking-tight text-gray-900">MY Wishlist</h1>
+        <p class="text-gray-500">what I dream of ❤️</p>
       </div>
       <div onclick="showCart()" class="cart-icon text-3xl">
         🛍️ <span id="cart-count" class="cart-count">0</span>

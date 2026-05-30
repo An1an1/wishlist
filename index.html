@@ -11,7 +11,7 @@
 
     .wish-card {
       background: white;
-      border-radius: 24px;
+      border: 1px solid #ededed;
       overflow: hidden;
       position: relative;
       transition: all 0.4s cubic-bezier(0.4, 0.2, 0.2, 1);
@@ -19,23 +19,25 @@
     }
 
     .wish-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-                  0 0 0 8px rgba(249, 168, 212, 0.25);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0,0,0,.08);
     }
 
     .price { font-size: 1.45rem; font-weight: 300; letter-spacing: -0.025em; color: #1f2937; }
 
-    .btn-gift, .btn-cart {
-      background: #f8c4d8;
-      box-shadow: 0 4px 15px rgba(248, 196, 216, 0.4);
-      transition: all 0.4s ease;
+    .btn-cart {
+      width: 100%;
+      background: #111;
+      color: white;
+      padding: 12px;
+      border-radius: 14px;
+      transition: 0.3s;
       font-weight: 500;
     }
 
-    .btn-gift:hover, .btn-cart:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px -6px rgb(225 29 138 / 0.45);
+    .btn-cart:hover {
+      background: #222;
+      transform: translateY(-2px);
     }
 
     .category-tab {
@@ -52,9 +54,9 @@
     }
 
     .category-tab.active {
-      background: #f8c4d8;
-      color: #333;
-      border-color: #f8c4d8;
+      background: #111;
+      color: white;
+      border-color: #111;
     }
 
     .cart-icon {
@@ -109,7 +111,7 @@
     </div>
 
     <!-- Сетка желаний -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="wishlist-grid"></div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5" id="wishlist-grid"></div>
   </div>
 
   <!-- Модальное окно Корзины -->
@@ -123,9 +125,13 @@
       <div id="cart-items" class="p-6 max-h-[60vh] overflow-auto"></div>
       
       <div class="p-6 border-t bg-gray-50">
-        <div class="flex justify-between text-xl font-medium mb-6">
-          <span>Итого:</span>
-          <span id="total-price">0 ₽</span>
+        <div class="mt-4">
+          <div class="price mb-4">${item.priceText}</div>
+          
+          <button onclick="addToCart(${index})"
+            class="btn-cart w-full text-sm">
+            Add to Wishlist
+          </button>
         </div>
         <button onclick="checkout()" class="w-full text-white py-4 rounded-2xl text-lg font-medium" style="background:#f8c4d8;">
           Перейти к оплате
@@ -238,7 +244,7 @@
       filteredItems.forEach((item, index) => {
         grid.innerHTML += `
           <div class="wish-card" data-category="${item.category}">
-            <img src="${item.img}" class="w-full h-80 object-cover" alt="${item.name}">
+            <img src="${item.img}" class="w-full aspect-square object-cover" alt="${item.name}">
             <div class="p-6">
               <h3 class="font-medium text-xl mb-1">${item.name}</h3>
               <p class="text-gray-500 text-sm mb-4">${item.desc}</p>

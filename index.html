@@ -109,7 +109,7 @@
     </div>
 
     <!-- Сетка желаний -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="wishlist-grid"></div>
+    <div class="grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-6" id="wishlist-grid"></div>
   </div>
 
   <!-- Модальное окно Корзины -->
@@ -161,7 +161,8 @@
         img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10907224092417006.jpg",
         name: "Watch",
         desc: "Rolex",
-        price: "$51,900.00",
+        price: 51900,
+        priceText: "$51,900.00",
         link: "#"
       },
       {
@@ -169,7 +170,8 @@
         img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/15551561209295402.jpg",
         name: "Watch",
         desc: "Rolex",
-        price: "$15,400.00",
+        price: 15400,
+        priceText: "$15,400.00",
         link: "#"
       },
       {
@@ -177,7 +179,8 @@
         img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/2533343538101877.jpg",
         name: "Watch",
         desc: "BvlgarI",
-        price: "$30,000.00",
+        price: 30000,
+        priceText: "$30,000.00",
         link: "#"
       },
       {
@@ -185,7 +188,8 @@
         img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/Без%20названия%20(4).jpg",
         name: "Watch",
         desc: "Rolex",
-        price: "$120,000.00",
+        price: 120000,
+        priceText: "$120,000.00",
         link: "#"
       },
       {
@@ -193,7 +197,8 @@
         img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10625749120071999.jpg",
         name: "Watch",
         desc: "Cartie",
-        price: "$17,800.00",
+        price: 17800,
+        priceText: "$17,800.00",
         link: "#"
       },
       {
@@ -201,7 +206,8 @@
         img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10625749120071999.jpg",
         name: "Watch",
         desc: "Cartie",
-        price: "$17,800.00",
+        price: 17800,
+        priceText: "$17,800.00",
         link: "#"
       },
       {
@@ -209,7 +215,8 @@
         img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10625749120071999.jpg",
         name: "Watch",
         desc: "Cartie",
-        price: "$17,800.00",
+        price: 17800,
+        priceText: "$17,800.00",
         link: "#"
       },
       {
@@ -217,7 +224,8 @@
         img: "https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10625749120071999.jpg",
         name: "Watch",
         desc: "Cartie",
-        price: "$17,800.00",
+        price: 17800,
+        priceText: "$17,800.00",
         link: "#"
       },      
       // Твои остальные товары остаются здесь — не удаляй их
@@ -259,7 +267,7 @@
       }
       
       updateCartCount();
-      alert(`✅ ${item.name} добавлен в корзину`);
+    //  alert(`✅ ${item.name} добавлен в корзину`);
     }
 
     function removeFromCart(index) {

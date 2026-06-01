@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MY Wishlist ✨</title>
+<title>Wish Me ✨</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -302,7 +302,7 @@ header {
 
 <header>
   <div>
-    <div class="logo"><b>MY</b> Wishlist</div>
+    <div class="logo"><b>Wish</b> Me</div>
     <div class="sub" data-t="sub">what I dream of ✦</div>
   </div>
   <div class="header-right">
@@ -443,9 +443,10 @@ header {
   <div class="footer-inner">
     <div class="footer-cols">
       <div class="footer-col">
-        <div class="footer-brand"><b>MY</b> Wishlist</div>
+        <div class="footer-brand"><b>Wish</b> Me</div>
         <div class="footer-tagline">Dreams &amp; Desires ✦</div>
         <p class="footer-about">A personal gift wishlist platform where your loved ones can discover and gift the things you truly desire. Every item curated with love.</p>
+        <p class="footer-about" style="margin-top:.7rem;font-size:.62rem;color:var(--text-muted);opacity:.7">Operated by: Anastasiia Ivanova<br>Moscow, Russia</p>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Contact Us</div>
@@ -483,7 +484,7 @@ header {
     </div>
     <div class="footer-divider"></div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2025 MY Wishlist. All rights reserved.</div>
+      <div class="footer-copy">© 2025 Wish Me. All rights reserved.</div>
       <div class="footer-links">
         <button onclick="openPolicy('privacy')">Privacy Policy</button>
         <button onclick="openPolicy('terms')">Terms of Service</button>
@@ -975,93 +976,105 @@ const POLICIES = {
   privacy: {
     title: 'Privacy Policy',
     body: `
-      <h3>1. Introduction</h3>
-      <p>MY Wishlist ("we", "our", "us") is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our website.</p>
-      <h3>2. Information We Collect</h3>
+      <p style="font-size:.68rem;color:var(--text-muted);margin-bottom:1.2rem">Last updated: June 2025</p>
+      <p>This Privacy Policy explains how we collect, use, and protect your personal information when you use this website and complete gift purchases.</p>
+      <p>By using this website, you agree to the practices described in this Policy.</p>
+      <h3>1. Information We Collect</h3>
       <p>We may collect the following information:</p>
       <ul>
-        <li>Name and email address when you contact us via the feedback form</li>
-        <li>Messages and communications you send to us</li>
-        <li>Technical data such as browser type and IP address (automatically, via standard web logs)</li>
+        <li>Name and email address (if voluntarily provided via the contact form)</li>
+        <li>Optional message content submitted with a gift request</li>
+        <li>Basic payment confirmation details</li>
+        <li>Technical data such as IP address, browser type, and device information</li>
+        <li>Cookies and usage data</li>
       </ul>
-      <h3>3. How We Use Your Information</h3>
-      <p>Your information is used solely to respond to your inquiries, process gift requests, and improve our service. We do not sell, trade, or transfer your personal data to third parties.</p>
-      <h3>4. Cookies</h3>
-      <p>Our website uses localStorage (a browser-based storage) to remember your language preference and wishlist session. No tracking cookies or third-party analytics are used.</p>
+      <p>We do not collect or store full payment card details.</p>
+      <h3>2. How We Use Your Information</h3>
+      <p>We use collected data to:</p>
+      <ul>
+        <li>Process gift purchases and confirm payments</li>
+        <li>Communicate with you regarding your order</li>
+        <li>Provide customer support</li>
+        <li>Prevent fraud and unauthorized transactions</li>
+      </ul>
+      <h3>3. Payment Processing</h3>
+      <p>Payments are processed securely by Volet and other authorised payment providers. We do not have access to or store your payment card details. Payment providers process your data according to their own privacy policies.</p>
+      <h3>4. Data Retention</h3>
+      <p>We retain personal information only for as long as necessary to process your request and comply with legal obligations. You may request deletion of your data by contacting us at the details below.</p>
       <h3>5. Data Security</h3>
-      <p>We implement reasonable security measures to protect your personal information. However, no method of internet transmission is 100% secure.</p>
-      <h3>6. Third-Party Links</h3>
-      <p>Our website may contain links to external sites. We are not responsible for the privacy practices of those sites.</p>
-      <h3>7. Your Rights</h3>
-      <p>You have the right to request access to, correction of, or deletion of any personal data we hold about you. Contact us at supp.wishme@gmail.com to exercise these rights.</p>
-      <h3>8. Changes to This Policy</h3>
-      <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date.</p>
+      <p>We implement reasonable technical measures to protect personal information from unauthorized access or disclosure. However, no internet transmission is completely secure.</p>
+      <h3>6. Cookies</h3>
+      <p>This website uses browser localStorage to remember your language preference and session data. No third-party tracking cookies are used.</p>
+      <h3>7. Age Restriction</h3>
+      <p>This website is intended only for individuals aged 18 or older. We do not knowingly collect personal information from individuals under 18.</p>
+      <h3>8. Third-Party Services</h3>
+      <p>We may use third-party services (including payment processors) to operate this website. These services process personal data in accordance with their own privacy policies.</p>
       <h3>9. Contact</h3>
-      <p>If you have any questions about this Privacy Policy, please contact us at: <strong>supp.wishme@gmail.com</strong> or Telegram: <strong>@suppwishme</strong></p>
+      <p>If you have any questions regarding this Privacy Policy, please contact:<br>
+      <strong>supp.wishme@gmail.com</strong><br>
+      Telegram: <strong>@suppwishme</strong></p>
     `
   },
   terms: {
     title: 'Terms of Service',
     body: `
-      <h3>1. Acceptance of Terms</h3>
-      <p>By accessing and using MY Wishlist, you accept and agree to be bound by these Terms of Service. If you do not agree, please do not use our website.</p>
-      <h3>2. Description of Service</h3>
-      <p>MY Wishlist is a personal gift wishlist platform that allows visitors to browse curated items and send gifts. The platform displays items selected by the wishlist owner.</p>
-      <h3>3. Use of the Website</h3>
-      <p>You agree to use this website only for lawful purposes. You must not:</p>
-      <ul>
-        <li>Use the site for any fraudulent or harmful activity</li>
-        <li>Attempt to gain unauthorised access to any part of the website</li>
-        <li>Transmit any harmful, offensive, or disruptive content</li>
-      </ul>
-      <h3>4. Payments</h3>
-      <p>All payments are processed through secure third-party payment providers. By completing a payment, you agree to the terms of the respective payment processor. All prices are displayed in USD. Cryptocurrency payments are accepted at a 1:1 USD/USDT rate.</p>
-      <h3>5. Gift Processing</h3>
-      <p>Once a gift payment is confirmed, we will contact the payer to arrange fulfilment. We reserve the right to cancel any order at our discretion and issue a full refund.</p>
-      <h3>6. Intellectual Property</h3>
-      <p>All content on this website, including text, graphics, and design, is the property of MY Wishlist and may not be reproduced without permission.</p>
-      <h3>7. Disclaimer</h3>
-      <p>This website is provided "as is" without warranties of any kind. We do not guarantee uninterrupted or error-free operation.</p>
-      <h3>8. Limitation of Liability</h3>
-      <p>To the maximum extent permitted by law, MY Wishlist shall not be liable for any indirect, incidental, or consequential damages arising from your use of the website.</p>
-      <h3>9. Changes to Terms</h3>
-      <p>We reserve the right to modify these Terms at any time. Continued use of the website constitutes acceptance of the updated Terms.</p>
-      <h3>10. Contact</h3>
-      <p>For questions regarding these Terms, contact us at: <strong>supp.wishme@gmail.com</strong></p>
+      <p style="font-size:.68rem;color:var(--text-muted);margin-bottom:1.2rem">Last updated: June 2025</p>
+      <p>These Terms of Service govern the use of this website and the purchase of gifts presented on the Wish Me platform.</p>
+      <p>By accessing this website or completing a purchase, you agree to these Terms.</p>
+      <h3>1. Nature of Service</h3>
+      <p>This website is a personal gift wishlist platform. Visitors may browse curated items and send a gift to the wishlist owner. Each item is presented with a price in USD. No physical goods are shipped directly through this website — fulfilment is arranged individually upon confirmed payment.</p>
+      <h3>2. Purchases</h3>
+      <p>Access to gifting is available to anyone visiting the website. After successful payment, the sender will be contacted to confirm the gift. We reserve the right to decline or cancel any order at our discretion and issue a full refund in such cases.</p>
+      <h3>3. Payments</h3>
+      <p>Payments are processed securely through Volet and accepted cryptocurrency networks. We do not store card details. By completing a payment, you confirm that you are authorised to use the selected payment method.</p>
+      <h3>4. Refund Policy</h3>
+      <p>Please refer to our Refund Policy for full details on eligibility and the refund process.</p>
+      <h3>5. Age Restriction</h3>
+      <p>By using this website, you confirm that you are at least 18 years old.</p>
+      <h3>6. Limitation of Liability</h3>
+      <p>This website is provided "as is" without warranties of any kind. We are not responsible for temporary service interruptions caused by technical issues beyond our control.</p>
+      <h3>7. Intellectual Property</h3>
+      <p>All content on this website, including design, text, and graphics, belongs to Wish Me and may not be reproduced without permission.</p>
+      <h3>8. Changes to Terms</h3>
+      <p>We reserve the right to update these Terms at any time. Continued use of the website constitutes acceptance of the updated Terms.</p>
+      <h3>9. Contact</h3>
+      <p>For any questions or support requests, please contact:<br>
+      <strong>supp.wishme@gmail.com</strong><br>
+      Telegram: <strong>@suppwishme</strong></p>
     `
   },
   refund: {
     title: 'Refund Policy',
     body: `
-      <h3>1. Overview</h3>
-      <p>At MY Wishlist, we want every gifting experience to be perfect. This Refund Policy outlines the conditions under which refunds are available.</p>
-      <h3>2. Eligibility for Refunds</h3>
-      <p>You may be eligible for a full refund if:</p>
+      <p style="font-size:.68rem;color:var(--text-muted);margin-bottom:1.2rem">Last updated: June 2025</p>
+      <p>This Refund Policy outlines the conditions under which refunds may be issued for purchases made through the Wish Me platform.</p>
+      <h3>1. Eligibility for Refunds</h3>
+      <p>A full refund may be issued in the following situations:</p>
       <ul>
-        <li>Your payment was processed but the gift was not confirmed or fulfilled within 14 days</li>
-        <li>A technical error resulted in a duplicate payment</li>
-        <li>The gifted item is no longer available and no suitable alternative can be offered</li>
+        <li>Payment was successfully processed but the gift could not be fulfilled within 14 days</li>
+        <li>A technical error resulted in a duplicate or erroneous charge</li>
+        <li>The requested item is no longer available and no suitable alternative can be offered</li>
       </ul>
-      <h3>3. Non-Refundable Situations</h3>
-      <p>Refunds will not be issued in the following cases:</p>
+      <h3>2. Non-Refundable Situations</h3>
+      <p>Refunds will not be provided in the following cases:</p>
       <ul>
-        <li>The gift has already been fulfilled and delivered</li>
+        <li>The gift has already been fulfilled and confirmed</li>
         <li>A change of mind after successful fulfilment</li>
-        <li>Payments made in error to an incorrect address (cryptocurrency transactions)</li>
+        <li>Cryptocurrency payments sent to an incorrect address due to sender error</li>
       </ul>
-      <h3>4. How to Request a Refund</h3>
-      <p>To request a refund, please contact us within 14 days of your payment:</p>
+      <h3>3. How to Request a Refund</h3>
+      <p>To request a refund, please contact us within 14 days of your payment date and provide:</p>
       <ul>
-        <li>Email: <strong>supp.wishme@gmail.com</strong></li>
-        <li>Telegram: <strong>@suppwishme</strong></li>
+        <li>Your payment confirmation or transaction ID</li>
+        <li>A brief description of the issue</li>
       </ul>
-      <p>Please include your payment confirmation, transaction ID, and a brief description of the issue.</p>
-      <h3>5. Refund Processing</h3>
-      <p>Approved refunds will be processed within 7–14 business days via the original payment method. Cryptocurrency refunds will be returned to the wallet address provided at time of payment.</p>
-      <h3>6. Disputes</h3>
-      <p>If you are unsatisfied with our response, you may escalate the matter through your payment provider's dispute resolution process.</p>
-      <h3>7. Contact</h3>
-      <p>For any refund-related queries: <strong>supp.wishme@gmail.com</strong> or Telegram: <strong>@suppwishme</strong></p>
+      <p>Contact:<br>
+      <strong>supp.wishme@gmail.com</strong><br>
+      Telegram: <strong>@suppwishme</strong></p>
+      <h3>4. Refund Processing</h3>
+      <p>Approved refunds will be processed within 7–14 business days via the original payment method. Cryptocurrency refunds will be returned to the sending wallet address.</p>
+      <h3>5. Disputes</h3>
+      <p>If you are unsatisfied with our response, you may raise a dispute through your payment provider's resolution process.</p>
     `
   }
 };

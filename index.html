@@ -232,7 +232,70 @@ header {
   .lang-drop { right: 0; }
   .qr-and-addr { flex-direction: column; align-items: flex-start; }
   .qr-box { width: 100px; height: 100px; }
+  .footer-cols { flex-direction: column; gap: 2rem; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .contact-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Footer ── */
+.site-footer {
+  position: relative; z-index: 1;
+  background: linear-gradient(180deg, transparent 0%, rgba(201,168,76,.03) 100%);
+  border-top: 1px solid rgba(201,168,76,.12);
+  padding: 3.5rem 2rem 2rem;
+  margin-top: 2rem;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-cols { display: flex; gap: 4rem; margin-bottom: 3rem; }
+.footer-col { flex: 1; }
+.footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; font-style: italic; background: linear-gradient(135deg, var(--gold-light), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: .4rem; }
+.footer-brand b { font-style: normal; font-weight: 600; }
+.footer-tagline { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+.footer-about { font-size: .72rem; color: var(--text-muted); line-height: 1.8; }
+.footer-col-title { font-size: .58rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+.contact-item { display: flex; align-items: center; gap: .6rem; }
+.contact-icon { font-size: 1rem; flex-shrink: 0; }
+.contact-info { flex: 1; min-width: 0; }
+.contact-label { font-size: .5rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); }
+.contact-val { font-size: .7rem; color: var(--text); word-break: break-all; }
+.contact-val a { color: var(--gold-light); text-decoration: none; transition: color .2s; }
+.contact-val a:hover { color: var(--gold); }
+
+/* Contact form */
+.contact-form { display: flex; flex-direction: column; gap: .6rem; }
+.cf-row { display: flex; gap: .5rem; }
+.cf-input { flex: 1; background: rgba(201,168,76,.04); border: 1px solid rgba(201,168,76,.12); border-radius: 1px; color: var(--text); font-family: 'Montserrat', sans-serif; font-size: .72rem; font-weight: 300; padding: .55rem .7rem; outline: none; transition: border-color .2s; }
+.cf-input:focus { border-color: rgba(201,168,76,.4); }
+.cf-input::placeholder { color: var(--text-muted); }
+.cf-textarea { resize: none; height: 70px; }
+.cf-btn { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: none; color: #0a0a0f; font-family: 'Montserrat', sans-serif; font-size: .58rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; padding: .55rem 1.1rem; border-radius: 1px; cursor: pointer; transition: all .25s; white-space: nowrap; }
+.cf-btn:hover { box-shadow: 0 4px 16px rgba(201,168,76,.3); }
+.cf-sent { font-size: .68rem; color: #7abf7a; display: none; margin-top: .2rem; }
+
+.footer-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,.15), transparent); margin-bottom: 1.8rem; }
+.footer-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.footer-copy { font-size: .58rem; color: var(--text-muted); letter-spacing: .08em; }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links button { background: none; border: none; color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-size: .58rem; letter-spacing: .1em; cursor: pointer; padding: 0; transition: color .2s; text-decoration: underline; text-decoration-color: rgba(201,168,76,.2); text-underline-offset: 3px; }
+.footer-links button:hover { color: var(--gold); text-decoration-color: var(--gold); }
+
+/* Policy modal */
+.policy-ov { position: fixed; inset: 0; background: rgba(0,0,0,.9); z-index: 400; opacity: 0; pointer-events: none; transition: opacity .3s; backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
+.policy-ov.open { opacity: 1; pointer-events: all; }
+.policy-modal { background: var(--bg2); border: 1px solid rgba(201,168,76,.18); border-radius: 2px; width: 100%; max-width: 680px; max-height: 85vh; display: flex; flex-direction: column; transform: translateY(16px); transition: transform .35s; }
+.policy-ov.open .policy-modal { transform: none; }
+.policy-modal-head { padding: 1.4rem 1.8rem; border-bottom: 1px solid rgba(201,168,76,.1); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+.policy-modal-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; color: var(--gold-light); }
+.policy-modal-body { padding: 1.6rem 1.8rem; overflow-y: auto; flex: 1; font-size: .76rem; color: var(--text-muted); line-height: 1.9; }
+.policy-modal-body::-webkit-scrollbar { width: 3px; }
+.policy-modal-body::-webkit-scrollbar-thumb { background: rgba(201,168,76,.3); }
+.policy-modal-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; color: var(--gold-light); margin: 1.4rem 0 .5rem; }
+.policy-modal-body h3:first-child { margin-top: 0; }
+.policy-modal-body p { margin-bottom: .7rem; }
+.policy-modal-body ul { padding-left: 1.2rem; margin-bottom: .7rem; }
+.policy-modal-body ul li { margin-bottom: .3rem; }
+.policy-modal-foot { padding: .9rem 1.8rem; border-top: 1px solid rgba(201,168,76,.1); flex-shrink: 0; text-align: right; }
 </style>
 </head>
 <body>
@@ -371,6 +434,75 @@ header {
       <p class="s-txt" data-t="success_txt">Thank you for the magic.</p>
       <div style="height:1.8rem"></div>
       <button class="btn-pri" id="closeSuccess" style="max-width:200px;margin:0 auto;display:block" data-t="btn_close">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-cols">
+      <div class="footer-col">
+        <div class="footer-brand"><b>MY</b> Wishlist</div>
+        <div class="footer-tagline">Dreams &amp; Desires ✦</div>
+        <p class="footer-about">A personal gift wishlist platform where your loved ones can discover and gift the things you truly desire. Every item curated with love.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact Us</div>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <div class="contact-info">
+              <div class="contact-label">Email</div>
+              <div class="contact-val"><a href="mailto:supp.wishme@gmail.com">supp.wishme@gmail.com</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">✈️</span>
+            <div class="contact-info">
+              <div class="contact-label">Telegram</div>
+              <div class="contact-val"><a href="https://t.me/suppwishme" target="_blank">@suppwishme</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Send a Message</div>
+        <div class="contact-form">
+          <div class="cf-row">
+            <input class="cf-input" id="cfName" type="text" placeholder="Your name">
+            <input class="cf-input" id="cfEmail" type="email" placeholder="Email">
+          </div>
+          <textarea class="cf-input cf-textarea" id="cfMsg" placeholder="Your message..."></textarea>
+          <div style="display:flex;align-items:center;gap:.8rem">
+            <button class="cf-btn" id="cfSend">Send ✦</button>
+            <span class="cf-sent" id="cfSent">✓ Message sent!</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 MY Wishlist. All rights reserved.</div>
+      <div class="footer-links">
+        <button onclick="openPolicy('privacy')">Privacy Policy</button>
+        <button onclick="openPolicy('terms')">Terms of Service</button>
+        <button onclick="openPolicy('refund')">Refund Policy</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ POLICY MODALS ══ -->
+<div class="policy-ov" id="policyOv">
+  <div class="policy-modal">
+    <div class="policy-modal-head">
+      <div class="policy-modal-title" id="policyTitle">Privacy Policy</div>
+      <button class="x-btn" onclick="closePolicy()">✕</button>
+    </div>
+    <div class="policy-modal-body" id="policyBody"></div>
+    <div class="policy-modal-foot">
+      <button class="btn-pri" style="max-width:160px" onclick="closePolicy()">Close</button>
     </div>
   </div>
 </div>
@@ -836,6 +968,132 @@ document.getElementById('sortDesc').addEventListener('click', () => {
   document.getElementById('sortDesc').classList.add('active');
   document.getElementById('sortAsc').classList.remove('active');
   renderGrid();
+});
+
+/* ── Policy texts ── */
+const POLICIES = {
+  privacy: {
+    title: 'Privacy Policy',
+    body: `
+      <h3>1. Introduction</h3>
+      <p>MY Wishlist ("we", "our", "us") is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your data when you use our website.</p>
+      <h3>2. Information We Collect</h3>
+      <p>We may collect the following information:</p>
+      <ul>
+        <li>Name and email address when you contact us via the feedback form</li>
+        <li>Messages and communications you send to us</li>
+        <li>Technical data such as browser type and IP address (automatically, via standard web logs)</li>
+      </ul>
+      <h3>3. How We Use Your Information</h3>
+      <p>Your information is used solely to respond to your inquiries, process gift requests, and improve our service. We do not sell, trade, or transfer your personal data to third parties.</p>
+      <h3>4. Cookies</h3>
+      <p>Our website uses localStorage (a browser-based storage) to remember your language preference and wishlist session. No tracking cookies or third-party analytics are used.</p>
+      <h3>5. Data Security</h3>
+      <p>We implement reasonable security measures to protect your personal information. However, no method of internet transmission is 100% secure.</p>
+      <h3>6. Third-Party Links</h3>
+      <p>Our website may contain links to external sites. We are not responsible for the privacy practices of those sites.</p>
+      <h3>7. Your Rights</h3>
+      <p>You have the right to request access to, correction of, or deletion of any personal data we hold about you. Contact us at supp.wishme@gmail.com to exercise these rights.</p>
+      <h3>8. Changes to This Policy</h3>
+      <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated date.</p>
+      <h3>9. Contact</h3>
+      <p>If you have any questions about this Privacy Policy, please contact us at: <strong>supp.wishme@gmail.com</strong> or Telegram: <strong>@suppwishme</strong></p>
+    `
+  },
+  terms: {
+    title: 'Terms of Service',
+    body: `
+      <h3>1. Acceptance of Terms</h3>
+      <p>By accessing and using MY Wishlist, you accept and agree to be bound by these Terms of Service. If you do not agree, please do not use our website.</p>
+      <h3>2. Description of Service</h3>
+      <p>MY Wishlist is a personal gift wishlist platform that allows visitors to browse curated items and send gifts. The platform displays items selected by the wishlist owner.</p>
+      <h3>3. Use of the Website</h3>
+      <p>You agree to use this website only for lawful purposes. You must not:</p>
+      <ul>
+        <li>Use the site for any fraudulent or harmful activity</li>
+        <li>Attempt to gain unauthorised access to any part of the website</li>
+        <li>Transmit any harmful, offensive, or disruptive content</li>
+      </ul>
+      <h3>4. Payments</h3>
+      <p>All payments are processed through secure third-party payment providers. By completing a payment, you agree to the terms of the respective payment processor. All prices are displayed in USD. Cryptocurrency payments are accepted at a 1:1 USD/USDT rate.</p>
+      <h3>5. Gift Processing</h3>
+      <p>Once a gift payment is confirmed, we will contact the payer to arrange fulfilment. We reserve the right to cancel any order at our discretion and issue a full refund.</p>
+      <h3>6. Intellectual Property</h3>
+      <p>All content on this website, including text, graphics, and design, is the property of MY Wishlist and may not be reproduced without permission.</p>
+      <h3>7. Disclaimer</h3>
+      <p>This website is provided "as is" without warranties of any kind. We do not guarantee uninterrupted or error-free operation.</p>
+      <h3>8. Limitation of Liability</h3>
+      <p>To the maximum extent permitted by law, MY Wishlist shall not be liable for any indirect, incidental, or consequential damages arising from your use of the website.</p>
+      <h3>9. Changes to Terms</h3>
+      <p>We reserve the right to modify these Terms at any time. Continued use of the website constitutes acceptance of the updated Terms.</p>
+      <h3>10. Contact</h3>
+      <p>For questions regarding these Terms, contact us at: <strong>supp.wishme@gmail.com</strong></p>
+    `
+  },
+  refund: {
+    title: 'Refund Policy',
+    body: `
+      <h3>1. Overview</h3>
+      <p>At MY Wishlist, we want every gifting experience to be perfect. This Refund Policy outlines the conditions under which refunds are available.</p>
+      <h3>2. Eligibility for Refunds</h3>
+      <p>You may be eligible for a full refund if:</p>
+      <ul>
+        <li>Your payment was processed but the gift was not confirmed or fulfilled within 14 days</li>
+        <li>A technical error resulted in a duplicate payment</li>
+        <li>The gifted item is no longer available and no suitable alternative can be offered</li>
+      </ul>
+      <h3>3. Non-Refundable Situations</h3>
+      <p>Refunds will not be issued in the following cases:</p>
+      <ul>
+        <li>The gift has already been fulfilled and delivered</li>
+        <li>A change of mind after successful fulfilment</li>
+        <li>Payments made in error to an incorrect address (cryptocurrency transactions)</li>
+      </ul>
+      <h3>4. How to Request a Refund</h3>
+      <p>To request a refund, please contact us within 14 days of your payment:</p>
+      <ul>
+        <li>Email: <strong>supp.wishme@gmail.com</strong></li>
+        <li>Telegram: <strong>@suppwishme</strong></li>
+      </ul>
+      <p>Please include your payment confirmation, transaction ID, and a brief description of the issue.</p>
+      <h3>5. Refund Processing</h3>
+      <p>Approved refunds will be processed within 7–14 business days via the original payment method. Cryptocurrency refunds will be returned to the wallet address provided at time of payment.</p>
+      <h3>6. Disputes</h3>
+      <p>If you are unsatisfied with our response, you may escalate the matter through your payment provider's dispute resolution process.</p>
+      <h3>7. Contact</h3>
+      <p>For any refund-related queries: <strong>supp.wishme@gmail.com</strong> or Telegram: <strong>@suppwishme</strong></p>
+    `
+  }
+};
+
+function openPolicy(type) {
+  const p = POLICIES[type];
+  document.getElementById('policyTitle').textContent = p.title;
+  document.getElementById('policyBody').innerHTML = p.body;
+  document.getElementById('policyOv').classList.add('open');
+}
+function closePolicy() {
+  document.getElementById('policyOv').classList.remove('open');
+}
+document.getElementById('policyOv').addEventListener('click', e => {
+  if (e.target === document.getElementById('policyOv')) closePolicy();
+});
+
+/* ── Contact form (mailto fallback) ── */
+document.getElementById('cfSend').addEventListener('click', () => {
+  const name = document.getElementById('cfName').value.trim();
+  const email = document.getElementById('cfEmail').value.trim();
+  const msg = document.getElementById('cfMsg').value.trim();
+  if (!msg) return;
+  const subject = encodeURIComponent('Message from MY Wishlist');
+  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
+  window.open(`mailto:supp.wishme@gmail.com?subject=${subject}&body=${body}`);
+  document.getElementById('cfName').value = '';
+  document.getElementById('cfEmail').value = '';
+  document.getElementById('cfMsg').value = '';
+  const sent = document.getElementById('cfSent');
+  sent.style.display = 'inline';
+  setTimeout(() => { sent.style.display = 'none'; }, 3000);
 });
 
 /* ── Init ── */

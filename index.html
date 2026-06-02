@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wish Me ✨</title>
+<!-- Favicon: gold star emoji as SVG data URI -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -84,23 +86,48 @@ header {
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
 @keyframes fadeIn  { from{opacity:0} to{opacity:1} }
 
+/* ── Categories — mobile tap-flash fix ── */
+.cats {
+  position: relative; z-index: 1;
+  display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center;
+  padding: 0 2rem 2rem; max-width: 1200px; margin: 0 auto;
+  -webkit-tap-highlight-color: transparent;
+}
+.cat-btn {
+  background: transparent; border: 1px solid rgba(201,168,76,.18); color: var(--text-muted);
+  font-family: 'Montserrat', sans-serif; font-size: .62rem; letter-spacing: .18em;
+  text-transform: uppercase; padding: .45rem 1.1rem; border-radius: 20px; cursor: pointer;
+  transition: border-color .25s, color .25s, background .25s;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  /* prevent the blue flash on mobile */
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+.cat-btn:hover { border-color: rgba(201,168,76,.5); color: var(--gold); }
+.cat-btn.active { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #0a0a0f; border-color: var(--gold); font-weight: 500; }
+/* No blue :focus ring */
+.cat-btn:focus { outline: none; }
+.cat-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
 .filters-bar {
   position: relative; z-index: 1;
   max-width: 1200px; margin: 0 auto;
   padding: 0 2rem 1.5rem;
   display: flex; flex-wrap: wrap; align-items: center; gap: .8rem;
 }
-.filters-bar .sep { width: 1px; height: 22px; background: rgba(201,168,76,.18); flex-shrink: 0; }
 
-.cats { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; padding: 0 2rem 2rem; max-width: 1200px; margin: 0 auto; }
-.cat-btn { background: transparent; border: 1px solid rgba(201,168,76,.18); color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; padding: .45rem 1.1rem; border-radius: 20px; cursor: pointer; transition: all .25s; }
-.cat-btn:hover { border-color: rgba(201,168,76,.5); color: var(--gold); }
-.cat-btn.active { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #0a0a0f; border-color: var(--gold); font-weight: 500; }
-
-.sort-wrap { display: flex; align-items: center; gap: .5rem; }
 .sort-lbl { font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
-.sort-btn { background: transparent; border: 1px solid rgba(201,168,76,.18); color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; padding: .4rem .9rem; border-radius: 20px; cursor: pointer; transition: all .25s; white-space: nowrap; }
+.sort-btn {
+  background: transparent; border: 1px solid rgba(201,168,76,.18); color: var(--text-muted);
+  font-family: 'Montserrat', sans-serif; font-size: .6rem; letter-spacing: .12em;
+  text-transform: uppercase; padding: .4rem .9rem; border-radius: 20px; cursor: pointer;
+  transition: all .25s; white-space: nowrap;
+  -webkit-tap-highlight-color: transparent; outline: none;
+}
 .sort-btn:hover { border-color: rgba(201,168,76,.5); color: var(--gold); }
+.sort-btn:focus { outline: none; }
+.sort-btn:focus-visible { outline: 2px solid var(--gold); }
 .sort-btn.active { background: rgba(201,168,76,.12); border-color: rgba(201,168,76,.5); color: var(--gold); }
 
 .grid { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.3rem; max-width: 1280px; margin: 0 auto; padding: 0 2rem 5rem; }
@@ -111,17 +138,19 @@ header {
 .card:hover .card-img img { transform: scale(1.06); }
 .card-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg,transparent 55%,rgba(10,10,15,.65) 100%); pointer-events: none; }
 .card-body { padding: 1.2rem 1.3rem 1.4rem; display: flex; flex-direction: column; gap: .4rem; flex: 1; }
+/* brand = small label above, name = big title below */
 .card-brand { font-size: .58rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
-.card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; }
+.card-name  { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; }
 .card-footer { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin-top: .7rem; }
 .card-price { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; color: var(--gold-light); white-space: nowrap; flex-shrink: 0; }
-.gift-btn { flex-shrink: 0; background: transparent; border: 1px solid rgba(201,168,76,.38); color: var(--gold); font-family: 'Montserrat', sans-serif; font-size: .6rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; padding: .5rem .9rem; border-radius: 1px; cursor: pointer; transition: all .3s; white-space: nowrap; position: relative; overflow: hidden; }
+.gift-btn { flex-shrink: 0; background: transparent; border: 1px solid rgba(201,168,76,.38); color: var(--gold); font-family: 'Montserrat', sans-serif; font-size: .6rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; padding: .5rem .9rem; border-radius: 1px; cursor: pointer; transition: all .3s; white-space: nowrap; position: relative; overflow: hidden; -webkit-tap-highlight-color: transparent; outline: none; }
 .gift-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg,var(--gold),var(--gold-dark)); opacity: 0; transition: opacity .3s; }
 .gift-btn span { position: relative; z-index: 1; }
 .gift-btn:hover::before { opacity: 1; }
 .gift-btn:hover { color: #0a0a0f; border-color: var(--gold); box-shadow: 0 4px 18px rgba(201,168,76,.28); }
 .gift-btn.added { background: linear-gradient(135deg,var(--gold),var(--gold-dark)); color: #0a0a0f; border-color: var(--gold); }
 .gift-btn.added::before { opacity: 0; }
+.gift-btn:focus { outline: none; }
 
 .sparkle { position: fixed; pointer-events: none; z-index: 9999; font-size: 1.2rem; animation: floatUp 1.2s ease-out forwards; }
 @keyframes floatUp { 0%{opacity:1;transform:translateY(0) scale(1) rotate(0)} 100%{opacity:0;transform:translateY(-80px) scale(.3) rotate(180deg)} }
@@ -132,7 +161,7 @@ header {
 .drawer.open { right: 0; }
 .drawer-head { padding: 1.6rem 2rem; border-bottom: 1px solid rgba(201,168,76,.12); display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
 .drawer-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 300; font-style: italic; color: var(--gold-light); }
-.x-btn { background: none; border: none; color: var(--text-muted); font-size: 1.3rem; cursor: pointer; padding: .3rem; line-height: 1; transition: color .2s; }
+.x-btn { background: none; border: none; color: var(--text-muted); font-size: 1.3rem; cursor: pointer; padding: .3rem; line-height: 1; transition: color .2s; -webkit-tap-highlight-color: transparent; outline: none; }
 .x-btn:hover { color: var(--text); }
 .drawer-items { flex: 1; overflow-y: auto; padding: 1.4rem 2rem; display: flex; flex-direction: column; gap: .9rem; }
 .drawer-items::-webkit-scrollbar { width: 3px; }
@@ -147,22 +176,22 @@ header {
 .ci-name { font-family: 'Cormorant Garamond', serif; font-size: .95rem; }
 .ci-price { font-size: .7rem; color: var(--text-muted); margin-top: .15rem; }
 .ci-qty { display: flex; align-items: center; gap: .5rem; margin-top: .4rem; }
-.qty-btn { background: none; border: 1px solid rgba(201,168,76,.25); color: var(--gold); width: 22px; height: 22px; border-radius: 2px; cursor: pointer; font-size: .8rem; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+.qty-btn { background: none; border: 1px solid rgba(201,168,76,.25); color: var(--gold); width: 22px; height: 22px; border-radius: 2px; cursor: pointer; font-size: .8rem; display: flex; align-items: center; justify-content: center; transition: all .2s; -webkit-tap-highlight-color: transparent; outline: none; }
 .qty-btn:hover { background: rgba(201,168,76,.1); }
 .qty-val { font-size: .75rem; min-width: 18px; text-align: center; }
-.ci-rm { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: .95rem; padding: .3rem; transition: color .2s; flex-shrink: 0; }
+.ci-rm { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: .95rem; padding: .3rem; transition: color .2s; flex-shrink: 0; -webkit-tap-highlight-color: transparent; outline: none; }
 .ci-rm:hover { color: var(--rose); }
 .drawer-foot { padding: 1.3rem 2rem 1.8rem; border-top: 1px solid rgba(201,168,76,.12); flex-shrink: 0; }
 .total-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.1rem; }
 .total-lbl { font-size: .62rem; letter-spacing: .25em; text-transform: uppercase; color: var(--text-muted); }
 .total-amt { font-family: 'Cormorant Garamond', serif; font-size: 1.55rem; color: var(--gold-light); }
-.co-btn { width: 100%; background: linear-gradient(135deg,var(--gold),var(--gold-dark)); border: none; color: #0a0a0f; font-family: 'Montserrat', sans-serif; font-size: .68rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; padding: 1rem; border-radius: 1px; cursor: pointer; transition: all .3s; }
+.co-btn { width: 100%; background: linear-gradient(135deg,var(--gold),var(--gold-dark)); border: none; color: #0a0a0f; font-family: 'Montserrat', sans-serif; font-size: .68rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; padding: 1rem; border-radius: 1px; cursor: pointer; transition: all .3s; -webkit-tap-highlight-color: transparent; outline: none; }
 .co-btn:hover { box-shadow: 0 6px 25px rgba(201,168,76,.4); transform: translateY(-1px); }
 
-/* ── Modal ── */
+/* Modal */
 .modal-ov { position: fixed; inset: 0; background: rgba(0,0,0,.87); z-index: 300; opacity: 0; pointer-events: none; transition: opacity .4s; backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
 .modal-ov.open { opacity: 1; pointer-events: all; }
-.modal { background: var(--bg2); border: 1px solid rgba(201,168,76,.2); border-radius: 2px; width: 100%; max-width: 520px; transform: translateY(20px) scale(.97); transition: transform .4s cubic-bezier(.25,.46,.45,.94); overflow: hidden; max-height: 90vh; overflow-y: auto; }
+.modal { background: var(--bg2); border: 1px solid rgba(201,168,76,.2); border-radius: 2px; width: 100%; max-width: 480px; transform: translateY(20px) scale(.97); transition: transform .4s cubic-bezier(.25,.46,.45,.94); overflow: hidden; max-height: 90vh; overflow-y: auto; }
 .modal-ov.open .modal { transform: none; }
 .modal::-webkit-scrollbar { width: 3px; }
 .modal::-webkit-scrollbar-thumb { background: rgba(201,168,76,.3); }
@@ -172,43 +201,28 @@ header {
 .modal-body { padding: 1.4rem 2rem; }
 .field { margin-bottom: 1.1rem; }
 .field label { display: block; font-size: .58rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: .45rem; }
-.field textarea { width: 100%; background: rgba(201,168,76,.04); border: 1px solid rgba(201,168,76,.15); border-radius: 1px; color: var(--text); font-family: 'Montserrat', sans-serif; font-size: .82rem; font-weight: 300; padding: .7rem .85rem; transition: border-color .2s; outline: none; resize: none; height: 90px; }
+.field textarea { width: 100%; background: rgba(201,168,76,.04); border: 1px solid rgba(201,168,76,.15); border-radius: 1px; color: var(--text); font-family: 'Montserrat', sans-serif; font-size: .82rem; font-weight: 300; padding: .7rem .85rem; transition: border-color .2s; outline: none; resize: none; height: 100px; }
 .field textarea:focus { border-color: rgba(201,168,76,.5); background: rgba(201,168,76,.07); }
 .order-summary { background: rgba(201,168,76,.04); border: 1px solid rgba(201,168,76,.1); border-radius: 1px; padding: .9rem; margin-bottom: 1.1rem; font-size: .72rem; color: var(--text-muted); line-height: 1.7; }
 .order-summary strong { color: var(--gold-light); font-weight: 400; }
 
-/* ── Crypto payment ── */
-.crypto-section { margin-bottom: 1.1rem; }
-.crypto-lbl { font-size: .58rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: .6rem; display: block; }
-.network-tabs { display: flex; gap: .5rem; margin-bottom: 1rem; }
-.net-tab { flex: 1; background: rgba(201,168,76,.04); border: 1px solid rgba(201,168,76,.15); color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; padding: .55rem .5rem; border-radius: 2px; cursor: pointer; transition: all .25s; text-align: center; }
-.net-tab:hover { border-color: rgba(201,168,76,.4); color: var(--gold-light); }
-.net-tab.active { background: rgba(201,168,76,.12); border-color: var(--gold); color: var(--gold); font-weight: 500; }
-.net-tab .net-icon { display: block; font-size: 1rem; margin-bottom: .2rem; }
-.net-tab .net-name { display: block; }
-.net-tab .net-chain { display: block; font-size: .5rem; color: var(--text-muted); margin-top: .1rem; letter-spacing: .08em; }
-.net-tab.active .net-chain { color: rgba(201,168,76,.6); }
-
-.crypto-addr-wrap { background: rgba(201,168,76,.04); border: 1px solid rgba(201,168,76,.12); border-radius: 2px; padding: .9rem 1rem; }
-.qr-and-addr { display: flex; gap: 1rem; align-items: center; }
-.qr-box { flex-shrink: 0; width: 82px; height: 82px; background: #fff; border-radius: 2px; display: flex; align-items: center; justify-content: center; padding: 4px; }
-.qr-box canvas { display: block; }
-.addr-info { flex: 1; min-width: 0; }
-.addr-network { font-size: .52rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
-.addr-hint { font-size: .58rem; color: var(--text-muted); margin-bottom: .5rem; line-height: 1.5; }
-.addr-string { font-family: 'Montserrat', sans-serif; font-size: .55rem; color: var(--gold-light); word-break: break-all; background: rgba(0,0,0,.3); padding: .4rem .5rem; border-radius: 2px; border: 1px solid rgba(201,168,76,.1); cursor: pointer; transition: background .2s; position: relative; }
-.addr-string:hover { background: rgba(201,168,76,.08); }
-.copy-hint { font-size: .5rem; color: var(--text-muted); margin-top: .3rem; letter-spacing: .05em; }
-.copy-hint.copied { color: #7abf7a; }
-.usdt-amount { display: flex; align-items: center; gap: .5rem; margin-top: .7rem; padding-top: .7rem; border-top: 1px solid rgba(201,168,76,.08); }
-.usdt-lbl { font-size: .58rem; color: var(--text-muted); letter-spacing: .08em; }
-.usdt-val { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold-light); }
-.usdt-note { font-size: .5rem; color: var(--text-muted); }
+/* Volet payment notice */
+.volet-notice {
+  display: flex; align-items: flex-start; gap: .7rem;
+  background: rgba(201,168,76,.05); border: 1px solid rgba(201,168,76,.15);
+  border-radius: 2px; padding: .9rem 1rem; margin-bottom: 1.1rem;
+}
+.volet-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: .05rem; }
+.volet-text { flex: 1; }
+.volet-title { font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
+.volet-desc { font-size: .7rem; color: var(--text-muted); line-height: 1.6; }
+.volet-methods { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .55rem; }
+.volet-tag { font-size: .52rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.15); padding: .2rem .5rem; border-radius: 2px; }
 
 .modal-actions { display: flex; gap: .8rem; padding: 0 2rem 1.8rem; }
-.btn-sec { flex: 1; background: none; border: 1px solid rgba(201,168,76,.2); color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; padding: .85rem; border-radius: 1px; cursor: pointer; transition: all .2s; }
+.btn-sec { flex: 1; background: none; border: 1px solid rgba(201,168,76,.2); color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; padding: .85rem; border-radius: 1px; cursor: pointer; transition: all .2s; -webkit-tap-highlight-color: transparent; outline: none; }
 .btn-sec:hover { border-color: var(--gold); color: var(--text); }
-.btn-pri { flex: 2; background: linear-gradient(135deg,var(--gold),var(--gold-dark)); border: none; color: #0a0a0f; font-family: 'Montserrat', sans-serif; font-size: .62rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; padding: .85rem; border-radius: 1px; cursor: pointer; transition: all .3s; }
+.btn-pri { flex: 2; background: linear-gradient(135deg,var(--gold),var(--gold-dark)); border: none; color: #0a0a0f; font-family: 'Montserrat', sans-serif; font-size: .62rem; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; padding: .85rem; border-radius: 1px; cursor: pointer; transition: all .3s; -webkit-tap-highlight-color: transparent; outline: none; }
 .btn-pri:hover { box-shadow: 0 4px 20px rgba(201,168,76,.35); transform: translateY(-1px); }
 
 .success { display: none; text-align: center; padding: 2.8rem 2rem; }
@@ -217,25 +231,6 @@ header {
 @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
 .s-ttl { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-style: italic; color: var(--gold-light); margin-bottom: .5rem; }
 .s-txt { font-size: .73rem; color: var(--text-muted); line-height: 1.8; }
-
-@media(max-width:600px){
-  header { padding: 0 1.2rem; }
-  .grid { grid-template-columns: repeat(2, 1fr); padding: 0 .8rem 4rem; gap: .8rem; }
-  .card-body { padding: .8rem .9rem 1rem; }
-  .card-name { font-size: 1rem; }
-  .card-price { font-size: 1rem; }
-  .gift-btn { font-size: .52rem; padding: .4rem .6rem; }
-  .hero { padding: 2.5rem 1rem 2rem; }
-  .cats { padding: 0 .8rem 1.5rem; }
-  .filters-bar { padding: 0 .8rem 1.2rem; }
-  .modal-actions { flex-direction: column; }
-  .lang-drop { right: 0; }
-  .qr-and-addr { flex-direction: column; align-items: flex-start; }
-  .qr-box { width: 100px; height: 100px; }
-  .footer-cols { flex-direction: column; gap: 2rem; }
-  .footer-links { flex-wrap: wrap; justify-content: center; }
-  .contact-grid { grid-template-columns: 1fr; }
-}
 
 /* ── Footer ── */
 .site-footer {
@@ -253,7 +248,9 @@ header {
 .footer-tagline { font-size: .6rem; letter-spacing: .2em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
 .footer-about { font-size: .72rem; color: var(--text-muted); line-height: 1.8; }
 .footer-col-title { font-size: .58rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+
+/* Contact items — stacked vertically */
+.contact-list { display: flex; flex-direction: column; gap: .8rem; }
 .contact-item { display: flex; align-items: center; gap: .6rem; }
 .contact-icon { font-size: 1rem; flex-shrink: 0; }
 .contact-info { flex: 1; min-width: 0; }
@@ -262,22 +259,21 @@ header {
 .contact-val a { color: var(--gold-light); text-decoration: none; transition: color .2s; }
 .contact-val a:hover { color: var(--gold); }
 
-/* Contact form */
 .contact-form { display: flex; flex-direction: column; gap: .6rem; }
 .cf-row { display: flex; gap: .5rem; }
 .cf-input { flex: 1; background: rgba(201,168,76,.04); border: 1px solid rgba(201,168,76,.12); border-radius: 1px; color: var(--text); font-family: 'Montserrat', sans-serif; font-size: .72rem; font-weight: 300; padding: .55rem .7rem; outline: none; transition: border-color .2s; }
 .cf-input:focus { border-color: rgba(201,168,76,.4); }
 .cf-input::placeholder { color: var(--text-muted); }
 .cf-textarea { resize: none; height: 70px; }
-.cf-btn { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: none; color: #0a0a0f; font-family: 'Montserrat', sans-serif; font-size: .58rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; padding: .55rem 1.1rem; border-radius: 1px; cursor: pointer; transition: all .25s; white-space: nowrap; }
+.cf-btn { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: none; color: #0a0a0f; font-family: 'Montserrat', sans-serif; font-size: .58rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; padding: .55rem 1.1rem; border-radius: 1px; cursor: pointer; transition: all .25s; white-space: nowrap; outline: none; }
 .cf-btn:hover { box-shadow: 0 4px 16px rgba(201,168,76,.3); }
 .cf-sent { font-size: .68rem; color: #7abf7a; display: none; margin-top: .2rem; }
 
 .footer-divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,.15), transparent); margin-bottom: 1.8rem; }
 .footer-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
 .footer-copy { font-size: .58rem; color: var(--text-muted); letter-spacing: .08em; }
-.footer-links { display: flex; gap: 1.5rem; }
-.footer-links button { background: none; border: none; color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-size: .58rem; letter-spacing: .1em; cursor: pointer; padding: 0; transition: color .2s; text-decoration: underline; text-decoration-color: rgba(201,168,76,.2); text-underline-offset: 3px; }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links button { background: none; border: none; color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-size: .58rem; letter-spacing: .1em; cursor: pointer; padding: 0; transition: color .2s; text-decoration: underline; text-decoration-color: rgba(201,168,76,.2); text-underline-offset: 3px; -webkit-tap-highlight-color: transparent; outline: none; }
 .footer-links button:hover { color: var(--gold); text-decoration-color: var(--gold); }
 
 /* Policy modal */
@@ -296,6 +292,23 @@ header {
 .policy-modal-body ul { padding-left: 1.2rem; margin-bottom: .7rem; }
 .policy-modal-body ul li { margin-bottom: .3rem; }
 .policy-modal-foot { padding: .9rem 1.8rem; border-top: 1px solid rgba(201,168,76,.1); flex-shrink: 0; text-align: right; }
+
+@media(max-width:600px){
+  header { padding: 0 1.2rem; }
+  .grid { grid-template-columns: repeat(2, 1fr); padding: 0 .8rem 4rem; gap: .8rem; }
+  .card-body { padding: .8rem .9rem 1rem; }
+  .card-name { font-size: 1rem; }
+  .card-price { font-size: 1rem; }
+  .gift-btn { font-size: .52rem; padding: .4rem .6rem; }
+  .hero { padding: 2.5rem 1rem 2rem; }
+  .cats { padding: 0 .8rem 1.5rem; }
+  .filters-bar { padding: 0 .8rem 1.2rem; }
+  .modal-actions { flex-direction: column; }
+  .lang-drop { right: 0; }
+  .footer-cols { flex-direction: column; gap: 2rem; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+  .cf-row { flex-direction: column; }
+}
 </style>
 </head>
 <body>
@@ -339,7 +352,7 @@ header {
   <button class="cat-btn active" data-cat="all" data-t="cat_all">✦ All</button>
   <button class="cat-btn" data-cat="flowers" data-t="cat_flowers">🌸 Flowers</button>
   <button class="cat-btn" data-cat="jewelry" data-t="cat_jewelry">💎 Jewelry</button>
-  <button class="cat-btn" data-cat="realestate" data-t="cat_realestate">🏠 Realestate</button>
+  <button class="cat-btn" data-cat="realestate" data-t="cat_realestate">🏠 Real Estate</button>
   <button class="cat-btn" data-cat="cars" data-t="cat_cars">🚗 Cars</button>
   <button class="cat-btn" data-cat="tech" data-t="cat_tech">📱 Tech</button>
   <button class="cat-btn" data-cat="shoes" data-t="cat_shoes">👠 Shoes</button>
@@ -357,6 +370,7 @@ header {
 
 <div class="grid" id="grid"></div>
 
+<!-- Cart drawer -->
 <div class="overlay" id="ov"></div>
 <div class="drawer" id="drawer">
   <div class="drawer-head">
@@ -373,6 +387,7 @@ header {
   </div>
 </div>
 
+<!-- Gift modal -->
 <div class="modal-ov" id="modalOv">
   <div class="modal">
     <div id="formView">
@@ -383,37 +398,19 @@ header {
       <div class="modal-body">
         <div class="order-summary" id="orderSummary"></div>
 
-        <!-- Crypto payment -->
-        <div class="crypto-section">
-          <span class="crypto-lbl" data-t="crypto_lbl">Payment in Crypto (USDT)</span>
-          <div class="network-tabs">
-            <button class="net-tab active" data-net="bep20">
-              <span class="net-icon">🟡</span>
-              <span class="net-name">BNB Chain</span>
-              <span class="net-chain">BEP-20 / USDT</span>
-            </button>
-            <button class="net-tab" data-net="trx">
-              <span class="net-icon">🔴</span>
-              <span class="net-name">TRON</span>
-              <span class="net-chain">TRC-20 / USDT</span>
-            </button>
-          </div>
-          <div class="crypto-addr-wrap">
-            <div class="qr-and-addr">
-              <div class="qr-box">
-                <canvas id="qrCanvas" width="74" height="74"></canvas>
-              </div>
-              <div class="addr-info">
-                <div class="addr-network" id="addrNetwork">BEP-20 (BNB Chain)</div>
-                <div class="addr-hint" id="addrHint" data-t="addr_hint">Send exactly this amount in USDT to the address below</div>
-                <div class="addr-string" id="addrString" title="Click to copy">0x33Cbe4b4E23468dAbE51B17545620Bb2A63Af460</div>
-                <div class="copy-hint" id="copyHint" data-t="copy_hint">👆 tap to copy address</div>
-              </div>
-            </div>
-            <div class="usdt-amount">
-              <span class="usdt-lbl" data-t="usdt_lbl">Amount:</span>
-              <span class="usdt-val" id="usdtAmt">$0 USDT</span>
-              <span class="usdt-note" data-t="usdt_note">(1 USD = 1 USDT)</span>
+        <!-- Volet payment notice (replaces crypto) -->
+        <div class="volet-notice">
+          <div class="volet-icon">💳</div>
+          <div class="volet-text">
+            <div class="volet-title" data-t="volet_title">Secure Payment via Volet</div>
+            <div class="volet-desc" data-t="volet_desc">You will be redirected to a secure Volet payment page to complete your gift. All major cards and methods are accepted.</div>
+            <div class="volet-methods">
+              <span class="volet-tag">Visa</span>
+              <span class="volet-tag">Mastercard</span>
+              <span class="volet-tag">USDT</span>
+              <span class="volet-tag">Bitcoin</span>
+              <span class="volet-tag">Apple Pay</span>
+              <span class="volet-tag">Google Pay</span>
             </div>
           </div>
         </div>
@@ -438,19 +435,21 @@ header {
   </div>
 </div>
 
-<!-- ══ FOOTER ══ -->
+<!-- Footer -->
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-cols">
+      <!-- About -->
       <div class="footer-col">
         <div class="footer-brand"><b>Wish</b> Me</div>
         <div class="footer-tagline">Dreams &amp; Desires ✦</div>
         <p class="footer-about">A personal gift wishlist platform where your loved ones can discover and gift the things you truly desire. Every item curated with love.</p>
         <p class="footer-about" style="margin-top:.7rem;font-size:.62rem;color:var(--text-muted);opacity:.7">Operated by: Anastasiia Ivanova<br>Moscow, Russia</p>
       </div>
+      <!-- Contact — stacked: email first, telegram below -->
       <div class="footer-col">
         <div class="footer-col-title">Contact Us</div>
-        <div class="contact-grid">
+        <div class="contact-list">
           <div class="contact-item">
             <span class="contact-icon">✉️</span>
             <div class="contact-info">
@@ -467,6 +466,7 @@ header {
           </div>
         </div>
       </div>
+      <!-- Message form -->
       <div class="footer-col">
         <div class="footer-col-title">Send a Message</div>
         <div class="contact-form">
@@ -494,7 +494,7 @@ header {
   </div>
 </footer>
 
-<!-- ══ POLICY MODALS ══ -->
+<!-- Policy modal -->
 <div class="policy-ov" id="policyOv">
   <div class="policy-modal">
     <div class="policy-modal-head">
@@ -508,33 +508,6 @@ header {
   </div>
 </div>
 
-<!-- QR code library (pure JS, no external deps) -->
-<script>
-/* Minimal QR code generator — MIT, adapted from qrcodejs */
-!function(){var e={},n=function(e){this.mode=e};n.MODE_NUMBER=1&e,n.MODE_ALPHA_NUM=2&e,n.MODE_8BIT_BYTE=4&e,n.MODE_KANJI=8&e;var t=function(e,n){this.totalCount=e,this.dataCount=n},r=function(){var e=function(e){this.buffer=[],this.length=0,this.put(e,4)};return e.prototype={get:function(e){return 1==(this.buffer[Math.floor(e/8)]>>>7-e%8&1)},put:function(e,n){for(var t=0;t<n;t++)this.putBit(1==(e>>>n-t-1&1))},getLengthInBits:function(){return this.length},putBit:function(e){var n=Math.floor(this.length/8);this.buffer.length<=n&&this.buffer.push(0),e&&(this.buffer[n]|=128>>>this.length%8),this.length++}},e}();var a=new Array(256);!function(){for(var e=new Array(256),n=0;n<8;n++)e[n]=1<<n;for(var n=8;n<256;n++)e[n]=e[n-4]^e[n-5]^e[n-6]^e[n-8];for(var n=0;n<255;n++){a[n]=n;for(var t=e[n],r=0;r<8;r++)t=0!=(128&t)?t<<1^285:t<<1;a[n]=t&255}}();var i=function(){var e=new Array(256),n=new Array(256);!function(){for(var t=0;t<8;t++)n[t]=1<<t;for(var t=8;t<256;t++)n[t]=n[t-4]^n[t-5]^n[t-6]^n[t-8];for(var t=0;t<255;t++){e[n[t]]=t}}();return{glog:function(e){if(e<1)throw new Error("glog("+e+")");return e[e]},gexp:function(e){for(;e<0;)e+=255;for(;e>=256;)e-=255;return n[e]},multiply:function(n,t){return 0==n||0==t?0:this.gexp(this.glog(n)+this.glog(t))},divide:function(n,t){if(0==t)throw new Error("divide by zero");return 0==n?0:this.gexp(this.glog(n)+255-this.glog(t))}}}();
-/* --- simplified QR draw --- */
-window.drawQR=function(canvasId,text){
-  var c=document.getElementById(canvasId);
-  if(!c)return;
-  var size=c.width,ctx=c.getContext('2d');
-  ctx.fillStyle='#ffffff';ctx.fillRect(0,0,size,size);
-  // Use a simple URL-based QR via Google Charts API substitute (data URI approach)
-  // We'll draw a placeholder and use the address directly
-  var img=new Image();
-  img.onload=function(){ctx.drawImage(img,0,0,size,size);};
-  img.onerror=function(){
-    // Fallback: draw simple pattern
-    ctx.fillStyle='#000';
-    var s=Math.floor(size/10);
-    for(var i=0;i<10;i++)for(var j=0;j<10;j++){
-      if((i+j)%2===0)ctx.fillRect(i*s,j*s,s,s);
-    }
-  };
-  img.src='https://api.qrserver.com/v1/create-qr-code/?size='+size+'x'+size+'&data='+encodeURIComponent(text)+'&bgcolor=ffffff&color=000000&margin=2';
-};
-}();
-</script>
-
 <script>
 /* ── Translations ── */
 const T = {
@@ -542,13 +515,11 @@ const T = {
     cat_all:"✦ All", cat_flowers:"🌸 Flowers", cat_jewelry:"💎 Jewelry", cat_realestate:"🏠 Real Estate", cat_cars:"🚗 Cars", cat_tech:"📱 Tech", cat_shoes:"👠 Shoes", cat_lingerie:"🩷 Lingerie", cat_travel:"✈️ Travel", cat_bags:"👜 Bags", cat_money:"💰 Money",
     sort_lbl:"Sort by price:", sort_asc:"↑ Low to High", sort_desc:"↓ High to Low",
     drawer_title:"My Wishes", total_lbl:"Total", co_btn:"✦ Gift this ✦",
-    modal_ttl:"Send a Gift", modal_sub:"choose payment & leave a message",
-    crypto_lbl:"Payment in Crypto (USDT)",
-    addr_hint:"Send exactly this amount in USDT to the address below",
-    copy_hint:"👆 tap to copy address", copied_hint:"✓ Copied!",
-    usdt_lbl:"Amount:", usdt_note:"(1 USD = 1 USDT)",
+    modal_ttl:"Send a Gift", modal_sub:"leave a message below",
+    volet_title:"Secure Payment via Volet",
+    volet_desc:"You will be redirected to a secure Volet payment page to complete your gift. All major cards and methods are accepted.",
     msg_lbl:"Your message (optional)", msg_ph:"Write something warm...",
-    btn_back:"Back", btn_send:"I've sent the payment ✦", btn_close:"Close",
+    btn_back:"Back", btn_send:"Proceed to Payment ✦", btn_close:"Close",
     success_ttl:"Gift sent!", success_txt:"Thank you for the magic.",
     empty_p:"Your wish list is empty.<br>Add something magical.",
     order_sel:"You selected:", order_total:"Total:",
@@ -558,13 +529,11 @@ const T = {
     cat_all:"✦ 全部", cat_flowers:"🌸 花卉", cat_jewelry:"💎 珠宝", cat_realestate:"🏠 房产", cat_cars:"🚗 汽车", cat_tech:"📱 科技", cat_shoes:"👠 鞋子", cat_lingerie:"🩷 内衣", cat_travel:"✈️ 旅行", cat_bags:"👜 包包", cat_money:"💰 金钱",
     sort_lbl:"价格排序：", sort_asc:"↑ 从低到高", sort_desc:"↓ 从高到低",
     drawer_title:"我的心愿", total_lbl:"合计", co_btn:"✦ 赠送礼物 ✦",
-    modal_ttl:"发送礼物", modal_sub:"选择支付方式并留言",
-    crypto_lbl:"加密货币支付 (USDT)",
-    addr_hint:"请向以下地址发送准确金额的USDT",
-    copy_hint:"👆 点击复制地址", copied_hint:"✓ 已复制！",
-    usdt_lbl:"金额：", usdt_note:"（1 美元 = 1 USDT）",
+    modal_ttl:"发送礼物", modal_sub:"请留言",
+    volet_title:"通过 Volet 安全支付",
+    volet_desc:"您将被重定向到安全的 Volet 支付页面完成礼物。支持所有主要卡和支付方式。",
     msg_lbl:"您的留言（可选）", msg_ph:"写一些温暖的话…",
-    btn_back:"返回", btn_send:"我已付款 ✦", btn_close:"关闭",
+    btn_back:"返回", btn_send:"前往支付 ✦", btn_close:"关闭",
     success_ttl:"礼物已发送！", success_txt:"感谢您的慷慨。",
     empty_p:"心愿清单为空。<br>添加一些神奇的东西吧。",
     order_sel:"您选择了：", order_total:"合计：",
@@ -574,13 +543,11 @@ const T = {
     cat_all:"✦ الكل", cat_flowers:"🌸 الزهور", cat_jewelry:"💎 المجوهرات", cat_realestate:"🏠 العقارات", cat_cars:"🚗 السيارات", cat_tech:"📱 التقنية", cat_shoes:"👠 الأحذية", cat_lingerie:"🩷 الملابس الداخلية", cat_travel:"✈️ السفر", cat_bags:"👜 الحقائب", cat_money:"💰 المال",
     sort_lbl:"ترتيب حسب السعر:", sort_asc:"↑ من الأقل", sort_desc:"↓ من الأعلى",
     drawer_title:"أمنياتي", total_lbl:"المجموع", co_btn:"✦ أرسل هدية ✦",
-    modal_ttl:"إرسال هدية", modal_sub:"اختر الدفع واترك رسالة",
-    crypto_lbl:"الدفع بالعملات المشفرة (USDT)",
-    addr_hint:"أرسل المبلغ بالضبط بـ USDT إلى العنوان أدناه",
-    copy_hint:"👆 انقر لنسخ العنوان", copied_hint:"✓ تم النسخ!",
-    usdt_lbl:"المبلغ:", usdt_note:"(١ دولار = ١ USDT)",
+    modal_ttl:"إرسال هدية", modal_sub:"اترك رسالة",
+    volet_title:"الدفع الآمن عبر Volet",
+    volet_desc:"ستتم إعادة توجيهك إلى صفحة دفع Volet الآمنة. تقبل جميع البطاقات الرئيسية.",
     msg_lbl:"رسالتك (اختياري)", msg_ph:"اكتب شيئاً دافئاً…",
-    btn_back:"رجوع", btn_send:"لقد أرسلت الدفع ✦", btn_close:"إغلاق",
+    btn_back:"رجوع", btn_send:"المتابعة للدفع ✦", btn_close:"إغلاق",
     success_ttl:"تم إرسال الهدية!", success_txt:"شكراً لك على هذا الجمال.",
     empty_p:"قائمة الأمنيات فارغة.<br>أضف شيئاً رائعاً.",
     order_sel:"اخترت:", order_total:"المجموع:",
@@ -590,13 +557,11 @@ const T = {
     cat_all:"✦ Tout", cat_flowers:"🌸 Fleurs", cat_jewelry:"💎 Bijoux", cat_realestate:"🏠 Immobilier", cat_cars:"🚗 Voitures", cat_tech:"📱 Tech", cat_shoes:"👠 Chaussures", cat_lingerie:"🩷 Lingerie", cat_travel:"✈️ Voyage", cat_bags:"👜 Sacs", cat_money:"💰 Argent",
     sort_lbl:"Trier par prix :", sort_asc:"↑ Croissant", sort_desc:"↓ Décroissant",
     drawer_title:"Mes désirs", total_lbl:"Total", co_btn:"✦ Offrir ✦",
-    modal_ttl:"Envoyer un cadeau", modal_sub:"choisissez le paiement et laissez un message",
-    crypto_lbl:"Paiement en crypto (USDT)",
-    addr_hint:"Envoyez exactement ce montant en USDT à l'adresse ci-dessous",
-    copy_hint:"👆 cliquer pour copier l'adresse", copied_hint:"✓ Copié !",
-    usdt_lbl:"Montant :", usdt_note:"(1 USD = 1 USDT)",
+    modal_ttl:"Envoyer un cadeau", modal_sub:"laissez un message",
+    volet_title:"Paiement sécurisé via Volet",
+    volet_desc:"Vous serez redirigé vers la page de paiement sécurisée Volet. Toutes les principales cartes et méthodes sont acceptées.",
     msg_lbl:"Votre message (optionnel)", msg_ph:"Écrivez quelque chose de chaleureux…",
-    btn_back:"Retour", btn_send:"J'ai envoyé le paiement ✦", btn_close:"Fermer",
+    btn_back:"Retour", btn_send:"Procéder au paiement ✦", btn_close:"Fermer",
     success_ttl:"Cadeau envoyé !", success_txt:"Merci pour cette générosité.",
     empty_p:"Votre liste est vide.<br>Ajoutez quelque chose de magique.",
     order_sel:"Vous avez choisi :", order_total:"Total :",
@@ -606,13 +571,11 @@ const T = {
     cat_all:"✦ Todo", cat_flowers:"🌸 Flores", cat_jewelry:"💎 Joyería", cat_realestate:"🏠 Inmuebles", cat_cars:"🚗 Coches", cat_tech:"📱 Tech", cat_shoes:"👠 Zapatos", cat_lingerie:"🩷 Lencería", cat_travel:"✈️ Viajes", cat_bags:"👜 Bolsos", cat_money:"💰 Dinero",
     sort_lbl:"Ordenar por precio:", sort_asc:"↑ Menor a mayor", sort_desc:"↓ Mayor a menor",
     drawer_title:"Mis deseos", total_lbl:"Total", co_btn:"✦ Regalar ✦",
-    modal_ttl:"Enviar un regalo", modal_sub:"elige el pago y deja un mensaje",
-    crypto_lbl:"Pago en cripto (USDT)",
-    addr_hint:"Envía exactamente este monto en USDT a la dirección de abajo",
-    copy_hint:"👆 toca para copiar la dirección", copied_hint:"✓ ¡Copiado!",
-    usdt_lbl:"Monto:", usdt_note:"(1 USD = 1 USDT)",
+    modal_ttl:"Enviar un regalo", modal_sub:"deja un mensaje",
+    volet_title:"Pago seguro mediante Volet",
+    volet_desc:"Serás redirigido a la página de pago segura de Volet. Se aceptan todas las tarjetas y métodos principales.",
     msg_lbl:"Tu mensaje (opcional)", msg_ph:"Escribe algo cálido…",
-    btn_back:"Volver", btn_send:"He enviado el pago ✦", btn_close:"Cerrar",
+    btn_back:"Volver", btn_send:"Proceder al pago ✦", btn_close:"Cerrar",
     success_ttl:"¡Regalo enviado!", success_txt:"Gracias por tu generosidad.",
     empty_p:"Tu lista está vacía.<br>Agrega algo mágico.",
     order_sel:"Elegiste:", order_total:"Total:",
@@ -622,13 +585,11 @@ const T = {
     cat_all:"✦ Все", cat_flowers:"🌸 Цветы", cat_jewelry:"💎 Украшения", cat_realestate:"🏠 Недвижимость", cat_cars:"🚗 Авто", cat_tech:"📱 Техника", cat_shoes:"👠 Обувь", cat_lingerie:"🩷 Бельё", cat_travel:"✈️ Путешествия", cat_bags:"👜 Сумки", cat_money:"💰 Деньги",
     sort_lbl:"Сортировка:", sort_asc:"↑ По возрастанию", sort_desc:"↓ По убыванию",
     drawer_title:"Мои желания", total_lbl:"Итого", co_btn:"✦ Оформить подарок ✦",
-    modal_ttl:"Отправить подарок", modal_sub:"выберите оплату и напишите пожелание",
-    crypto_lbl:"Оплата криптовалютой (USDT)",
-    addr_hint:"Отправьте точную сумму в USDT на адрес ниже",
-    copy_hint:"👆 нажмите чтобы скопировать адрес", copied_hint:"✓ Скопировано!",
-    usdt_lbl:"Сумма:", usdt_note:"(1 USD = 1 USDT)",
+    modal_ttl:"Отправить подарок", modal_sub:"напишите пожелание",
+    volet_title:"Безопасная оплата через Volet",
+    volet_desc:"Вы будете перенаправлены на защищённую страницу оплаты Volet. Принимаются все основные карты и методы.",
     msg_lbl:"Пожелание (необязательно)", msg_ph:"Напишите тёплые слова…",
-    btn_back:"Назад", btn_send:"Я отправил оплату ✦", btn_close:"Закрыть",
+    btn_back:"Назад", btn_send:"Перейти к оплате ✦", btn_close:"Закрыть",
     success_ttl:"Подарок отправлен!", success_txt:"Спасибо за этот чудесный жест.",
     empty_p:"Список желаний пуст.<br>Добавьте что-нибудь волшебное.",
     order_sel:"Вы выбрали:", order_total:"Сумма:",
@@ -638,13 +599,11 @@ const T = {
     cat_all:"✦ Alle", cat_flowers:"🌸 Blumen", cat_jewelry:"💎 Schmuck", cat_realestate:"🏠 Immobilien", cat_cars:"🚗 Autos", cat_tech:"📱 Tech", cat_shoes:"👠 Schuhe", cat_lingerie:"🩷 Dessous", cat_travel:"✈️ Reisen", cat_bags:"👜 Taschen", cat_money:"💰 Geld",
     sort_lbl:"Sortieren:", sort_asc:"↑ Aufsteigend", sort_desc:"↓ Absteigend",
     drawer_title:"Meine Wünsche", total_lbl:"Gesamt", co_btn:"✦ Schenken ✦",
-    modal_ttl:"Geschenk senden", modal_sub:"Zahlung wählen und Nachricht hinterlassen",
-    crypto_lbl:"Zahlung in Krypto (USDT)",
-    addr_hint:"Sende genau diesen Betrag in USDT an die Adresse unten",
-    copy_hint:"👆 tippen um Adresse zu kopieren", copied_hint:"✓ Kopiert!",
-    usdt_lbl:"Betrag:", usdt_note:"(1 USD = 1 USDT)",
+    modal_ttl:"Geschenk senden", modal_sub:"Nachricht hinterlassen",
+    volet_title:"Sichere Zahlung über Volet",
+    volet_desc:"Sie werden zur sicheren Volet-Zahlungsseite weitergeleitet. Alle gängigen Karten und Methoden werden akzeptiert.",
     msg_lbl:"Deine Nachricht (optional)", msg_ph:"Schreib etwas Herzliches…",
-    btn_back:"Zurück", btn_send:"Ich habe bezahlt ✦", btn_close:"Schließen",
+    btn_back:"Zurück", btn_send:"Zur Zahlung ✦", btn_close:"Schließen",
     success_ttl:"Geschenk gesendet!", success_txt:"Danke für deine Großzügigkeit.",
     empty_p:"Deine Wunschliste ist leer.<br>Füge etwas Magisches hinzu.",
     order_sel:"Du hast gewählt:", order_total:"Gesamt:",
@@ -654,13 +613,11 @@ const T = {
     cat_all:"✦ すべて", cat_flowers:"🌸 花", cat_jewelry:"💎 ジュエリー", cat_realestate:"🏠 不動産", cat_cars:"🚗 車", cat_tech:"📱 テック", cat_shoes:"👠 靴", cat_lingerie:"🩷 ランジェリー", cat_travel:"✈️ 旅行", cat_bags:"👜 バッグ", cat_money:"💰 お金",
     sort_lbl:"価格で並び替え：", sort_asc:"↑ 安い順", sort_desc:"↓ 高い順",
     drawer_title:"私のウィッシュ", total_lbl:"合計", co_btn:"✦ プレゼントする ✦",
-    modal_ttl:"ギフトを送る", modal_sub:"支払い方法を選んでメッセージを残す",
-    crypto_lbl:"暗号通貨で支払い (USDT)",
-    addr_hint:"以下のアドレスに正確な金額のUSDTを送ってください",
-    copy_hint:"👆 タップしてアドレスをコピー", copied_hint:"✓ コピーしました！",
-    usdt_lbl:"金額：", usdt_note:"（1 USD = 1 USDT）",
+    modal_ttl:"ギフトを送る", modal_sub:"メッセージを残してください",
+    volet_title:"Volet による安全な支払い",
+    volet_desc:"安全な Volet 支払いページにリダイレクトされます。主要なカードと支払い方法が使えます。",
     msg_lbl:"メッセージ（任意）", msg_ph:"温かいメッセージを書いてください…",
-    btn_back:"戻る", btn_send:"支払いを送りました ✦", btn_close:"閉じる",
+    btn_back:"戻る", btn_send:"支払いへ進む ✦", btn_close:"閉じる",
     success_ttl:"ギフトが送られました！", success_txt:"ありがとうございます。",
     empty_p:"ウィッシュリストが空です。<br>素敵なものを追加してください。",
     order_sel:"選択:", order_total:"合計:",
@@ -668,23 +625,6 @@ const T = {
   },
 };
 
-/* ── Crypto wallets ── */
-const WALLETS = {
-  bep20: {
-    address: '0x33Cbe4b4E23468dAbE51B17545620Bb2A63Af460',
-    label: 'BEP-20 (BNB Chain)',
-    hint_key: 'addr_hint'
-  },
-  trx: {
-    address: 'TMrQKZ34GsCytkmkjzUEoLX4fdkBn4NPZn',
-    label: 'TRC-20 (TRON)',
-    hint_key: 'addr_hint'
-  }
-};
-
-let currentNet = 'bep20';
-
-/* ── Lang — persisted ── */
 const LANG_KEY = 'wl_lang_v1';
 let lang = localStorage.getItem(LANG_KEY) || 'en';
 
@@ -701,11 +641,8 @@ function applyLang() {
   document.getElementById('langLabel').textContent = lang.toUpperCase();
   document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
   document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
-  // Update addr hint for current net
-  updateCryptoUI(false);
 }
 
-/* ── Lang dropdown ── */
 document.getElementById('langCurrent').addEventListener('click', e => {
   e.stopPropagation();
   document.getElementById('langWrap').classList.toggle('open');
@@ -714,25 +651,24 @@ document.getElementById('langDrop').addEventListener('click', e => {
   const opt = e.target.closest('.lang-opt'); if (!opt) return;
   lang = opt.dataset.lang;
   localStorage.setItem(LANG_KEY, lang);
-  applyLang();
-  renderGrid();
-  renderDrawer();
+  applyLang(); renderGrid(); renderDrawer();
   document.getElementById('langWrap').classList.remove('open');
 });
 document.addEventListener('click', () => document.getElementById('langWrap').classList.remove('open'));
 
-/* ── Data ── */
+/* ── Data
+     Card layout: brand (small caps) on top, name (big serif) below.
+     So to show e.g. "CARTIER" above and "Watch" as the title,
+     set brand:"Cartier" and name:"Watch".
+     To flip (show "WATCH" label above, brand as title): swap them.
+     Here we keep brand as the maker label and name as the product name. ── */
 const ITEMS = [
-  { id:1, cat:"flowers", img:"https://images.unsplash.com/photo-1487530811015-780a01e27b35?w=600&q=80", name:"Bouquet of Peonies", brand:"Flowers", price:150, priceText:"$150" },
-  { id:2, cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10625749120071999.jpg", name:"Cartier", brand:"Watch", price:17800, priceText:"$17,800" },
-  { id:3, cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10907224092417006.jpg", name:"Rolex", brand:"Watch", price:51900, priceText:"$51,900" },
-  { id:4, cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/15551561209295402.jpg", name:"Rolex", brand:"Watch", price:15400, priceText:"$15,400" },
-  { id:5, cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/2533343538101877.jpg", name:"Bvlgari", brand:"Watch", price:30000, priceText:"$30,000" },
-  { id:6, cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/Без%20названия%20(4).jpg", name:"Rolex", brand:"Watch", price:120000, priceText:"$120,000" },
-  { id:7, cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/Без%20названия%20(4).jpg", name:"Rolex", brand:"Watch", price:120000, priceText:"$120,000" },
-  { id:8, cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/Без%20названия%20(4).jpg", name:"Rolex", brand:"Watch", price:120000, priceText:"$120,000" },
-  { id:9, cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/Без%20названия%20(4).jpg", name:"Rolex", brand:"Watch", price:120000, priceText:"$120,000" },
-
+  { id:1,  cat:"flowers", img:"https://images.unsplash.com/photo-1487530811015-780a01e27b35?w=600&q=80",                                                                                              name:"Bouquet of Peonies", brand:"Flowers", price:150,    priceText:"$150"     },
+  { id:2,  cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10625749120071999.jpg",                                              name:"Watch",              brand:"Cartier",  price:17800,  priceText:"$17,800"  },
+  { id:3,  cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/10907224092417006.jpg",                                              name:"Watch",              brand:"Rolex",    price:51900,  priceText:"$51,900"  },
+  { id:4,  cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/15551561209295402.jpg",                                              name:"Watch",              brand:"Rolex",    price:15400,  priceText:"$15,400"  },
+  { id:5,  cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/2533343538101877.jpg",                                               name:"Watch",              brand:"Bvlgari",  price:30000,  priceText:"$30,000"  },
+  { id:6,  cat:"jewelry", img:"https://raw.githubusercontent.com/An1an1/wishlist/696c8c4e66ba14ca56c282ce46ac46e615a0fc54/images/Без%20названия%20(4).jpg",                                          name:"Watch",              brand:"Rolex",    price:120000, priceText:"$120,000" },
 ];
 
 const KEY = 'wl_cart_v3';
@@ -740,18 +676,17 @@ let cart = [];
 let currentCat = 'all';
 let sortDir = 'asc';
 
-function loadCart() { try { cart = JSON.parse(localStorage.getItem(KEY)) || []; } catch { cart = []; } }
-function saveCart() { try { localStorage.setItem(KEY, JSON.stringify(cart)); } catch {} }
+function loadCart()  { try { cart = JSON.parse(localStorage.getItem(KEY)) || []; } catch { cart = []; } }
+function saveCart()  { try { localStorage.setItem(KEY, JSON.stringify(cart)); }    catch {} }
 
 function getList() {
   let list = currentCat === 'all' ? [...ITEMS] : ITEMS.filter(i => i.cat === currentCat);
-  list.sort((a, b) => sortDir === 'asc' ? a.price - b.price : b.price - a.price);
+  list.sort((a,b) => sortDir === 'asc' ? a.price - b.price : b.price - a.price);
   return list;
 }
 
 function renderGrid() {
-  const t = T[lang];
-  const g = document.getElementById('grid');
+  const t = T[lang], g = document.getElementById('grid');
   g.innerHTML = '';
   getList().forEach((item, idx) => {
     const inCart = cart.some(c => c.id === item.id);
@@ -777,9 +712,8 @@ function renderGrid() {
   });
 }
 
-/* ── Sparkles ── */
 function sparkles(x, y) {
-  ['✨','⭐','💫','🌟','✦'].forEach((e, i) => {
+  ['✨','⭐','💫','🌟','✦'].forEach((e,i) => {
     setTimeout(() => {
       const el = document.createElement('div');
       el.className = 'sparkle'; el.textContent = e;
@@ -834,69 +768,13 @@ function renderDrawer() {
   document.getElementById('coBtn').textContent = t.co_btn;
 }
 
-function openDrawer() { renderDrawer(); document.getElementById('drawer').classList.add('open'); document.getElementById('ov').classList.add('open'); }
+function openDrawer()  { renderDrawer(); document.getElementById('drawer').classList.add('open'); document.getElementById('ov').classList.add('open'); }
 function closeDrawer() { document.getElementById('drawer').classList.remove('open'); document.getElementById('ov').classList.remove('open'); }
 
-/* ── Crypto UI ── */
-function updateCryptoUI(regenerateQR = true) {
-  const wallet = WALLETS[currentNet];
-  const t = T[lang];
-  document.getElementById('addrNetwork').textContent = wallet.label;
-  document.getElementById('addrString').textContent = wallet.address;
-  document.getElementById('addrHint').textContent = t.addr_hint;
-  document.getElementById('copy_hint') && (document.getElementById('copyHint').textContent = t.copy_hint);
-
-  const total = cart.reduce((s,i) => s + i.price*(i.qty||1), 0);
-  document.getElementById('usdtAmt').textContent = total.toLocaleString('en-US') + ' USDT';
-
-  if (regenerateQR) {
-    // Build payment URI
-    let qrData = wallet.address;
-    if (currentNet === 'trx') {
-      qrData = 'tron:' + wallet.address + '?amount=' + total;
-    } else {
-      qrData = 'ethereum:' + wallet.address + '?value=' + total;
-    }
-    if (window.drawQR) window.drawQR('qrCanvas', qrData);
-  }
-}
-
-/* ── Copy address ── */
-document.getElementById('addrString').addEventListener('click', function() {
-  const addr = WALLETS[currentNet].address;
-  navigator.clipboard.writeText(addr).then(() => {
-    const hint = document.getElementById('copyHint');
-    const t = T[lang];
-    hint.textContent = t.copied_hint;
-    hint.classList.add('copied');
-    setTimeout(() => { hint.textContent = t.copy_hint; hint.classList.remove('copied'); }, 2000);
-  }).catch(() => {
-    // fallback
-    const ta = document.createElement('textarea');
-    ta.value = addr; document.body.appendChild(ta); ta.select();
-    document.execCommand('copy'); document.body.removeChild(ta);
-    const hint = document.getElementById('copyHint');
-    hint.textContent = T[lang].copied_hint;
-    hint.classList.add('copied');
-    setTimeout(() => { hint.textContent = T[lang].copy_hint; hint.classList.remove('copied'); }, 2000);
-  });
-});
-
-/* ── Network tabs ── */
-document.querySelectorAll('.net-tab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.net-tab').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentNet = btn.dataset.net;
-    updateCryptoUI(true);
-  });
-});
-
-/* ── Events ── */
+/* ── Grid interactions ── */
 document.getElementById('grid').addEventListener('click', e => {
   const btn = e.target.closest('.gift-btn'); if (!btn) return;
-  const t = T[lang];
-  const id = +btn.dataset.id;
+  const t = T[lang], id = +btn.dataset.id;
   const item = ITEMS.find(i => i.id === id); if (!item) return;
   const idx = cart.findIndex(c => c.id === id);
   if (idx >= 0) {
@@ -913,11 +791,11 @@ document.getElementById('grid').addEventListener('click', e => {
   saveCart(); updateBadge();
 });
 
+/* ── Drawer interactions ── */
 document.getElementById('drawerItems').addEventListener('click', e => {
   const btn = e.target.closest('[data-action]'); if (!btn) return;
-  const id = +btn.dataset.id;
-  const idx = cart.findIndex(c => c.id === id); if (idx < 0) return;
-  if (btn.dataset.action === 'rm') cart.splice(idx,1);
+  const id = +btn.dataset.id, idx = cart.findIndex(c => c.id === id); if (idx < 0) return;
+  if      (btn.dataset.action === 'rm')  cart.splice(idx,1);
   else if (btn.dataset.action === 'inc') cart[idx].qty = (cart[idx].qty||1) + 1;
   else if (btn.dataset.action === 'dec') cart[idx].qty = Math.max(1,(cart[idx].qty||1)-1);
   saveCart(); updateBadge(); renderDrawer(); renderGrid();
@@ -927,6 +805,7 @@ document.getElementById('cartBtn').addEventListener('click', openDrawer);
 document.getElementById('closeDrawer').addEventListener('click', closeDrawer);
 document.getElementById('ov').addEventListener('click', closeDrawer);
 
+/* ── Checkout ── */
 document.getElementById('coBtn').addEventListener('click', () => {
   const t = T[lang];
   closeDrawer();
@@ -934,7 +813,6 @@ document.getElementById('coBtn').addEventListener('click', () => {
   const names = cart.map(i => `${i.brand} ${i.name}${(i.qty||1)>1?' ×'+i.qty:''}`).join(', ');
   document.getElementById('orderSummary').innerHTML =
     `${t.order_sel} <strong>${names}</strong><br>${t.order_total} <strong>$${total.toLocaleString('en-US')}</strong>`;
-  updateCryptoUI(true);
   document.getElementById('modalOv').classList.add('open');
 });
 
@@ -954,6 +832,7 @@ document.getElementById('closeSuccess').addEventListener('click', () => {
   document.getElementById('f_msg').value = '';
 });
 
+/* ── Category filter ── */
 document.getElementById('cats').addEventListener('click', e => {
   const btn = e.target.closest('.cat-btn'); if (!btn) return;
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
@@ -962,6 +841,7 @@ document.getElementById('cats').addEventListener('click', e => {
   renderGrid();
 });
 
+/* ── Sort ── */
 document.getElementById('sortAsc').addEventListener('click', () => {
   sortDir = 'asc';
   document.getElementById('sortAsc').classList.add('active');
@@ -977,105 +857,9 @@ document.getElementById('sortDesc').addEventListener('click', () => {
 
 /* ── Policy texts ── */
 const POLICIES = {
-  privacy: {
-    title: 'Privacy Policy',
-    body: `
-      <p style="font-size:.68rem;color:var(--text-muted);margin-bottom:1.2rem">Last updated: 18 February 2026</p>
-      <p>This Privacy Policy explains how we collect, use, and protect your personal information when you use this website.</p>
-      <p>By using this website, you agree to the practices described in this Policy.</p>
-      <h3>1. Information We Collect</h3>
-      <p>We may collect the following information:</p>
-      <ul>
-        <li>Name and email address (if voluntarily provided via the contact form)</li>
-        <li>Optional message content submitted alongside a support request</li>
-        <li>Basic payment confirmation details</li>
-        <li>Technical data such as IP address, browser type, and device information</li>
-        <li>Cookies and usage data</li>
-      </ul>
-      <p>We do not collect or store full payment card details.</p>
-      <h3>2. How We Use Your Information</h3>
-      <p>We use collected data to:</p>
-      <ul>
-        <li>Process payments and confirm transactions</li>
-        <li>Communicate with you regarding your support</li>
-        <li>Provide customer support</li>
-        <li>Prevent fraud and unauthorized transactions</li>
-      </ul>
-      <h3>3. Payment Processing</h3>
-      <p>Payments are processed securely by Volet and other authorised payment providers. We do not have access to or store your payment card details. Payment providers process your data according to their own privacy policies.</p>
-      <h3>4. Data Retention</h3>
-      <p>We retain personal information only for as long as necessary to process your request and comply with legal obligations. You may request deletion of your data by contacting us.</p>
-      <h3>5. Data Security</h3>
-      <p>We implement reasonable technical measures to protect personal information from unauthorized access or disclosure. However, no internet transmission is completely secure.</p>
-      <h3>6. Cookies</h3>
-      <p>This website uses browser localStorage to remember your language preference and session data. No third-party tracking cookies are used.</p>
-      <h3>7. Age Restriction</h3>
-      <p>This website is intended only for individuals aged 18 or older. We do not knowingly collect personal information from individuals under 18.</p>
-      <h3>8. Third-Party Services</h3>
-      <p>We may use third-party services including payment processors to operate this website. These services process personal data in accordance with their own privacy policies.</p>
-      <h3>9. Contact</h3>
-      <p>If you have any questions regarding this Privacy Policy, please contact:<br><br>
-      <strong>supp.wishme@gmail.com</strong><br>
-      Telegram: <strong>@suppwishme</strong></p>
-    `
-  },
-  terms: {
-    title: 'Terms of Service',
-    body: `
-      <p style="font-size:.68rem;color:var(--text-muted);margin-bottom:1.2rem">Last updated: 18 February 2026</p>
-      <p>These Terms of Service govern the use of this website.</p>
-      <p>By accessing this website or completing a payment, you agree to these Terms.</p>
-      <h3>1. Nature of Service</h3>
-      <p>This website is a personal wishlist platform. Visitors may browse items and choose to send financial support toward a selected wish. All contributions are voluntary and made as a personal gesture of support.</p>
-      <p>This platform does not sell or ship physical goods. The wishlist owner independently decides how received funds are used.</p>
-      <h3>2. Payments</h3>
-      <p>Payments are processed securely through Volet and accepted cryptocurrency networks.</p>
-      <p>We do not store card details.</p>
-      <p>By completing a payment, you confirm that you are authorised to use the selected payment method and that the contribution is made voluntarily.</p>
-      <h3>3. Refund Policy</h3>
-      <p>Please refer to our Refund Policy for full details on eligibility and the refund process.</p>
-      <h3>4. Age Restriction</h3>
-      <p>By using this website, you confirm that you are at least 18 years old.</p>
-      <h3>5. Limitation of Liability</h3>
-      <p>This website is provided "as is" without warranties of any kind. We are not responsible for temporary service interruptions caused by technical issues beyond our control.</p>
-      <h3>6. Changes to Terms</h3>
-      <p>We reserve the right to update these Terms at any time. Continued use of the website constitutes acceptance of the updated Terms.</p>
-      <h3>7. Contact</h3>
-      <p>For any questions or support requests, please contact:<br><br>
-      <strong>supp.wishme@gmail.com</strong><br>
-      Telegram: <strong>@suppwishme</strong></p>
-    `
-  },
-  refund: {
-    title: 'Refund Policy',
-    body: `
-      <p style="font-size:.68rem;color:var(--text-muted);margin-bottom:1.2rem">Last updated: 18 February 2026</p>
-      <p>This Refund Policy outlines the conditions under which refunds may be issued for payments made through the Wish Me platform.</p>
-      <h3>1. General</h3>
-      <p>All payments on this platform are voluntary contributions. Once a payment is successfully processed, it is considered final.</p>
-      <h3>2. Eligibility for Refunds</h3>
-      <p>A refund may be considered in the following situations:</p>
-      <ul>
-        <li>A technical error resulted in a duplicate or erroneous charge</li>
-        <li>Payment was processed but could not be confirmed due to a technical failure on our side</li>
-      </ul>
-      <h3>3. Non-Refundable Situations</h3>
-      <p>Refunds will not be provided in the following cases:</p>
-      <ul>
-        <li>A change of mind after a successfully processed voluntary contribution</li>
-        <li>Cryptocurrency payments sent to an incorrect address due to sender error</li>
-      </ul>
-      <h3>4. How to Request a Refund</h3>
-      <p>To request a refund, please contact us within 14 days of your payment date and provide your payment confirmation or transaction ID along with a brief description of the issue.</p>
-      <p>Contact:<br><br>
-      <strong>supp.wishme@gmail.com</strong><br>
-      Telegram: <strong>@suppwishme</strong></p>
-      <h3>5. Refund Processing</h3>
-      <p>Approved refunds will be processed within 7–14 business days via the original payment method. Cryptocurrency refunds will be returned to the sending wallet address.</p>
-      <h3>6. Disputes</h3>
-      <p>If you are unsatisfied with our response, you may raise a dispute through your payment provider's resolution process.</p>
-    `
-  }
+  privacy: { title:'Privacy Policy', body:`<p style="font-size:.68rem;color:var(--text-muted);margin-bottom:1.2rem">Last updated: 18 February 2026</p><p>This Privacy Policy explains how we collect, use, and protect your personal information when you use this website.</p><h3>1. Information We Collect</h3><p>We may collect: name and email (if provided), optional message content, payment confirmation details, IP address, browser/device info, and cookies.</p><h3>2. How We Use Your Information</h3><p>To process payments, communicate with you, provide support, and prevent fraud.</p><h3>3. Payment Processing</h3><p>Payments are processed securely by Volet. We do not store card details.</p><h3>4. Data Retention</h3><p>Retained only as long as necessary. You may request deletion by contacting us.</p><h3>5. Cookies</h3><p>We use browser localStorage for language preferences and session data only. No third-party tracking.</p><h3>6. Age Restriction</h3><p>This site is for individuals aged 18+.</p><h3>7. Contact</h3><p><strong>supp.wishme@gmail.com</strong><br>Telegram: <strong>@suppwishme</strong></p>` },
+  terms:   { title:'Terms of Service', body:`<p style="font-size:.68rem;color:var(--text-muted);margin-bottom:1.2rem">Last updated: 18 February 2026</p><p>By accessing this website or completing a payment, you agree to these Terms.</p><h3>1. Nature of Service</h3><p>This is a personal wishlist platform. Contributions are voluntary. We do not sell or ship physical goods.</p><h3>2. Payments</h3><p>Processed securely via Volet. By completing a payment you confirm you are authorised to use the selected method and that the contribution is voluntary.</p><h3>3. Age Restriction</h3><p>You confirm you are at least 18 years old.</p><h3>4. Limitation of Liability</h3><p>This site is provided "as is". We are not responsible for temporary service interruptions.</p><h3>5. Contact</h3><p><strong>supp.wishme@gmail.com</strong><br>Telegram: <strong>@suppwishme</strong></p>` },
+  refund:  { title:'Refund Policy', body:`<p style="font-size:.68rem;color:var(--text-muted);margin-bottom:1.2rem">Last updated: 18 February 2026</p><p>All payments are voluntary contributions. Once processed, they are considered final.</p><h3>Eligible for Refund</h3><ul><li>Technical error resulting in a duplicate or erroneous charge</li><li>Payment processed but not confirmed due to a technical failure on our side</li></ul><h3>Not Eligible</h3><ul><li>Change of mind after a successful voluntary contribution</li><li>Crypto sent to an incorrect address due to sender error</li></ul><h3>How to Request</h3><p>Contact us within 14 days with your payment confirmation or transaction ID.<br><strong>supp.wishme@gmail.com</strong><br>Telegram: <strong>@suppwishme</strong></p><h3>Processing</h3><p>Approved refunds processed within 7–14 business days via original payment method.</p>` }
 };
 
 function openPolicy(type) {
@@ -1084,22 +868,18 @@ function openPolicy(type) {
   document.getElementById('policyBody').innerHTML = p.body;
   document.getElementById('policyOv').classList.add('open');
 }
-function closePolicy() {
-  document.getElementById('policyOv').classList.remove('open');
-}
+function closePolicy() { document.getElementById('policyOv').classList.remove('open'); }
 document.getElementById('policyOv').addEventListener('click', e => {
   if (e.target === document.getElementById('policyOv')) closePolicy();
 });
 
-/* ── Contact form (mailto fallback) ── */
+/* ── Contact form ── */
 document.getElementById('cfSend').addEventListener('click', () => {
-  const name = document.getElementById('cfName').value.trim();
+  const name  = document.getElementById('cfName').value.trim();
   const email = document.getElementById('cfEmail').value.trim();
-  const msg = document.getElementById('cfMsg').value.trim();
+  const msg   = document.getElementById('cfMsg').value.trim();
   if (!msg) return;
-  const subject = encodeURIComponent('Message from MY Wishlist');
-  const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${msg}`);
-  window.open(`mailto:supp.wishme@gmail.com?subject=${subject}&body=${body}`);
+  window.open(`mailto:supp.wishme@gmail.com?subject=${encodeURIComponent('Message from Wish Me')}&body=${encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+msg)}`);
   document.getElementById('cfName').value = '';
   document.getElementById('cfEmail').value = '';
   document.getElementById('cfMsg').value = '';

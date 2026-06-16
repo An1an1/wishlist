@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wish Me ✨</title>
-<!-- Favicon: gold star emoji as SVG data URI -->
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -86,7 +85,6 @@ header {
 @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
 @keyframes fadeIn  { from{opacity:0} to{opacity:1} }
 
-/* ── Categories — mobile tap-flash fix ── */
 .cats {
   position: relative; z-index: 1;
   display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center;
@@ -100,13 +98,11 @@ header {
   transition: border-color .25s, color .25s, background .25s;
   -webkit-tap-highlight-color: transparent;
   outline: none;
-  /* prevent the blue flash on mobile */
   -webkit-touch-callout: none;
   user-select: none;
 }
 .cat-btn:hover { border-color: rgba(201,168,76,.5); color: var(--gold); }
 .cat-btn.active { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); color: #0a0a0f; border-color: var(--gold); font-weight: 500; }
-/* No blue :focus ring */
 .cat-btn:focus { outline: none; }
 .cat-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
@@ -138,7 +134,6 @@ header {
 .card:hover .card-img img { transform: scale(1.06); }
 .card-img::after { display: none; }
 .card-body { padding: 1.2rem 1.3rem 1.4rem; display: flex; flex-direction: column; gap: .4rem; flex: 1; }
-/* brand = small label above, name = big title below */
 .card-brand { font-size: .58rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
 .card-name  { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; }
 .card-footer { display: flex; align-items: center; justify-content: space-between; gap: .8rem; margin-top: .7rem; }
@@ -188,7 +183,6 @@ header {
 .co-btn { width: 100%; background: linear-gradient(135deg,var(--gold),var(--gold-dark)); border: none; color: #0a0a0f; font-family: 'Montserrat', sans-serif; font-size: .68rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; padding: 1rem; border-radius: 1px; cursor: pointer; transition: all .3s; -webkit-tap-highlight-color: transparent; outline: none; }
 .co-btn:hover { box-shadow: 0 6px 25px rgba(201,168,76,.4); transform: translateY(-1px); }
 
-/* Modal */
 .modal-ov { position: fixed; inset: 0; background: rgba(0,0,0,.87); z-index: 300; opacity: 0; pointer-events: none; transition: opacity .4s; backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
 .modal-ov.open { opacity: 1; pointer-events: all; }
 .modal { background: var(--bg2); border: 1px solid rgba(201,168,76,.2); border-radius: 2px; width: 100%; max-width: 480px; transform: translateY(20px) scale(.97); transition: transform .4s cubic-bezier(.25,.46,.45,.94); overflow: hidden; max-height: 90vh; overflow-y: auto; }
@@ -206,19 +200,6 @@ header {
 .order-summary { background: rgba(201,168,76,.04); border: 1px solid rgba(201,168,76,.1); border-radius: 1px; padding: .9rem; margin-bottom: 1.1rem; font-size: .72rem; color: var(--text-muted); line-height: 1.7; }
 .order-summary strong { color: var(--gold-light); font-weight: 400; }
 
-/* Volet payment notice */
-.volet-notice {
-  display: flex; align-items: flex-start; gap: .7rem;
-  background: rgba(201,168,76,.05); border: 1px solid rgba(201,168,76,.15);
-  border-radius: 2px; padding: .9rem 1rem; margin-bottom: 1.1rem;
-}
-.volet-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: .05rem; }
-.volet-text { flex: 1; }
-.volet-title { font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
-.volet-desc { font-size: .7rem; color: var(--text-muted); line-height: 1.6; }
-.volet-methods { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .55rem; }
-.volet-tag { font-size: .52rem; letter-spacing: .1em; text-transform: uppercase; color: var(--text-muted); background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.15); padding: .2rem .5rem; border-radius: 2px; }
-
 .modal-actions { display: flex; gap: .8rem; padding: 0 2rem 1.8rem; }
 .btn-sec { flex: 1; background: none; border: 1px solid rgba(201,168,76,.2); color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; padding: .85rem; border-radius: 1px; cursor: pointer; transition: all .2s; -webkit-tap-highlight-color: transparent; outline: none; }
 .btn-sec:hover { border-color: var(--gold); color: var(--text); }
@@ -232,7 +213,6 @@ header {
 .s-ttl { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-style: italic; color: var(--gold-light); margin-bottom: .5rem; }
 .s-txt { font-size: .73rem; color: var(--text-muted); line-height: 1.8; }
 
-/* ── Footer ── */
 .site-footer {
   position: relative; z-index: 1;
   background: linear-gradient(180deg, transparent 0%, rgba(201,168,76,.03) 100%);
@@ -249,7 +229,6 @@ header {
 .footer-about { font-size: .72rem; color: var(--text-muted); line-height: 1.8; }
 .footer-col-title { font-size: .58rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
 
-/* Contact items — stacked vertically */
 .contact-list { display: flex; flex-direction: column; gap: .8rem; }
 .contact-item { display: flex; align-items: center; gap: .6rem; }
 .contact-icon { font-size: 1rem; flex-shrink: 0; }
@@ -276,7 +255,6 @@ header {
 .footer-links button { background: none; border: none; color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-size: .58rem; letter-spacing: .1em; cursor: pointer; padding: 0; transition: color .2s; text-decoration: underline; text-decoration-color: rgba(201,168,76,.2); text-underline-offset: 3px; -webkit-tap-highlight-color: transparent; outline: none; }
 .footer-links button:hover { color: var(--gold); text-decoration-color: var(--gold); }
 
-/* Policy modal */
 .policy-ov { position: fixed; inset: 0; background: rgba(0,0,0,.9); z-index: 400; opacity: 0; pointer-events: none; transition: opacity .3s; backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; padding: 1.5rem; }
 .policy-ov.open { opacity: 1; pointer-events: all; }
 .policy-modal { background: var(--bg2); border: 1px solid rgba(201,168,76,.18); border-radius: 2px; width: 100%; max-width: 680px; max-height: 85vh; display: flex; flex-direction: column; transform: translateY(16px); transition: transform .35s; }
@@ -398,23 +376,6 @@ header {
       <div class="modal-body">
         <div class="order-summary" id="orderSummary"></div>
 
-        <!-- Volet payment notice (replaces crypto) -->
-        <div class="volet-notice">
-          <div class="volet-icon">💳</div>
-          <div class="volet-text">
-            <div class="volet-title" data-t="volet_title">Secure Payment</div>
-            <div class="volet-desc" data-t="volet_desc">You will be redirected to a secure payment page to complete your gift. All major cards and methods are accepted.</div>
-            <div class="volet-methods">
-              <span class="volet-tag">Visa</span>
-              <span class="volet-tag">Mastercard</span>
-              <span class="volet-tag">USDT</span>
-              <span class="volet-tag">Bitcoin</span>
-              <span class="volet-tag">Apple Pay</span>
-              <span class="volet-tag">Google Pay</span>
-            </div>
-          </div>
-        </div>
-
         <div class="field">
           <label data-t="msg_lbl">Your message (optional)</label>
           <textarea id="f_msg" data-t-ph="msg_ph" placeholder="Write something warm..."></textarea>
@@ -446,7 +407,7 @@ header {
         <p class="footer-about">A personal gift wishlist platform where your loved ones can discover and gift the things you truly desire. Every item curated with love.</p>
         <p class="footer-about" style="margin-top:.7rem;font-size:.62rem;color:var(--text-muted);opacity:.7">Operated by: Anastasiia Ivanova<br>Moscow, Russia</p>
       </div>
-      <!-- Contact — stacked: email first, telegram below -->
+      <!-- Contact -->
       <div class="footer-col">
         <div class="footer-col-title">Contact Us</div>
         <div class="contact-list">
@@ -509,15 +470,12 @@ header {
 </div>
 
 <script>
-/* ── Translations ── */
 const T = {
   en: { sub:"what I dream of ✦", eyebrow:"✦ Curated with love ✦",
     cat_all:"✦ All", cat_flowers:"🌸 Flowers", cat_jewelry:"💎 Jewelry", cat_realestate:"🏠 Real Estate", cat_cars:"🚗 Cars", cat_tech:"📱 Tech", cat_shoes:"👠 Shoes", cat_lingerie:"🩷 Lingerie", cat_travel:"✈️ Travel", cat_bags:"👜 Bags", cat_money:"💰 Money",
     sort_lbl:"Sort by price:", sort_asc:"↑ Low to High", sort_desc:"↓ High to Low",
     drawer_title:"My Wishes", total_lbl:"Total", co_btn:"✦ Gift this ✦",
     modal_ttl:"Send a Gift", modal_sub:"leave a message below",
-    volet_title:"Secure Payment via Volet",
-    volet_desc:"You will be redirected to a secure Volet payment page to complete your gift. All major cards and methods are accepted.",
     msg_lbl:"Your message (optional)", msg_ph:"Write something warm...",
     btn_back:"Back", btn_send:"Proceed to Payment ✦", btn_close:"Close",
     success_ttl:"Gift sent!", success_txt:"Thank you for the magic.",
@@ -530,8 +488,6 @@ const T = {
     sort_lbl:"价格排序：", sort_asc:"↑ 从低到高", sort_desc:"↓ 从高到低",
     drawer_title:"我的心愿", total_lbl:"合计", co_btn:"✦ 赠送礼物 ✦",
     modal_ttl:"发送礼物", modal_sub:"请留言",
-    volet_title:"通过 Volet 安全支付",
-    volet_desc:"您将被重定向到安全的 Volet 支付页面完成礼物。支持所有主要卡和支付方式。",
     msg_lbl:"您的留言（可选）", msg_ph:"写一些温暖的话…",
     btn_back:"返回", btn_send:"前往支付 ✦", btn_close:"关闭",
     success_ttl:"礼物已发送！", success_txt:"感谢您的慷慨。",
@@ -544,8 +500,6 @@ const T = {
     sort_lbl:"ترتيب حسب السعر:", sort_asc:"↑ من الأقل", sort_desc:"↓ من الأعلى",
     drawer_title:"أمنياتي", total_lbl:"المجموع", co_btn:"✦ أرسل هدية ✦",
     modal_ttl:"إرسال هدية", modal_sub:"اترك رسالة",
-    volet_title:"الدفع الآمن عبر Volet",
-    volet_desc:"ستتم إعادة توجيهك إلى صفحة دفع Volet الآمنة. تقبل جميع البطاقات الرئيسية.",
     msg_lbl:"رسالتك (اختياري)", msg_ph:"اكتب شيئاً دافئاً…",
     btn_back:"رجوع", btn_send:"المتابعة للدفع ✦", btn_close:"إغلاق",
     success_ttl:"تم إرسال الهدية!", success_txt:"شكراً لك على هذا الجمال.",
@@ -558,8 +512,6 @@ const T = {
     sort_lbl:"Trier par prix :", sort_asc:"↑ Croissant", sort_desc:"↓ Décroissant",
     drawer_title:"Mes désirs", total_lbl:"Total", co_btn:"✦ Offrir ✦",
     modal_ttl:"Envoyer un cadeau", modal_sub:"laissez un message",
-    volet_title:"Paiement sécurisé via Volet",
-    volet_desc:"Vous serez redirigé vers la page de paiement sécurisée Volet. Toutes les principales cartes et méthodes sont acceptées.",
     msg_lbl:"Votre message (optionnel)", msg_ph:"Écrivez quelque chose de chaleureux…",
     btn_back:"Retour", btn_send:"Procéder au paiement ✦", btn_close:"Fermer",
     success_ttl:"Cadeau envoyé !", success_txt:"Merci pour cette générosité.",
@@ -572,8 +524,6 @@ const T = {
     sort_lbl:"Ordenar por precio:", sort_asc:"↑ Menor a mayor", sort_desc:"↓ Mayor a menor",
     drawer_title:"Mis deseos", total_lbl:"Total", co_btn:"✦ Regalar ✦",
     modal_ttl:"Enviar un regalo", modal_sub:"deja un mensaje",
-    volet_title:"Pago seguro mediante Volet",
-    volet_desc:"Serás redirigido a la página de pago segura de Volet. Se aceptan todas las tarjetas y métodos principales.",
     msg_lbl:"Tu mensaje (opcional)", msg_ph:"Escribe algo cálido…",
     btn_back:"Volver", btn_send:"Proceder al pago ✦", btn_close:"Cerrar",
     success_ttl:"¡Regalo enviado!", success_txt:"Gracias por tu generosidad.",
@@ -586,8 +536,6 @@ const T = {
     sort_lbl:"Сортировка:", sort_asc:"↑ По возрастанию", sort_desc:"↓ По убыванию",
     drawer_title:"Мои желания", total_lbl:"Итого", co_btn:"✦ Оформить подарок ✦",
     modal_ttl:"Отправить подарок", modal_sub:"напишите пожелание",
-    volet_title:"Безопасная оплата через Volet",
-    volet_desc:"Вы будете перенаправлены на защищённую страницу оплаты Volet. Принимаются все основные карты и методы.",
     msg_lbl:"Пожелание (необязательно)", msg_ph:"Напишите тёплые слова…",
     btn_back:"Назад", btn_send:"Перейти к оплате ✦", btn_close:"Закрыть",
     success_ttl:"Подарок отправлен!", success_txt:"Спасибо за этот чудесный жест.",
@@ -600,8 +548,6 @@ const T = {
     sort_lbl:"Sortieren:", sort_asc:"↑ Aufsteigend", sort_desc:"↓ Absteigend",
     drawer_title:"Meine Wünsche", total_lbl:"Gesamt", co_btn:"✦ Schenken ✦",
     modal_ttl:"Geschenk senden", modal_sub:"Nachricht hinterlassen",
-    volet_title:"Sichere Zahlung über Volet",
-    volet_desc:"Sie werden zur sicheren Volet-Zahlungsseite weitergeleitet. Alle gängigen Karten und Methoden werden akzeptiert.",
     msg_lbl:"Deine Nachricht (optional)", msg_ph:"Schreib etwas Herzliches…",
     btn_back:"Zurück", btn_send:"Zur Zahlung ✦", btn_close:"Schließen",
     success_ttl:"Geschenk gesendet!", success_txt:"Danke für deine Großzügigkeit.",
@@ -614,8 +560,6 @@ const T = {
     sort_lbl:"価格で並び替え：", sort_asc:"↑ 安い順", sort_desc:"↓ 高い順",
     drawer_title:"私のウィッシュ", total_lbl:"合計", co_btn:"✦ プレゼントする ✦",
     modal_ttl:"ギフトを送る", modal_sub:"メッセージを残してください",
-    volet_title:"Volet による安全な支払い",
-    volet_desc:"安全な Volet 支払いページにリダイレクトされます。主要なカードと支払い方法が使えます。",
     msg_lbl:"メッセージ（任意）", msg_ph:"温かいメッセージを書いてください…",
     btn_back:"戻る", btn_send:"支払いへ進む ✦", btn_close:"閉じる",
     success_ttl:"ギフトが送られました！", success_txt:"ありがとうございます。",
@@ -656,12 +600,6 @@ document.getElementById('langDrop').addEventListener('click', e => {
 });
 document.addEventListener('click', () => document.getElementById('langWrap').classList.remove('open'));
 
-/* ── Data
-     Card layout: brand (small caps) on top, name (big serif) below.
-     So to show e.g. "CARTIER" above and "Watch" as the title,
-     set brand:"Cartier" and name:"Watch".
-     To flip (show "WATCH" label above, brand as title): swap them.
-     Here we keep brand as the maker label and name as the product name. ── */
 const ITEMS = [
   { id:1, cat:"jewelry", img:"images/709317010137753587.jpg", name:"Harry Winston", brand:"Ring", price:220000, priceText:"220,000" },
   { id:2, cat:"jewelry", img:"images/Cord.jpg", name:"Bvlgari", brand:"Necklace", price:11000, priceText:"$11,000" },
@@ -681,325 +619,326 @@ const ITEMS = [
   { id:16, cat:"jewelry", img:"images/photo_2026-05-28_13-36-42.jpg", name:"Van Cleef", brand:"Purure", price:35000, priceText:"$35,000" },
   { id:17, cat:"jewelry", img:"images/918664024019868370.jpg", name:"Bvlgari", brand:"Necklace", price:7250, priceText:"$7,250" },
   { id:18, cat:"jewelry", img:"images/photo_2026-05-28_13-36-47.jpg", name:"Bvlgari", brand:"Purure", price:240000, priceText:"$240,000" },
-  { id:19, cat:"jewelry", img:"images/1057642293743719414.jpg", name:"Bvlgari", brand:"Purure", price:9500, priceText:"$9,500" }, 
+  { id:19, cat:"jewelry", img:"images/1057642293743719414.jpg", name:"Bvlgari", brand:"Purure", price:9500, priceText:"$9,500" },
   { id:20, cat:"jewelry", img:"images/photo_2026-05-28_13-36-50.jpg", name:"Bvlgari", brand:"Purure", price:215000, priceText:"$215,000" },
   { id:21, cat:"jewelry", img:"images/photo_2026-05-28_13-36-51.jpg", name:"Van Cleef", brand:"Purure", price:14200, priceText:"$14,200" },
   { id:22, cat:"jewelry", img:"images/621637554807765779.jpg", name:"Bvlgari", brand:"Purure", price:50000, priceText:"$50,000" },
-  { id:23, cat:"jewelry", img:"images/228557749838397273.jpg", name:"Bvlgari", brand:"Ring", price:4800, priceText:"$4,800" }, 
+  { id:23, cat:"jewelry", img:"images/228557749838397273.jpg", name:"Bvlgari", brand:"Ring", price:4800, priceText:"$4,800" },
   { id:24, cat:"jewelry", img:"images/Bulgari.jpg", name:"Bvlgari", brand:"Bracelet", price:44500, priceText:"$44,500" },
-  { id:25, cat:"jewelry", img:"images/894668282239643485.jpg", name:"Bvlgari", brand:"Bracelet", price:44500, priceText:"$44,500" }, 
-  { id:26, cat:"jewelry", img:"images/photo_2026-05-28_13-36-42(2).jpg", name:"Bvlgari", brand:"Necklace", price:100000, priceText:"$100,000" }, 
-  { id:27, cat:"jewelry", img:"images/photo_2026-05-28_13-36-46.jpg", name:"Tiffany", brand:"Ring", price:14900, priceText:"$14,900" },  
-  { id:28, cat:"jewelry", img:"images/Classic.jpg", name:"Cartier", brand:"Ring", price:80000, priceText:"$80,000" }, 
+  { id:25, cat:"jewelry", img:"images/894668282239643485.jpg", name:"Bvlgari", brand:"Bracelet", price:44500, priceText:"$44,500" },
+  { id:26, cat:"jewelry", img:"images/photo_2026-05-28_13-36-42(2).jpg", name:"Bvlgari", brand:"Necklace", price:100000, priceText:"$100,000" },
+  { id:27, cat:"jewelry", img:"images/photo_2026-05-28_13-36-46.jpg", name:"Tiffany", brand:"Ring", price:14900, priceText:"$14,900" },
+  { id:28, cat:"jewelry", img:"images/Classic.jpg", name:"Cartier", brand:"Ring", price:80000, priceText:"$80,000" },
   { id:29, cat:"flowers", img:"images/20195898326072671.jpg", name:"Bouquet of Tulips", brand:"flowers", price:250, priceText:"$250" },
-  { id:30, cat:"flowers", img:"images/6333255723622426.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:250, priceText:"$250" }, 
-  { id:31, cat:"flowers", img:"images/Luxury.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:250, priceText:"$250" }, 
-  { id:32, cat:"flowers", img:"images/image(2).png", name:"Bouquet of Mixed Flowers", brand:"flowers", price:135, priceText:"$135" },  
-  { id:33, cat:"flowers", img:"images/803540758557217863.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:150, priceText:"$150" }, 
-  { id:34, cat:"flowers", img:"images/photo_2026-05-26_19-10-09.jpg", name:"Rose Teddy Bear", brand:"flowers", price:150, priceText:"$150" }, 
-  { id:35, cat:"flowers", img:"images/photo_2026-05-26_19-10-12.jpg", name:"Rose Bouquet", brand:"flowers", price:375, priceText:"$375" }, 
-  { id:36, cat:"flowers", img:"images/photo_2026-05-26_19-16-48.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:135, priceText:"$135" },  
+  { id:30, cat:"flowers", img:"images/6333255723622426.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:250, priceText:"$250" },
+  { id:31, cat:"flowers", img:"images/Luxury.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:250, priceText:"$250" },
+  { id:32, cat:"flowers", img:"images/image(2).png", name:"Bouquet of Mixed Flowers", brand:"flowers", price:135, priceText:"$135" },
+  { id:33, cat:"flowers", img:"images/803540758557217863.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:150, priceText:"$150" },
+  { id:34, cat:"flowers", img:"images/photo_2026-05-26_19-10-09.jpg", name:"Rose Teddy Bear", brand:"flowers", price:150, priceText:"$150" },
+  { id:35, cat:"flowers", img:"images/photo_2026-05-26_19-10-12.jpg", name:"Rose Bouquet", brand:"flowers", price:375, priceText:"$375" },
+  { id:36, cat:"flowers", img:"images/photo_2026-05-26_19-16-48.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:135, priceText:"$135" },
   { id:37, cat:"flowers", img:"images/662803270203526093.jpg", name:"Rose Bouquet", brand:"flowers", price:150, priceText:"$150" },
-  { id:38, cat:"flowers", img:"images/878624208572911256.jpg", name:"Rose Bouquet", brand:"flowers", price:150, priceText:"$150" }, 
-  { id:39, cat:"flowers", img:"images/photo_2026-05-26_19-05-04.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:375, priceText:"$375" },  
-  { id:40, cat:"flowers", img:"images/photo_2026-05-26_19-10-04.jpg", name:"Rose Bouquet", brand:"flowers", price:500, priceText:"$500" }, 
-  { id:41, cat:"flowers", img:"images/photo_2026-05-26_19-10-18.jpg", name:"Rose Bouquet", brand:"flowers", price:375, priceText:"$375" }, 
-  { id:42, cat:"flowers", img:"images/photo_2026-05-26_19-12-50.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:150, priceText:"$150" }, 
-  { id:43, cat:"flowers", img:"images/photo_2026-05-26_19-12-52.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:250, priceText:"$250" },  
+  { id:38, cat:"flowers", img:"images/878624208572911256.jpg", name:"Rose Bouquet", brand:"flowers", price:150, priceText:"$150" },
+  { id:39, cat:"flowers", img:"images/photo_2026-05-26_19-05-04.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:375, priceText:"$375" },
+  { id:40, cat:"flowers", img:"images/photo_2026-05-26_19-10-04.jpg", name:"Rose Bouquet", brand:"flowers", price:500, priceText:"$500" },
+  { id:41, cat:"flowers", img:"images/photo_2026-05-26_19-10-18.jpg", name:"Rose Bouquet", brand:"flowers", price:375, priceText:"$375" },
+  { id:42, cat:"flowers", img:"images/photo_2026-05-26_19-12-50.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:150, priceText:"$150" },
+  { id:43, cat:"flowers", img:"images/photo_2026-05-26_19-12-52.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:250, priceText:"$250" },
   { id:44, cat:"flowers", img:"images/photo_2026-05-26_19-13-30.jpg", name:"Rose Bouquet", brand:"flowers", price:375, priceText:"$375" },
-  { id:45, cat:"flowers", img:"images/photo_2026-05-26_19-16-39.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:500, priceText:"$500" }, 
-  { id:46, cat:"flowers", img:"images/808818414367182661.jpg", name:"Rose Bouquet", brand:"flowers", price:375, priceText:"$375" }, 
-  { id:47, cat:"flowers", img:"images/816277501241267083.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:375, priceText:"$375" },  
+  { id:45, cat:"flowers", img:"images/photo_2026-05-26_19-16-39.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:500, priceText:"$500" },
+  { id:46, cat:"flowers", img:"images/808818414367182661.jpg", name:"Rose Bouquet", brand:"flowers", price:375, priceText:"$375" },
+  { id:47, cat:"flowers", img:"images/816277501241267083.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:375, priceText:"$375" },
   { id:48, cat:"flowers", img:"images/672162313158193420.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:375, priceText:"$375" },
-  { id:49, cat:"flowers", img:"images/JJNJl.png", name:"Bouquet of Mixed Flowers", brand:"flowers", price:3000, priceText:"$3,000" },  
+  { id:49, cat:"flowers", img:"images/JJNJl.png", name:"Bouquet of Mixed Flowers", brand:"flowers", price:3000, priceText:"$3,000" },
   { id:50, cat:"flowers", img:"images/907193918702460918.jpg", name:"Cherry Bouquet", brand:"Sweets", price:100, priceText:"$100" },
-  { id:51, cat:"flowers", img:"images/859765385167840761.jpg", name:"Bouquet of Tulips", brand:"flowers", price:375, priceText:"$375" }, 
-  { id:52, cat:"flowers", img:"images/photo_2026-05-26_19-13-25.jpg", name:"Bouquet of Peonies", brand:"flowers", price:3200, priceText:"$3,200" }, 
-  { id:53, cat:"flowers", img:"images/photo_2026-05-26_19-12-37.jpg", name:"Bouquet of Peonies", brand:"flowers", price:2000, priceText:"$2,000" },  
-  { id:54, cat:"flowers", img:"images/Life.jpg", name:"Rose Bouquet", brand:"flowers", price:250, priceText:"$250" }, 
+  { id:51, cat:"flowers", img:"images/859765385167840761.jpg", name:"Bouquet of Tulips", brand:"flowers", price:375, priceText:"$375" },
+  { id:52, cat:"flowers", img:"images/photo_2026-05-26_19-13-25.jpg", name:"Bouquet of Peonies", brand:"flowers", price:3200, priceText:"$3,200" },
+  { id:53, cat:"flowers", img:"images/photo_2026-05-26_19-12-37.jpg", name:"Bouquet of Peonies", brand:"flowers", price:2000, priceText:"$2,000" },
+  { id:54, cat:"flowers", img:"images/Life.jpg", name:"Rose Bouquet", brand:"flowers", price:250, priceText:"$250" },
   { id:55, cat:"flowers", img:"images/1008454541577759039.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:380, priceText:"$380" },
-  { id:56, cat:"flowers", img:"images/775322892133259211.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },  
+  { id:56, cat:"flowers", img:"images/775322892133259211.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },
   { id:57, cat:"flowers", img:"images/Lalaalla.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:375, priceText:"$375" },
-  { id:58, cat:"flowers", img:"images/1148840186214399335.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:3000, priceText:"$3,000" }, 
-  { id:59, cat:"flowers", img:"images/941463497110824402.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:250, priceText:"$250" }, 
-  { id:60, cat:"flowers", img:"images/HHKK.jpg", name:"Rose Bouquet", brand:"flowers", price:4900, priceText:"$4,900" },  
-  { id:61, cat:"flowers", img:"images/photo_2026-05-26_19-10-01.jpg", name:"Rose Bouquet", brand:"flowers", price:1100, priceText:"$1,100" },  
-  { id:62, cat:"flowers", img:"images/gggh.png", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },  
+  { id:58, cat:"flowers", img:"images/1148840186214399335.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:3000, priceText:"$3,000" },
+  { id:59, cat:"flowers", img:"images/941463497110824402.jpg", name:"Bouquet of Mixed Flowers", brand:"flowers", price:250, priceText:"$250" },
+  { id:60, cat:"flowers", img:"images/HHKK.jpg", name:"Rose Bouquet", brand:"flowers", price:4900, priceText:"$4,900" },
+  { id:61, cat:"flowers", img:"images/photo_2026-05-26_19-10-01.jpg", name:"Rose Bouquet", brand:"flowers", price:1100, priceText:"$1,100" },
+  { id:62, cat:"flowers", img:"images/gggh.png", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },
   { id:63, cat:"flowers", img:"images/hjbjjk.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },
-  { id:64, cat:"flowers", img:"images/jjkk.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:80, priceText:"$80" }, 
-  { id:65, cat:"flowers", img:"images/70437488789594.jpg", name:"Fruits", brand:"Sweets", price:130, priceText:"$130" }, 
-  { id:66, cat:"flowers", img:"images/kjffkl.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:80, priceText:"$80" },  
-  { id:67, cat:"flowers", img:"images/998321442464013522.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:80, priceText:"$80" }, 
-  { id:68, cat:"flowers", img:"images/1109363320803575768.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },  
+  { id:64, cat:"flowers", img:"images/jjkk.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:80, priceText:"$80" },
+  { id:65, cat:"flowers", img:"images/70437488789594.jpg", name:"Fruits", brand:"Sweets", price:130, priceText:"$130" },
+  { id:66, cat:"flowers", img:"images/kjffkl.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:80, priceText:"$80" },
+  { id:67, cat:"flowers", img:"images/998321442464013522.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:80, priceText:"$80" },
+  { id:68, cat:"flowers", img:"images/1109363320803575768.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },
   { id:69, cat:"flowers", img:"images/814588651390529381.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:80, priceText:"$80" },
-  { id:70, cat:"flowers", img:"images/376754325089548286.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" }, 
-  { id:71, cat:"flowers", img:"images/638033472243490742.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" }, 
-  { id:72, cat:"flowers", img:"images/969048044833731811.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },  
-  { id:73, cat:"flowers", img:"images/315181673932462774.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },  
-  { id:74, cat:"flowers", img:"images/887701776570405986.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:80, priceText:"$80" }, 
-  { id:75, cat:"flowers", img:"images/photo_2026-05-26_19-12-54.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" }, 
-  { id:76, cat:"flowers", img:"images/605734218673832297.jpg", name:"Cake", brand:"Sweets", price:80, priceText:"$80" },  
-  { id:77, cat:"flowers", img:"images/1109433689582443981.jpg", name:"Cake", brand:"Sweets", price:80, priceText:"$80" },   
-  { id:78, cat:"cars", img:"images/JKJKJ.png", name:"Mercedes", brand:"Cars", price:210000, priceText:"$210,000" },  
-  { id:79, cat:"cars", img:"images/1001769510875333567.jpg", name:"BMW", brand:"Cars", price:122800, priceText:"$122,800" },  
-  { id:80, cat:"cars", img:"images/Lhkkk.jpg", name:"Porsche", brand:"Cars", price:285000, priceText:"$285,000" }, 
-  { id:81, cat:"cars", img:"images/859272803945581677.jpg", name:"BMW", brand:"Cars", price:122800, priceText:"$122,800" }, 
-  { id:82, cat:"cars", img:"images/1148840186211363210.jpg", name:"Porsche", brand:"Cars", price:200000, priceText:"$200,000" },  
+  { id:70, cat:"flowers", img:"images/376754325089548286.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },
+  { id:71, cat:"flowers", img:"images/638033472243490742.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },
+  { id:72, cat:"flowers", img:"images/969048044833731811.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },
+  { id:73, cat:"flowers", img:"images/315181673932462774.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },
+  { id:74, cat:"flowers", img:"images/887701776570405986.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:80, priceText:"$80" },
+  { id:75, cat:"flowers", img:"images/photo_2026-05-26_19-12-54.jpg", name:"Chocolate-Covered Strawberries", brand:"Sweets", price:50, priceText:"$50" },
+  { id:76, cat:"flowers", img:"images/605734218673832297.jpg", name:"Cake", brand:"Sweets", price:80, priceText:"$80" },
+  { id:77, cat:"flowers", img:"images/1109433689582443981.jpg", name:"Cake", brand:"Sweets", price:80, priceText:"$80" },
+  { id:78, cat:"cars", img:"images/JKJKJ.png", name:"Mercedes", brand:"Cars", price:210000, priceText:"$210,000" },
+  { id:79, cat:"cars", img:"images/1001769510875333567.jpg", name:"BMW", brand:"Cars", price:122800, priceText:"$122,800" },
+  { id:80, cat:"cars", img:"images/Lhkkk.jpg", name:"Porsche", brand:"Cars", price:285000, priceText:"$285,000" },
+  { id:81, cat:"cars", img:"images/859272803945581677.jpg", name:"BMW", brand:"Cars", price:122800, priceText:"$122,800" },
+  { id:82, cat:"cars", img:"images/1148840186211363210.jpg", name:"Porsche", brand:"Cars", price:200000, priceText:"$200,000" },
   { id:83, cat:"cars", img:"images/600456562857701120.jpg", name:"Mercedes", brand:"Cars", price:280000, priceText:"$280,000" },
-  { id:84, cat:"cars", img:"images/photo_2026-05-26_19-04-43.jpg", name:"Rolls Royce", brand:"Cars", price:600000, priceText:"$600,000" },  
-  { id:85, cat:"realestate", img:"images/485544403597062175.jpg", name:"House", brand:"realestate", price:3400000, priceText:"$3,400,000" },  
-  { id:86, cat:"realestate", img:"images/kfff.png", name:"Apartment", brand:"realestate", price:2000000, priceText:"$2,000,000" }, 
-  { id:87, cat:"realestate", img:"images/HHJJ.jpg", name:"House", brand:"realestate", price:3500000, priceText:"$3,500,000" }, 
-  { id:88, cat:"realestate", img:"images/Hjklk.jpg", name:"House", brand:"realestate", price:3600000, priceText:"$3,600,000" },  
-  { id:89, cat:"realestate", img:"images/bkdk.jpg", name:"House", brand:"realestate", price:3400000, priceText:"$3,400,000" }, 
-  { id:90, cat:"realestate", img:"images/56576539065188869.jpg", name:"House", brand:"realestate", price:3800000, priceText:"$3,800,000" }, 
-  { id:91, cat:"realestate", img:"images/YUIol.jpg", name:"Apartment", brand:"realestate", price:2200000, priceText:"$2,200,000" },  
-  { id:92, cat:"realestate", img:"images/935341416381080583.jpg", name:"House", brand:"realestate", price:3800000, priceText:"$3,800,000" },  
-  { id:93, cat:"shoes", img:"images/665125438735746730.jpg", name:"Aquazzura", brand:"Shoes", price:1600, priceText:"$1,600" }, 
-  { id:94, cat:"shoes", img:"images/1000060735.jpg", name:"René Caovilla", brand:"Shoes", price:1500, priceText:"$1,500" },  
+  { id:84, cat:"cars", img:"images/photo_2026-05-26_19-04-43.jpg", name:"Rolls Royce", brand:"Cars", price:600000, priceText:"$600,000" },
+  { id:85, cat:"realestate", img:"images/485544403597062175.jpg", name:"House", brand:"realestate", price:3400000, priceText:"$3,400,000" },
+  { id:86, cat:"realestate", img:"images/kfff.png", name:"Apartment", brand:"realestate", price:2000000, priceText:"$2,000,000" },
+  { id:87, cat:"realestate", img:"images/HHJJ.jpg", name:"House", brand:"realestate", price:3500000, priceText:"$3,500,000" },
+  { id:88, cat:"realestate", img:"images/Hjklk.jpg", name:"House", brand:"realestate", price:3600000, priceText:"$3,600,000" },
+  { id:89, cat:"realestate", img:"images/bkdk.jpg", name:"House", brand:"realestate", price:3400000, priceText:"$3,400,000" },
+  { id:90, cat:"realestate", img:"images/56576539065188869.jpg", name:"House", brand:"realestate", price:3800000, priceText:"$3,800,000" },
+  { id:91, cat:"realestate", img:"images/YUIol.jpg", name:"Apartment", brand:"realestate", price:2200000, priceText:"$2,200,000" },
+  { id:92, cat:"realestate", img:"images/935341416381080583.jpg", name:"House", brand:"realestate", price:3800000, priceText:"$3,800,000" },
+  { id:93, cat:"shoes", img:"images/665125438735746730.jpg", name:"Aquazzura", brand:"Shoes", price:1600, priceText:"$1,600" },
+  { id:94, cat:"shoes", img:"images/1000060735.jpg", name:"René Caovilla", brand:"Shoes", price:1500, priceText:"$1,500" },
   { id:95, cat:"shoes", img:"images/1000060749.jpg", name:"Tom Ford", brand:"Shoes", price:2500, priceText:"$2,500" },
-  { id:96, cat:"shoes", img:"images/943152346948326120.jpg", name:"Louboutin", brand:"Shoes", price:4000, priceText:"$4,000" }, 
-  { id:97, cat:"shoes", img:"images/1000060740.jpg", name:"Louboutin", brand:"Shoes", price:1100, priceText:"$1,100" }, 
-  { id:98, cat:"shoes", img:"images/1000060721.jpg", name:"Gianvito Rossi", brand:"Shoes", price:1900, priceText:"$1,900" }, 
-  { id:99, cat:"shoes", img:"images/1000060738.jpg", name:"Tom Ford", brand:"Shoes", price:1500, priceText:"$1,500" }, 
-  { id:100, cat:"shoes", img:"images/1000060739.jpg", name:"Louboutin", brand:"Shoes", price:1300, priceText:"$1,300" },  
+  { id:96, cat:"shoes", img:"images/943152346948326120.jpg", name:"Louboutin", brand:"Shoes", price:4000, priceText:"$4,000" },
+  { id:97, cat:"shoes", img:"images/1000060740.jpg", name:"Louboutin", brand:"Shoes", price:1100, priceText:"$1,100" },
+  { id:98, cat:"shoes", img:"images/1000060721.jpg", name:"Gianvito Rossi", brand:"Shoes", price:1900, priceText:"$1,900" },
+  { id:99, cat:"shoes", img:"images/1000060738.jpg", name:"Tom Ford", brand:"Shoes", price:1500, priceText:"$1,500" },
+  { id:100, cat:"shoes", img:"images/1000060739.jpg", name:"Louboutin", brand:"Shoes", price:1300, priceText:"$1,300" },
   { id:111, cat:"shoes", img:"images/1000060745.jpg", name:"Louboutin", brand:"Shoes", price:1500, priceText:"$1,500" },
-  { id:112, cat:"shoes", img:"images/1000060719.jpg", name:"Casadei", brand:"Shoes", price:1100, priceText:"$1,100" }, 
-  { id:113, cat:"shoes", img:"images/1000060754.jpg", name:"Malone Souliers", brand:"Shoes", price:800, priceText:"$800" }, 
-  { id:114, cat:"shoes", img:"images/1000060743.jpg", name:"YSL", brand:"Shoes", price:1200, priceText:"$1,200" }, 
-  { id:115, cat:"shoes", img:"images/1000060746.jpg", name:"Cesare Paciotti", brand:"Shoes", price:950, priceText:"$950" },  
+  { id:112, cat:"shoes", img:"images/1000060719.jpg", name:"Casadei", brand:"Shoes", price:1100, priceText:"$1,100" },
+  { id:113, cat:"shoes", img:"images/1000060754.jpg", name:"Malone Souliers", brand:"Shoes", price:800, priceText:"$800" },
+  { id:114, cat:"shoes", img:"images/1000060743.jpg", name:"YSL", brand:"Shoes", price:1200, priceText:"$1,200" },
+  { id:115, cat:"shoes", img:"images/1000060746.jpg", name:"Cesare Paciotti", brand:"Shoes", price:950, priceText:"$950" },
   { id:116, cat:"shoes", img:"images/1000060720.jpg", name:"Giuseppe Zanotti", brand:"Shoes", price:1100, priceText:"$1,100" },
-  { id:117, cat:"shoes", img:"images/1000060734.jpg", name:"René Caovilla", brand:"Shoes", price:1800, priceText:"$1,800" }, 
-  { id:118, cat:"shoes", img:"images/856880266630032309.jpg", name:"Aquazzura", brand:"Shoes", price:1600, priceText:"$1,600" }, 
-  { id:119, cat:"shoes", img:"images/352547477075017363.jpg", name:"Tom Ford", brand:"Shoes", price:1600, priceText:"$1,600" }, 
-  { id:120, cat:"shoes", img:"images/1000060731.jpg", name:"René Caovilla", brand:"Shoes", price:2500, priceText:"$2,500" }, 
-  { id:121, cat:"shoes", img:"images/926615692066736494.jpg", name:"Rene Caovilla", brand:"Shoes", price:2200, priceText:"$2,200" }, 
-  { id:122, cat:"shoes", img:"images/1000060705.jpg", name:"Prada", brand:"Shoes", price:1750, priceText:"$1,750" },  
+  { id:117, cat:"shoes", img:"images/1000060734.jpg", name:"René Caovilla", brand:"Shoes", price:1800, priceText:"$1,800" },
+  { id:118, cat:"shoes", img:"images/856880266630032309.jpg", name:"Aquazzura", brand:"Shoes", price:1600, priceText:"$1,600" },
+  { id:119, cat:"shoes", img:"images/352547477075017363.jpg", name:"Tom Ford", brand:"Shoes", price:1600, priceText:"$1,600" },
+  { id:120, cat:"shoes", img:"images/1000060731.jpg", name:"René Caovilla", brand:"Shoes", price:2500, priceText:"$2,500" },
+  { id:121, cat:"shoes", img:"images/926615692066736494.jpg", name:"Rene Caovilla", brand:"Shoes", price:2200, priceText:"$2,200" },
+  { id:122, cat:"shoes", img:"images/1000060705.jpg", name:"Prada", brand:"Shoes", price:1750, priceText:"$1,750" },
   { id:123, cat:"shoes", img:"images/1000060723.jpg", name:"Tom Ford", brand:"Shoes", price:1500, priceText:"$1,500" },
-  { id:124, cat:"shoes", img:"images/1090997079007699563.jpg", name:"Jeffrey", brand:"Shoes", price:1200, priceText:"$1,200" }, 
-  { id:125, cat:"shoes", img:"images/1029142952340782544.jpg", name:"YSL", brand:"Shoes", price:1500, priceText:"$1,500" }, 
-  { id:126, cat:"shoes", img:"images/1000060713.jpg", name:"Sophia Webster", brand:"Shoes", price:750, priceText:"$750" },  
-  { id:127, cat:"shoes", img:"images/372954412902522880.jpg", name:"YSL", brand:"Shoes", price:1500, priceText:"$1,500" }, 
-  { id:128, cat:"shoes", img:"images/1000060728.jpg", name:"Versace", brand:"Shoes", price:1500, priceText:"$1,500" },  
+  { id:124, cat:"shoes", img:"images/1090997079007699563.jpg", name:"Jeffrey", brand:"Shoes", price:1200, priceText:"$1,200" },
+  { id:125, cat:"shoes", img:"images/1029142952340782544.jpg", name:"YSL", brand:"Shoes", price:1500, priceText:"$1,500" },
+  { id:126, cat:"shoes", img:"images/1000060713.jpg", name:"Sophia Webster", brand:"Shoes", price:750, priceText:"$750" },
+  { id:127, cat:"shoes", img:"images/372954412902522880.jpg", name:"YSL", brand:"Shoes", price:1500, priceText:"$1,500" },
+  { id:128, cat:"shoes", img:"images/1000060728.jpg", name:"Versace", brand:"Shoes", price:1500, priceText:"$1,500" },
   { id:129, cat:"shoes", img:"images/1000060716.jpg", name:"Jimmy Choo", brand:"Shoes", price:3000, priceText:"$3,000" },
-  { id:130, cat:"shoes", img:"images/YSLheels.jpg", name:"YSL", brand:"Shoes", price:2500, priceText:"$2,500" }, 
-  { id:131, cat:"shoes", img:"images/1000060712.jpg", name:"René Caovilla", brand:"Shoes", price:2700, priceText:"$2,700" }, 
-  { id:132, cat:"shoes", img:"images/1099300590279266894.jpg", name:"Louboutin", brand:"Shoes", price:1200, priceText:"$1,200" },   
-  { id:133, cat:"shoes", img:"images/650488739925383116.jpg", name:"Louboutin", brand:"Shoes", price:1400, priceText:"$1,400" }, 
-  { id:134, cat:"shoes", img:"images/1000060703.jpg", name:"Valentino", brand:"Shoes", price:1200, priceText:"$1,200" }, 
-  { id:135, cat:"shoes", img:"images/1000060736.jpg", name:"Louboutin", brand:"Shoes", price:1600, priceText:"$1,600" },  
-  { id:136, cat:"shoes", img:"images/1000060717.jpg", name:"René Caovilla", brand:"Shoes", price:2200, priceText:"$2,200" }, 
-  { id:137, cat:"shoes", img:"images/1000060727.jpg", name:"D&G", brand:"Shoes", price:1500, priceText:"$1,500" },  
+  { id:130, cat:"shoes", img:"images/YSLheels.jpg", name:"YSL", brand:"Shoes", price:2500, priceText:"$2,500" },
+  { id:131, cat:"shoes", img:"images/1000060712.jpg", name:"René Caovilla", brand:"Shoes", price:2700, priceText:"$2,700" },
+  { id:132, cat:"shoes", img:"images/1099300590279266894.jpg", name:"Louboutin", brand:"Shoes", price:1200, priceText:"$1,200" },
+  { id:133, cat:"shoes", img:"images/650488739925383116.jpg", name:"Louboutin", brand:"Shoes", price:1400, priceText:"$1,400" },
+  { id:134, cat:"shoes", img:"images/1000060703.jpg", name:"Valentino", brand:"Shoes", price:1200, priceText:"$1,200" },
+  { id:135, cat:"shoes", img:"images/1000060736.jpg", name:"Louboutin", brand:"Shoes", price:1600, priceText:"$1,600" },
+  { id:136, cat:"shoes", img:"images/1000060717.jpg", name:"René Caovilla", brand:"Shoes", price:2200, priceText:"$2,200" },
+  { id:137, cat:"shoes", img:"images/1000060727.jpg", name:"D&G", brand:"Shoes", price:1500, priceText:"$1,500" },
   { id:138, cat:"shoes", img:"images/1000060707.jpg", name:"René Caovilla", brand:"Shoes", price:2200, priceText:"$2,200" },
-  { id:139, cat:"shoes", img:"images/1000060704.jpg", name:"Gucci", brand:"Shoes", price:1300, priceText:"$1,300" }, 
-  { id:140, cat:"shoes", img:"images/537124693081878439.jpg", name:"Louboutin", brand:"Shoes", price:4000, priceText:"$4,000" }, 
+  { id:139, cat:"shoes", img:"images/1000060704.jpg", name:"Gucci", brand:"Shoes", price:1300, priceText:"$1,300" },
+  { id:140, cat:"shoes", img:"images/537124693081878439.jpg", name:"Louboutin", brand:"Shoes", price:4000, priceText:"$4,000" },
   { id:141, cat:"shoes", img:"images/672795631876557173.jpg", name:"Louboutin", brand:"Shoes", price:1500, priceText:"$1,500" },
   { id:142, cat:"shoes", img:"images/57888999.png", name:"Christian Dior", brand:"Shoes", price:2000, priceText:"$2,000" },
   { id:143, cat:"shoes", img:"images/999306604812023233.jpg", name:"SL", brand:"Shoes", price:600, priceText:"$600" },
-  { id:144, cat:"shoes", img:"images/448248969178166811.jpg", name:"Venezia", brand:"Shoes", price:600, priceText:"$600" }, 
+  { id:144, cat:"shoes", img:"images/448248969178166811.jpg", name:"Venezia", brand:"Shoes", price:600, priceText:"$600" },
   { id:145, cat:"shoes", img:"images/photo_2026-05-28_13-36-25.jpg", name:"Jimmy Choo", brand:"Shoes", price:1500, priceText:"$1,500" },
-  { id:146, cat:"shoes", img:"images/352547477079798297.jpg", name:"YSL", brand:"Shoes", price:1550, priceText:"$1,550" }, 
-  { id:147, cat:"shoes", img:"images/photo_2026-06-09_18-03-32.jpg", name:"Tom Ford", brand:"Shoes", price:1500, priceText:"$1,500" }, 
+  { id:146, cat:"shoes", img:"images/352547477079798297.jpg", name:"YSL", brand:"Shoes", price:1550, priceText:"$1,550" },
+  { id:147, cat:"shoes", img:"images/photo_2026-06-09_18-03-32.jpg", name:"Tom Ford", brand:"Shoes", price:1500, priceText:"$1,500" },
   { id:148, cat:"shoes", img:"images/photo_2026-06-09_18-03-33.jpg", name:"SL", brand:"Shoes", price:600, priceText:"$600" },
   { id:149, cat:"shoes", img:"images/photo_2026-06-09_18-03-34.jpg", name:"Louboutin", brand:"Shoes", price:1300, priceText:"$1,300" },
   { id:150, cat:"shoes", img:"images/HHKLIii.jpg", name:"SL", brand:"Shoes", price:600, priceText:"$600" },
-  { id:151, cat:"shoes", img:"images/photo_2026-06-09_18-03-37.jpg", name:"LV", brand:"Shoes", price:1200, priceText:"$1,200" },  
+  { id:151, cat:"shoes", img:"images/photo_2026-06-09_18-03-37.jpg", name:"LV", brand:"Shoes", price:1200, priceText:"$1,200" },
   { id:152, cat:"shoes", img:"images/1013169247413539104.jpg", name:"Rene Caovilla", brand:"Shoes", price:2200, priceText:"$2,200" },
   { id:153, cat:"shoes", img:"images/630855860345395369.jpg", name:"Louboutin", brand:"Shoes", price:4500, priceText:"$4,500" },
   { id:154, cat:"bags", img:"images/687643436864977629.jpg", name:"Versace", brand:"Bags", price:3600, priceText:"$3,600" },
-  { id:155, cat:"bags", img:"images/950118852644306529.jpg", name:"Prada", brand:"Bags", price:2800, priceText:"$2,800" }, 
+  { id:155, cat:"bags", img:"images/950118852644306529.jpg", name:"Prada", brand:"Bags", price:2800, priceText:"$2,800" },
   { id:156, cat:"bags", img:"images/724727765046788996.jpg", name:"Chanel", brand:"Bags", price:12000, priceText:"$12,000" },
-  { id:157, cat:"bags", img:"images/1019502434371951551.jpg", name:"Balenciaga", brand:"Bags", price:3500, priceText:"$3,500" },  
+  { id:157, cat:"bags", img:"images/1019502434371951551.jpg", name:"Balenciaga", brand:"Bags", price:3500, priceText:"$3,500" },
   { id:158, cat:"bags", img:"images/1133499799940307039.jpg", name:"Balenciaga", brand:"Bags", price:6000, priceText:"$6,000" },
-  { id:159, cat:"bags", img:"images/photo_2026-06-09_18-03-05.jpg", name:"Versace", brand:"Bags", price:3500, priceText:"$3,500" }, 
+  { id:159, cat:"bags", img:"images/photo_2026-06-09_18-03-05.jpg", name:"Versace", brand:"Bags", price:3500, priceText:"$3,500" },
   { id:160, cat:"bags", img:"images/photo_2026-06-09_18-03-14.jpg", name:"Botega", brand:"Bags", price:3000, priceText:"$3,000" },
-  { id:161, cat:"bags", img:"images/photo_2026-06-09_18-03-07.jpg", name:"Versace", brand:"Bags", price:3300, priceText:"$3,300" }, 
-  { id:162, cat:"bags", img:"images/photo_2026-06-09_18-03-15.jpg", name:"Jacquemus", brand:"Bags", price:1500, priceText:"$1,500" },  
+  { id:161, cat:"bags", img:"images/photo_2026-06-09_18-03-07.jpg", name:"Versace", brand:"Bags", price:3300, priceText:"$3,300" },
+  { id:162, cat:"bags", img:"images/photo_2026-06-09_18-03-15.jpg", name:"Jacquemus", brand:"Bags", price:1500, priceText:"$1,500" },
   { id:163, cat:"bags", img:"images/photo_2026-06-09_18-03-16.jpg", name:"Miu Miu", brand:"Bags", price:4000, priceText:"$4,000" },
-  { id:164, cat:"bags", img:"images/photo_2026-06-09_18-03-17.jpg", name:"Valentino", brand:"Bags", price:4500, priceText:"$4,500" }, 
+  { id:164, cat:"bags", img:"images/photo_2026-06-09_18-03-17.jpg", name:"Valentino", brand:"Bags", price:4500, priceText:"$4,500" },
   { id:165, cat:"bags", img:"images/photo_2026-06-09_18-03-19.jpg", name:"Botega", brand:"Bags", price:3500, priceText:"$3,500" },
-  { id:166, cat:"bags", img:"images/photo_2026-06-09_18-03-22.jpg", name:"LV", brand:"Bags", price:5500, priceText:"$5,500" },  
-  { id:167, cat:"bags", img:"images/photo_2026-06-09_18-03-25.jpg", name:"Versace", brand:"Bags", price:1800, priceText:"$1,800" },  
+  { id:166, cat:"bags", img:"images/photo_2026-06-09_18-03-22.jpg", name:"LV", brand:"Bags", price:5500, priceText:"$5,500" },
+  { id:167, cat:"bags", img:"images/photo_2026-06-09_18-03-25.jpg", name:"Versace", brand:"Bags", price:1800, priceText:"$1,800" },
   { id:168, cat:"bags", img:"images/photo_2026-06-09_18-03-28.jpg", name:"YSL", brand:"Bags", price:3200, priceText:"$3,200" },
-  { id:169, cat:"bags", img:"images/photo_2026-06-09_18-03-26.jpg", name:"Chanel", brand:"Bags", price:11700, priceText:"$11,700" }, 
+  { id:169, cat:"bags", img:"images/photo_2026-06-09_18-03-26.jpg", name:"Chanel", brand:"Bags", price:11700, priceText:"$11,700" },
   { id:170, cat:"bags", img:"images/photo_2026-06-09_18-03-35.jpg", name:"Dior", brand:"Bags", price:4500, priceText:"$4,500" },
-  { id:171, cat:"bags", img:"images/photo_2026-06-09_18-03-20.jpg", name:"YSL", brand:"Bags", price:3000, priceText:"$3,000" }, 
-  { id:172, cat:"bags", img:"images/photo_2026-06-09_18-03-18.jpg", name:"Valentino", brand:"Bags", price:5000, priceText:"$5,000" },  
-  { id:173, cat:"bags", img:"images/photo_2026-06-09_18-03-16h.jpg", name:"Fendi", brand:"Bags", price:4000, priceText:"$4,000" },  
+  { id:171, cat:"bags", img:"images/photo_2026-06-09_18-03-20.jpg", name:"YSL", brand:"Bags", price:3000, priceText:"$3,000" },
+  { id:172, cat:"bags", img:"images/photo_2026-06-09_18-03-18.jpg", name:"Valentino", brand:"Bags", price:5000, priceText:"$5,000" },
+  { id:173, cat:"bags", img:"images/photo_2026-06-09_18-03-16h.jpg", name:"Fendi", brand:"Bags", price:4000, priceText:"$4,000" },
   { id:174, cat:"bags", img:"images/photo_2026-06-09_18-03-13.jpg", name:"Simone Rocha", brand:"Bags", price:1000, priceText:"$1,000" },
-  { id:175, cat:"bags", img:"images/dior.jpg", name:"Dior", brand:"Bags", price:13000, priceText:"$13,000" }, 
+  { id:175, cat:"bags", img:"images/dior.jpg", name:"Dior", brand:"Bags", price:13000, priceText:"$13,000" },
   { id:176, cat:"bags", img:"images/TYUIIOPO.jpg", name:"LV", brand:"Bags", price:20000, priceText:"$20,000" },
-  { id:177, cat:"bags", img:"images/767934174007390341.jpg", name:"Valentino", brand:"Bags", price:6750, priceText:"$6,750" },  
-  { id:178, cat:"bags", img:"images/781444972884606066.jpg", name:"Dior", brand:"Bags", price:4500, priceText:"$4,500" },  
-  { id:179, cat:"bags", img:"images/325103666875043840.jpg", name:"YSL", brand:"Bags", price:3500, priceText:"$3,500" },  
+  { id:177, cat:"bags", img:"images/767934174007390341.jpg", name:"Valentino", brand:"Bags", price:6750, priceText:"$6,750" },
+  { id:178, cat:"bags", img:"images/781444972884606066.jpg", name:"Dior", brand:"Bags", price:4500, priceText:"$4,500" },
+  { id:179, cat:"bags", img:"images/325103666875043840.jpg", name:"YSL", brand:"Bags", price:3500, priceText:"$3,500" },
   { id:180, cat:"bags", img:"images/234046511878268636.jpg", name:"Hermès", brand:"Bags", price:65000, priceText:"$65,000" },
-  { id:181, cat:"bags", img:"images/b01479-r001v104_1.jpg", name:"Jimmy Choo", brand:"Bags", price:5000, priceText:"$5,000" }, 
+  { id:181, cat:"bags", img:"images/b01479-r001v104_1.jpg", name:"Jimmy Choo", brand:"Bags", price:5000, priceText:"$5,000" },
   { id:182, cat:"bags", img:"images/YUIOO.jpg", name:"Gucci", brand:"Bags", price:8500, priceText:"$8,500" },
   { id:183, cat:"bags", img:"images/687643436879020393.jpg", name:"Jimmy Choo", brand:"Bags", price:5000, priceText:"$5,000" },
-  { id:184, cat:"bags", img:"images/647744358945702193.jpg", name:"Birkin", brand:"Bags", price:85000, priceText:"$85,000" }, 
-  { id:185, cat:"bags", img:"images/353462270774360846.jpg", name:"Dior", brand:"Bags", price:13000, priceText:"$13,000" },  
-  { id:186, cat:"bags", img:"images/513903007501644492.jpg", name:"Chanel", brand:"Bags", price:8000, priceText:"$8,000" },  
+  { id:184, cat:"bags", img:"images/647744358945702193.jpg", name:"Birkin", brand:"Bags", price:85000, priceText:"$85,000" },
+  { id:185, cat:"bags", img:"images/353462270774360846.jpg", name:"Dior", brand:"Bags", price:13000, priceText:"$13,000" },
+  { id:186, cat:"bags", img:"images/513903007501644492.jpg", name:"Chanel", brand:"Bags", price:8000, priceText:"$8,000" },
   { id:187, cat:"bags", img:"images/982418106278747222.jpg", name:"Dior", brand:"Bags", price:9500, priceText:"$9,500" },
-  { id:188, cat:"bags", img:"images/EETYU.jpg", name:"Hermès", brand:"Bags", price:170000, priceText:"$170,000" }, 
+  { id:188, cat:"bags", img:"images/EETYU.jpg", name:"Hermès", brand:"Bags", price:170000, priceText:"$170,000" },
   { id:189, cat:"bags", img:"images/894597913498642897.jpg", name:"Dior", brand:"Bags", price:50000, priceText:"$50,000" },
-  { id:190, cat:"bags", img:"images/965318501390880289.jpg", name:"Fendi", brand:"Bags", price:6000, priceText:"$6,000" },  
-  { id:191, cat:"bags", img:"images/1089308228636692793.jpg", name:"Chanel", brand:"Bags", price:7000, priceText:"$7,000" },  
-  { id:192, cat:"bags", img:"images/937100634978751419.jpg", name:"YSL", brand:"Bags", price:4000, priceText:"$4,000" },  
+  { id:190, cat:"bags", img:"images/965318501390880289.jpg", name:"Fendi", brand:"Bags", price:6000, priceText:"$6,000" },
+  { id:191, cat:"bags", img:"images/1089308228636692793.jpg", name:"Chanel", brand:"Bags", price:7000, priceText:"$7,000" },
+  { id:192, cat:"bags", img:"images/937100634978751419.jpg", name:"YSL", brand:"Bags", price:4000, priceText:"$4,000" },
   { id:193, cat:"bags", img:"images/179651472632372944.jpg", name:"LV", brand:"Bags", price:4000, priceText:"$4,000" },
-  { id:194, cat:"bags", img:"images/686095324522789830.jpg", name:"Chanel", brand:"Bags", price:6500, priceText:"$6,500" }, 
+  { id:194, cat:"bags", img:"images/686095324522789830.jpg", name:"Chanel", brand:"Bags", price:6500, priceText:"$6,500" },
   { id:195, cat:"bags", img:"images/1049760994374994633.jpg", name:"Chanel", brand:"Bags", price:10000, priceText:"$10,000" },
   { id:196, cat:"jewelry", img:"images/1086423110121376126.jpg", name:"Bvlgari", brand:"Purure", price:35000, priceText:"$35,000" },
   { id:197, cat:"jewelry", img:"images/582231058109648531.jpg", name:"Bvlgari", brand:"Purure", price:12000, priceText:"$12,000" },
-  { id:198, cat:"jewelry", img:"images/1063975480688523178.jpg", name:"Van Cleef", brand:"Necklace", price:70000, priceText:"$70,000" }, 
+  { id:198, cat:"jewelry", img:"images/1063975480688523178.jpg", name:"Van Cleef", brand:"Necklace", price:70000, priceText:"$70,000" },
   { id:199, cat:"jewelry", img:"images/864128247269028708.jpg", name:"Cartier", brand:"Bracelet", price:36000, priceText:"$36,000" },
   { id:200, cat:"jewelry", img:"images/8946682822398030543.jpg", name:"Bvlgari", brand:"Earrings", price:9000, priceText:"$9,000" },
-  { id:201, cat:"jewelry", img:"images/558798266277431156.jpg", name:"Bvlgari", brand:"Purure", price:8000, priceText:"$8,000" }, 
+  { id:201, cat:"jewelry", img:"images/558798266277431156.jpg", name:"Bvlgari", brand:"Purure", price:8000, priceText:"$8,000" },
   { id:202, cat:"jewelry", img:"images/773071092324518144.jpg", name:"Rolex", brand:"Watch", price:23000, priceText:"$23,000" },
   { id:203, cat:"jewelry", img:"images/876090933757861693.jpg", name:"Cartier", brand:"Purure", price:80000, priceText:"$80,000" },
   { id:204, cat:"jewelry", img:"images/582794008069600151.jpg", name:"Tiffany", brand:"Watch", price:10000, priceText:"$10,000" },
-  { id:205, cat:"jewelry", img:"images/470696598551366773.jpg", name:"Cartier", brand:"Ring", price:300000, priceText:"$300,000" }, 
+  { id:205, cat:"jewelry", img:"images/470696598551366773.jpg", name:"Cartier", brand:"Ring", price:300000, priceText:"$300,000" },
   { id:206, cat:"jewelry", img:"images/526076800240438070.jpg", name:"Bvlgari", brand:"Purure", price:30000, priceText:"$30,000" },
-  { id:207, cat:"jewelry", img:"images/JJHGY.jpg", name:"Cartier", brand:"Ring", price:15000, priceText:"$15,000" }, 
+  { id:207, cat:"jewelry", img:"images/JJHGY.jpg", name:"Cartier", brand:"Ring", price:15000, priceText:"$15,000" },
   { id:208, cat:"jewelry", img:"images/617696905162862892.jpg", name:"Van Cleef", brand:"Purure", price:25000, priceText:"$25,000" },
-  { id:209, cat:"jewelry", img:"images/1033435445729338068.jpg", name:"Van Cleef", brand:"Purure", price:20000, priceText:"$20,000" }, 
+  { id:209, cat:"jewelry", img:"images/1033435445729338068.jpg", name:"Van Cleef", brand:"Purure", price:20000, priceText:"$20,000" },
   { id:210, cat:"shoes", img:"images/311241024271151176.jpg", name:"René Caovilla", brand:"Shoes", price:2200, priceText:"$2,200" },
   { id:211, cat:"shoes", img:"images/Instagram.jpg", name:"René Caovilla", brand:"Shoes", price:2500, priceText:"$2,500" },
   { id:212, cat:"jewelry", img:"images/GJJKL.jpg", name:"Martin Katz", brand:"Ring", price:250000, priceText:"$250,000" },
-  { id:213, cat:"jewelry", img:"images/1026398571341854816.jpg", name:"Bvlgari", brand:"Bracelet", price:50000, priceText:"$50,000" }, 
+  { id:213, cat:"jewelry", img:"images/1026398571341854816.jpg", name:"Bvlgari", brand:"Bracelet", price:50000, priceText:"$50,000" },
   { id:214, cat:"jewelry", img:"images/780459810431900245.jpg", name:"Bvlgari", brand:"Purure", price:171000, priceText:"$171,000" },
-  { id:215, cat:"jewelry", img:"images/1000060625.jpg", name:"Patek Philippe", brand:"Watch", price:50000, priceText:"$50,000" }, 
+  { id:215, cat:"jewelry", img:"images/1000060625.jpg", name:"Patek Philippe", brand:"Watch", price:50000, priceText:"$50,000" },
   { id:216, cat:"jewelry", img:"images/1127729562963658216.jpg", name:"Cartier", brand:"Necklace", price:500000, priceText:"$500,000" },
-  { id:217, cat:"jewelry", img:"images/photo_2026-06-09_18-03-08.jpg", name:"Harry Winston", brand:"Ring", price:400000, priceText:"$400,000" }, 
+  { id:217, cat:"jewelry", img:"images/photo_2026-06-09_18-03-08.jpg", name:"Harry Winston", brand:"Ring", price:400000, priceText:"$400,000" },
   { id:218, cat:"bags", img:"images/917749230364509652.jpg", name:"Chanel", brand:"Bags", price:15000, priceText:"$15,000" },
-  { id:219, cat:"bags", img:"images/18155204742915362.jpg", name:"Chanel", brand:"Bags", price:16000, priceText:"$16,000" }, 
-  { id:220, cat:"cars", img:"images/1140818149373094846.jpg", name:"Ferrari", brand:"Cars", price:600000, priceText:"$600,000" }, 
-  { id:221, cat:"lingerie", img:"images/1000060649.jpg", name:"Bra", brand:"Lingerie", price:540, priceText:"$540" }, 
+  { id:219, cat:"bags", img:"images/18155204742915362.jpg", name:"Chanel", brand:"Bags", price:16000, priceText:"$16,000" },
+  { id:220, cat:"cars", img:"images/1140818149373094846.jpg", name:"Ferrari", brand:"Cars", price:600000, priceText:"$600,000" },
+  { id:221, cat:"lingerie", img:"images/1000060649.jpg", name:"Bra", brand:"Lingerie", price:540, priceText:"$540" },
   { id:222, cat:"lingerie", img:"images/1000060637.jpg", name:"Bra", brand:"Lingerie", price:540, priceText:"$540" },
-  { id:223, cat:"lingerie", img:"images/1394039.jpg", name:"Corset", brand:"Lingerie", price:1650, priceText:"$1,650" }, 
+  { id:223, cat:"lingerie", img:"images/1394039.jpg", name:"Corset", brand:"Lingerie", price:1650, priceText:"$1,650" },
   { id:224, cat:"lingerie", img:"images/1000060653.jpg", name:"Corset", brand:"Lingerie", price:1450, priceText:"$1,450" },
-  { id:225, cat:"lingerie", img:"images/1000060657.jpg", name:"Corset", brand:"Lingerie", price:1250, priceText:"$1,250" }, 
+  { id:225, cat:"lingerie", img:"images/1000060657.jpg", name:"Corset", brand:"Lingerie", price:1250, priceText:"$1,250" },
   { id:226, cat:"lingerie", img:"images/1000060635.jpg", name:"Corset", brand:"Lingerie", price:1400, priceText:"$1,400" },
-  { id:227, cat:"lingerie", img:"images/1000060648.jpg", name:"Corset", brand:"Lingerie", price:1500, priceText:"$1,500" }, 
-  { id:228, cat:"lingerie", img:"images/1396287.jpg", name:"Bra", brand:"Lingerie", price:300, priceText:"$300" },  
+  { id:227, cat:"lingerie", img:"images/1000060648.jpg", name:"Corset", brand:"Lingerie", price:1500, priceText:"$1,500" },
+  { id:228, cat:"lingerie", img:"images/1396287.jpg", name:"Bra", brand:"Lingerie", price:300, priceText:"$300" },
   { id:229, cat:"lingerie", img:"images/1396298.jpg", name:"Garter Belt", brand:"Lingerie", price:265, priceText:"$265" },
-  { id:230, cat:"lingerie", img:"images/1396303.jpg", name:"Panties", brand:"Lingerie", price:165, priceText:"$165" }, 
+  { id:230, cat:"lingerie", img:"images/1396303.jpg", name:"Panties", brand:"Lingerie", price:165, priceText:"$165" },
   { id:231, cat:"lingerie", img:"images/1396309.jpg", name:"Panties", brand:"Lingerie", price:345, priceText:"$345" },
-  { id:232, cat:"lingerie", img:"images/1395933.jpg", name:"Bra", brand:"Lingerie", price:675, priceText:"$675" }, 
+  { id:232, cat:"lingerie", img:"images/1395933.jpg", name:"Bra", brand:"Lingerie", price:675, priceText:"$675" },
   { id:233, cat:"lingerie", img:"images/1395852.jpg", name:"Panties", brand:"Lingerie", price:375, priceText:"$375" },
-  { id:234, cat:"lingerie", img:"images/1394391.jpg", name:"Bra", brand:"Lingerie", price:280, priceText:"$280" }, 
-  { id:235, cat:"lingerie", img:"images/1395890.jpg", name:"Top", brand:"Lingerie", price:530, priceText:"$530" },  
+  { id:234, cat:"lingerie", img:"images/1394391.jpg", name:"Bra", brand:"Lingerie", price:280, priceText:"$280" },
+  { id:235, cat:"lingerie", img:"images/1395890.jpg", name:"Top", brand:"Lingerie", price:530, priceText:"$530" },
   { id:236, cat:"lingerie", img:"images/1394414.jpg", name:"Bra", brand:"Lingerie", price:450, priceText:"$450" },
-  { id:237, cat:"lingerie", img:"images/1395769.jpg", name:"Garter Belt", brand:"Lingerie", price:540, priceText:"$540" }, 
-  { id:238, cat:"lingerie", img:"images/1395878.jpg", name:"Panties", brand:"Lingerie", price:345, priceText:"$345" },  
+  { id:237, cat:"lingerie", img:"images/1395769.jpg", name:"Garter Belt", brand:"Lingerie", price:540, priceText:"$540" },
+  { id:238, cat:"lingerie", img:"images/1395878.jpg", name:"Panties", brand:"Lingerie", price:345, priceText:"$345" },
   { id:239, cat:"lingerie", img:"images/1395738.jpg", name:"Panties", brand:"Lingerie", price:300, priceText:"$300" },
-  { id:240, cat:"lingerie", img:"images/1395759.jpg", name:"Robe", brand:"Lingerie", price:1160, priceText:"$1,160" }, 
+  { id:240, cat:"lingerie", img:"images/1395759.jpg", name:"Robe", brand:"Lingerie", price:1160, priceText:"$1,160" },
   { id:241, cat:"lingerie", img:"images/1395802.jpg", name:"Robe", brand:"Lingerie", price:1160, priceText:"$1,160" },
-  { id:242, cat:"lingerie", img:"images/1395086.jpg", name:"Bra", brand:"Lingerie", price:230, priceText:"$230" }, 
+  { id:242, cat:"lingerie", img:"images/1395086.jpg", name:"Bra", brand:"Lingerie", price:230, priceText:"$230" },
   { id:243, cat:"lingerie", img:"images/1395786.jpg", name:"Roleplay Set", brand:"Lingerie", price:700, priceText:"$700" },
-  { id:244, cat:"lingerie", img:"images/1395134.jpg", name:"Skirt", brand:"Lingerie", price:1130, priceText:"$1,130" }, 
-  { id:245, cat:"lingerie", img:"images/1395317.jpg", name:"Bra", brand:"Lingerie", price:320, priceText:"$320" },  
+  { id:244, cat:"lingerie", img:"images/1395134.jpg", name:"Skirt", brand:"Lingerie", price:1130, priceText:"$1,130" },
+  { id:245, cat:"lingerie", img:"images/1395317.jpg", name:"Bra", brand:"Lingerie", price:320, priceText:"$320" },
   { id:246, cat:"lingerie", img:"images/1395140.jpg", name:"Panties", brand:"Lingerie", price:160, priceText:"$160" },
-  { id:247, cat:"lingerie", img:"images/1395235.jpg", name:"Bra", brand:"Lingerie", price:1140, priceText:"$1,140" }, 
+  { id:247, cat:"lingerie", img:"images/1395235.jpg", name:"Bra", brand:"Lingerie", price:1140, priceText:"$1,140" },
   { id:248, cat:"lingerie", img:"images/1395111.jpg", name:"Garter Belt", brand:"Lingerie", price:1100, priceText:"$1,100" },
-  { id:249, cat:"lingerie", img:"images/1391346.jpg", name:"Corset", brand:"Lingerie", price:1430, priceText:"$1,430" }, 
+  { id:249, cat:"lingerie", img:"images/1391346.jpg", name:"Corset", brand:"Lingerie", price:1430, priceText:"$1,430" },
   { id:250, cat:"lingerie", img:"images/1389002.jpg", name:"Corset", brand:"Lingerie", price:1430, priceText:"$1,430" },
-  { id:251, cat:"lingerie", img:"images/1387716.jpg", name:"Corset", brand:"Lingerie", price:1460, priceText:"$1,460" }, 
+  { id:251, cat:"lingerie", img:"images/1387716.jpg", name:"Corset", brand:"Lingerie", price:1460, priceText:"$1,460" },
   { id:252, cat:"lingerie", img:"images/1394067.jpg", name:"Corset", brand:"Lingerie", price:940, priceText:"$940" },
-  { id:253, cat:"lingerie", img:"images/1393855.jpg", name:"Bra", brand:"Lingerie", price:440, priceText:"$440" }, 
+  { id:253, cat:"lingerie", img:"images/1393855.jpg", name:"Bra", brand:"Lingerie", price:440, priceText:"$440" },
   { id:254, cat:"lingerie", img:"images/1392089.jpg", name:"Bra", brand:"Lingerie", price:480, priceText:"$480" },
-  { id:255, cat:"lingerie", img:"images/1390545.jpg", name:"Bra", brand:"Lingerie", price:290, priceText:"$290" }, 
-  { id:256, cat:"lingerie", img:"images/1390219.jpg", name:"Bra", brand:"Lingerie", price:320, priceText:"$320" },  
+  { id:255, cat:"lingerie", img:"images/1390545.jpg", name:"Bra", brand:"Lingerie", price:290, priceText:"$290" },
+  { id:256, cat:"lingerie", img:"images/1390219.jpg", name:"Bra", brand:"Lingerie", price:320, priceText:"$320" },
   { id:257, cat:"lingerie", img:"images/1389264.jpg", name:"Bra", brand:"Lingerie", price:160, priceText:"$160" },
-  { id:258, cat:"lingerie", img:"images/1385560.jpg", name:"Bra", brand:"Lingerie", price:450, priceText:"$450" }, 
+  { id:258, cat:"lingerie", img:"images/1385560.jpg", name:"Bra", brand:"Lingerie", price:450, priceText:"$450" },
   { id:259, cat:"lingerie", img:"images/1394096.jpg", name:"Bra", brand:"Lingerie", price:1300, priceText:"$1,300" },
-  { id:260, cat:"lingerie", img:"images/1392482.jpg", name:"Bra", brand:"Lingerie", price:290, priceText:"$290" }, 
+  { id:260, cat:"lingerie", img:"images/1392482.jpg", name:"Bra", brand:"Lingerie", price:290, priceText:"$290" },
   { id:261, cat:"lingerie", img:"images/1387745.jpg", name:"Bra", brand:"Lingerie", price:780, priceText:"$780" },
-  { id:262, cat:"lingerie", img:"images/1392728.jpg", name:"Bra", brand:"Lingerie", price:160, priceText:"$160" }, 
+  { id:262, cat:"lingerie", img:"images/1392728.jpg", name:"Bra", brand:"Lingerie", price:160, priceText:"$160" },
   { id:263, cat:"lingerie", img:"images/1396210.jpg", name:"Panties", brand:"Lingerie", price:140, priceText:"$140" },
-  { id:264, cat:"lingerie", img:"images/1395033.jpg", name:"Panties", brand:"Lingerie", price:330, priceText:"$330" }, 
-  { id:265, cat:"lingerie", img:"images/1394260.jpg", name:"Panties", brand:"Lingerie", price:190, priceText:"$190" },  
+  { id:264, cat:"lingerie", img:"images/1395033.jpg", name:"Panties", brand:"Lingerie", price:330, priceText:"$330" },
+  { id:265, cat:"lingerie", img:"images/1394260.jpg", name:"Panties", brand:"Lingerie", price:190, priceText:"$190" },
   { id:266, cat:"lingerie", img:"images/1394250.jpg", name:"Panties", brand:"Lingerie", price:1000, priceText:"$1,000" },
-  { id:267, cat:"lingerie", img:"images/1390522.jpg", name:"Panties", brand:"Lingerie", price:140, priceText:"$140" }, 
+  { id:267, cat:"lingerie", img:"images/1390522.jpg", name:"Panties", brand:"Lingerie", price:140, priceText:"$140" },
   { id:268, cat:"lingerie", img:"images/1390585.jpg", name:"Panties", brand:"Lingerie", price:340, priceText:"$340" },
-  { id:269, cat:"lingerie", img:"images/1385654.jpg", name:"Garter Belt", brand:"Lingerie", price:190, priceText:"$190" }, 
+  { id:269, cat:"lingerie", img:"images/1385654.jpg", name:"Garter Belt", brand:"Lingerie", price:190, priceText:"$190" },
   { id:270, cat:"lingerie", img:"images/1389238.jpg", name:"Panties", brand:"Lingerie", price:930, priceText:"$930" },
-  { id:271, cat:"lingerie", img:"images/1393444.jpg", name:"Panties", brand:"Lingerie", price:290, priceText:"$290" }, 
+  { id:271, cat:"lingerie", img:"images/1393444.jpg", name:"Panties", brand:"Lingerie", price:290, priceText:"$290" },
   { id:272, cat:"lingerie", img:"images/1387535.jpg", name:"Panties", brand:"Lingerie", price:100, priceText:"$100" },
-  { id:273, cat:"lingerie", img:"images/1387686.jpg", name:"Panties", brand:"Lingerie", price:190, priceText:"190" }, 
-  { id:274, cat:"lingerie", img:"images/1387753.jpg", name:"Panties", brand:"Lingerie", price:440, priceText:"$440" },  
+  { id:273, cat:"lingerie", img:"images/1387686.jpg", name:"Panties", brand:"Lingerie", price:190, priceText:"190" },
+  { id:274, cat:"lingerie", img:"images/1387753.jpg", name:"Panties", brand:"Lingerie", price:440, priceText:"$440" },
   { id:275, cat:"lingerie", img:"images/1392391.jpg", name:"Panties", brand:"Lingerie", price:630, priceText:"$630" },
-  { id:276, cat:"lingerie", img:"images/1396314.jpg", name:"Top", brand:"Lingerie", price:350, priceText:"$350" }, 
+  { id:276, cat:"lingerie", img:"images/1396314.jpg", name:"Top", brand:"Lingerie", price:350, priceText:"$350" },
   { id:277, cat:"lingerie", img:"images/1392684.jpg", name:"Top", brand:"Lingerie", price:610, priceText:"$610" },
-  { id:278, cat:"lingerie", img:"images/1390176.jpg", name:"Top", brand:"Lingerie", price:370, priceText:"$370" }, 
+  { id:278, cat:"lingerie", img:"images/1390176.jpg", name:"Top", brand:"Lingerie", price:370, priceText:"$370" },
   { id:279, cat:"lingerie", img:"images/1390539.jpg", name:"Panties", brand:"Lingerie", price:370, priceText:"$370" },
-  { id:280, cat:"lingerie", img:"images/1389888.jpg", name:"Top", brand:"Lingerie", price:230, priceText:"$230" }, 
+  { id:280, cat:"lingerie", img:"images/1389888.jpg", name:"Top", brand:"Lingerie", price:230, priceText:"$230" },
   { id:281, cat:"lingerie", img:"images/1389894.jpg", name:"Panties", brand:"Lingerie", price:230, priceText:"$230" },
-  { id:282, cat:"lingerie", img:"images/1390350.jpg", name:"Top", brand:"Lingerie", price:610, priceText:"$610" }, 
+  { id:282, cat:"lingerie", img:"images/1390350.jpg", name:"Top", brand:"Lingerie", price:610, priceText:"$610" },
   { id:283, cat:"lingerie", img:"images/1394727.jpg", name:"Top", brand:"Lingerie", price:330, priceText:"$330" },
-  { id:284, cat:"lingerie", img:"images/1392685.jpg", name:"Top", brand:"Lingerie", price:610, priceText:"$610" }, 
+  { id:284, cat:"lingerie", img:"images/1392685.jpg", name:"Top", brand:"Lingerie", price:610, priceText:"$610" },
   { id:285, cat:"lingerie", img:"images/1387166.jpg", name:"Top", brand:"Lingerie", price:320, priceText:"$320" },
-  { id:286, cat:"lingerie", img:"images/1387117.jpg", name:"Panties", brand:"Lingerie", price:220, priceText:"$220" }, 
+  { id:286, cat:"lingerie", img:"images/1387117.jpg", name:"Panties", brand:"Lingerie", price:220, priceText:"$220" },
   { id:287, cat:"lingerie", img:"images/1392162.jpg", name:"Headband", brand:"Lingerie", price:240, priceText:"$240" },
-  { id:288, cat:"lingerie", img:"images/1386504.jpg", name:"Top", brand:"Lingerie", price:170, priceText:"$170" }, 
+  { id:288, cat:"lingerie", img:"images/1386504.jpg", name:"Top", brand:"Lingerie", price:170, priceText:"$170" },
   { id:289, cat:"lingerie", img:"images/1386625.jpg", name:"Panties", brand:"Lingerie", price:130, priceText:"$130" },
-  { id:290, cat:"lingerie", img:"images/1392877.jpg", name:"Top", brand:"Lingerie", price:120, priceText:"$120" }, 
+  { id:290, cat:"lingerie", img:"images/1392877.jpg", name:"Top", brand:"Lingerie", price:120, priceText:"$120" },
   { id:291, cat:"lingerie", img:"images/1393279.jpg", name:"Panties", brand:"Lingerie", price:190, priceText:"$190" },
-  { id:292, cat:"lingerie", img:"images/1393277.jpg", name:"Top", brand:"Lingerie", price:190, priceText:"$190" }, 
-  { id:293, cat:"lingerie", img:"images/1395046.jpg", name:"Garter Belt", brand:"Lingerie", price:620, priceText:"$620" }, 
-  { id:294, cat:"lingerie", img:"images/1394303.jpg", name:"Panties", brand:"Lingerie", price:290, priceText:"$290" }, 
+  { id:292, cat:"lingerie", img:"images/1393277.jpg", name:"Top", brand:"Lingerie", price:190, priceText:"$190" },
+  { id:293, cat:"lingerie", img:"images/1395046.jpg", name:"Garter Belt", brand:"Lingerie", price:620, priceText:"$620" },
+  { id:294, cat:"lingerie", img:"images/1394303.jpg", name:"Panties", brand:"Lingerie", price:290, priceText:"$290" },
   { id:295, cat:"lingerie", img:"images/1392196.jpg", name:"Corset", brand:"Lingerie", price:980, priceText:"$980" },
-  { id:296, cat:"lingerie", img:"images/1392316.jpg", name:"Corset", brand:"Lingerie", price:1430, priceText:"$1,430" }, 
+  { id:296, cat:"lingerie", img:"images/1392316.jpg", name:"Corset", brand:"Lingerie", price:1430, priceText:"$1,430" },
   { id:297, cat:"lingerie", img:"images/1392297.jpg", name:"Bra", brand:"Lingerie", price:340, priceText:"$340" },
-  { id:298, cat:"lingerie", img:"images/1392128.jpg", name:"Garter Belt", brand:"Lingerie", price:190, priceText:"$190" }, 
+  { id:298, cat:"lingerie", img:"images/1392128.jpg", name:"Garter Belt", brand:"Lingerie", price:190, priceText:"$190" },
   { id:299, cat:"lingerie", img:"images/1392181.jpg", name:"Panties", brand:"Lingerie", price:120, priceText:"$120" },
-  { id:300, cat:"lingerie", img:"images/1391087.jpg", name:"Corset", brand:"Lingerie", price:1230, priceText:"$1,230" }, 
+  { id:300, cat:"lingerie", img:"images/1391087.jpg", name:"Corset", brand:"Lingerie", price:1230, priceText:"$1,230" },
   { id:301, cat:"lingerie", img:"images/1391031.jpg", name:"Bra", brand:"Lingerie", price:320, priceText:"$320" },
-  { id:302, cat:"lingerie", img:"images/1390590.jpg", name:"Garter Belt", brand:"Lingerie", price:460, priceText:"$460" }, 
+  { id:302, cat:"lingerie", img:"images/1390590.jpg", name:"Garter Belt", brand:"Lingerie", price:460, priceText:"$460" },
   { id:303, cat:"lingerie", img:"images/1389233.jpg", name:"Garter Belt", brand:"Lingerie", price:460, priceText:"$460" },
-  { id:304, cat:"lingerie", img:"images/1389497.jpg", name:"Roleplay Set", brand:"Lingerie", price:700, priceText:"$700" }, 
-  { id:305, cat:"lingerie", img:"images/1388609.jpg", name:"Corset", brand:"Lingerie", price:1750, priceText:"$1,750" }, 
+  { id:304, cat:"lingerie", img:"images/1389497.jpg", name:"Roleplay Set", brand:"Lingerie", price:700, priceText:"$700" },
+  { id:305, cat:"lingerie", img:"images/1388609.jpg", name:"Corset", brand:"Lingerie", price:1750, priceText:"$1,750" },
   { id:306, cat:"lingerie", img:"images/1385048.jpg", name:"Garter Belt", brand:"Lingerie", price:440, priceText:"$440" },
-  { id:307, cat:"lingerie", img:"images/1392486.jpg", name:"Garter Belt", brand:"Lingerie", price:240, priceText:"$240" }, 
+  { id:307, cat:"lingerie", img:"images/1392486.jpg", name:"Garter Belt", brand:"Lingerie", price:240, priceText:"$240" },
   { id:308, cat:"lingerie", img:"images/1392506.jpg", name:"Corset", brand:"Lingerie", price:730, priceText:"$730" },
-  { id:309, cat:"lingerie", img:"images/1387313.jpg", name:"Bra", brand:"Lingerie", price:440, priceText:"$440" }, 
+  { id:309, cat:"lingerie", img:"images/1387313.jpg", name:"Bra", brand:"Lingerie", price:440, priceText:"$440" },
   { id:310, cat:"lingerie", img:"images/1387267.jpg", name:"Panties", brand:"Lingerie", price:400, priceText:"$400" },
-  { id:311, cat:"lingerie", img:"images/1387748.jpg", name:"Garter Belt", brand:"Lingerie", price:730, priceText:"$730" }, 
+  { id:311, cat:"lingerie", img:"images/1387748.jpg", name:"Garter Belt", brand:"Lingerie", price:730, priceText:"$730" },
   { id:312, cat:"travel", img:"images/Glowing.jpg", name:"Shanghai", brand:"Travel", price:15000, priceText:"$45,000" },
-  { id:313, cat:"travel", img:"images/gavai.jpg", name:"Hawaii", brand:"Travel", price:20000, priceText:"$50,000" }, 
+  { id:313, cat:"travel", img:"images/gavai.jpg", name:"Hawaii", brand:"Travel", price:20000, priceText:"$50,000" },
   { id:314, cat:"travel", img:"images/This.jpg", name:"Maldives", brand:"Travel", price:125000, priceText:"$125,000" },
-  { id:315, cat:"travel", img:"images/Fiji.jpg", name:"Fiji", brand:"Travel", price:160000, priceText:"$160,000" }, 
+  { id:315, cat:"travel", img:"images/Fiji.jpg", name:"Fiji", brand:"Travel", price:160000, priceText:"$160,000" },
   { id:316, cat:"travel", img:"images/Borabora.jpg", name:"Bora Bora", brand:"Travel", price:70000, priceText:"$70,000" },
   { id:317, cat:"travel", img:"images/Australia.jpg", name:"Australia", brand:"Travel", price:60000, priceText:"$60,000" },
-  { id:318, cat:"travel", img:"images/291959988371707655.jpg", name:"Brazil", brand:"Travel", price:55000, priceText:"$55,000" }, 
-  { id:319, cat:"travel", img:"images/245305510949338308.jpg", name:"Italy", brand:"Travel", price:60000, priceText:"$60,000" }, 
+  { id:318, cat:"travel", img:"images/291959988371707655.jpg", name:"Brazil", brand:"Travel", price:55000, priceText:"$55,000" },
+  { id:319, cat:"travel", img:"images/245305510949338308.jpg", name:"Italy", brand:"Travel", price:60000, priceText:"$60,000" },
   { id:320, cat:"travel", img:"images/RTYUI.jpg", name:"Greece", brand:"Travel", price:55000, priceText:"$55,000" },
-  { id:321, cat:"tech", img:"images/silver.jpg", name:"iphone", brand:"Tech", price:2000, priceText:"$2,000" }, 
+  { id:321, cat:"tech", img:"images/silver.jpg", name:"iphone", brand:"Tech", price:2000, priceText:"$2,000" },
   { id:322, cat:"tech", img:"images/stand.jpg", name:"Studio Display", brand:"Tech", price:3600, priceText:"$3,600" },
   { id:323, cat:"tech", img:"images/macbook.jpg", name:"Macbook", brand:"Tech", price:7350, priceText:"$7,350" },
-  { id:324, cat:"tech", img:"images/imac.jpg", name:"iMac", brand:"Tech", price:3000, priceText:"$3,000" }, 
+  { id:324, cat:"tech", img:"images/imac.jpg", name:"iMac", brand:"Tech", price:3000, priceText:"$3,000" },
   { id:325, cat:"tech", img:"images/airpods.jpg", name:"AirPods", brand:"Tech", price:250, priceText:"$250" },
   { id:326, cat:"tech", img:"images/ipad.jpg", name:"iPad", brand:"Tech", price:3000, priceText:"$3,000" },
   { id:327, cat:"tech", img:"images/air.jpg", name:"AirPods", brand:"Tech", price:550, priceText:"$550" },
-  { id:328, cat:"tech", img:"images/air1.jpg", name:"AirPods", brand:"Tech", price:550, priceText:"$550" }, 
-  { id:329, cat:"tech", img:"images/s11.jpg", name:"Watch", brand:"Tech", price:700, priceText:"$700" }, 
+  { id:328, cat:"tech", img:"images/air1.jpg", name:"AirPods", brand:"Tech", price:550, priceText:"$550" },
+  { id:329, cat:"tech", img:"images/s11.jpg", name:"Watch", brand:"Tech", price:700, priceText:"$700" },
   { id:330, cat:"money", img:"images/62135669853949392.jpg", name:"", brand:"Money", price:100, priceText:"$100" },
   { id:331, cat:"money", img:"images/Dollars.jpg", name:"", brand:"Money", price:500, priceText:"$500" },
-  { id:332, cat:"money", img:"images/613052568059365781.jpg", name:"", brand:"Money", price:50000, priceText:"$50,000" }, 
+  { id:332, cat:"money", img:"images/613052568059365781.jpg", name:"", brand:"Money", price:50000, priceText:"$50,000" },
   { id:333, cat:"money", img:"images/21.jpg", name:"", brand:"Money", price:4000, priceText:"$4,000" },
-  { id:334, cat:"money", img:"images/885098133037376432.jpg", name:"", brand:"Money", price:2000, priceText:"$2,000" }, 
-  { id:335, cat:"money", img:"images/266345765459728515.jpg", name:"", brand:"Money", price:80000, priceText:"$80,000" }, 
+  { id:334, cat:"money", img:"images/885098133037376432.jpg", name:"", brand:"Money", price:2000, priceText:"$2,000" },
+  { id:335, cat:"money", img:"images/266345765459728515.jpg", name:"", brand:"Money", price:80000, priceText:"$80,000" },
   { id:336, cat:"lingerie", img:"images/1391059.jpg", name:"Robe", brand:"Lingerie", price:1670, priceText:"$1,670" },
-  { id:337, cat:"money", img:"images/1012254453756478536.jpg", name:"", brand:"Money", price:300000, priceText:"$300,000" }, 
-  { id:338, cat:"money", img:"images/1009721178968998357.jpg", name:"", brand:"Money", price:200000, priceText:"$200,000" }, 
-  { id:339, cat:"money", img:"images/450571137731144566.jpg", name:"", brand:"Money", price:1000, priceText:"$1,000" }, 
+  { id:337, cat:"money", img:"images/1012254453756478536.jpg", name:"", brand:"Money", price:300000, priceText:"$300,000" },
+  { id:338, cat:"money", img:"images/1009721178968998357.jpg", name:"", brand:"Money", price:200000, priceText:"$200,000" },
+  { id:339, cat:"money", img:"images/450571137731144566.jpg", name:"", brand:"Money", price:1000, priceText:"$1,000" },
   { id:340, cat:"money", img:"images/458663543321673319.jpg", name:"", brand:"Money", price:10000, priceText:"$10,000" },
-  { id:341, cat:"money", img:"images/732327589454911927.jpg", name:"", brand:"Money", price:100000, priceText:"$100,000" }, 
-  { id:342, cat:"money", img:"images/795518721712068753.jpg", name:"", brand:"Money", price:25000, priceText:"$25,000" }, 
-  { id:343, cat:"money", img:"images/618963542582855937.jpg", name:"", brand:"Money", price:500000, priceText:"$500,000" }, 
-  { id:344, cat:"money", img:"images/895231232204139176.jpg", name:"", brand:"Money", price:1000000, priceText:"$1,000,000" }, 
+  { id:341, cat:"money", img:"images/732327589454911927.jpg", name:"", brand:"Money", price:100000, priceText:"$100,000" },
+  { id:342, cat:"money", img:"images/795518721712068753.jpg", name:"", brand:"Money", price:25000, priceText:"$25,000" },
+  { id:343, cat:"money", img:"images/618963542582855937.jpg", name:"", brand:"Money", price:500000, priceText:"$500,000" },
+  { id:344, cat:"money", img:"images/895231232204139176.jpg", name:"", brand:"Money", price:1000000, priceText:"$1,000,000" },
 ];
 
 const KEY = 'wl_cart_v3';
+const CAT_KEY = 'wl_cat_v1';
 let cart = [];
 let currentCat = 'all';
 let sortDir = 'asc';
@@ -1099,7 +1038,6 @@ function renderDrawer() {
 function openDrawer()  { renderDrawer(); document.getElementById('drawer').classList.add('open'); document.getElementById('ov').classList.add('open'); }
 function closeDrawer() { document.getElementById('drawer').classList.remove('open'); document.getElementById('ov').classList.remove('open'); }
 
-/* ── Grid interactions ── */
 document.getElementById('grid').addEventListener('click', e => {
   const btn = e.target.closest('.gift-btn'); if (!btn) return;
   const t = T[lang], id = +btn.dataset.id;
@@ -1119,7 +1057,6 @@ document.getElementById('grid').addEventListener('click', e => {
   saveCart(); updateBadge();
 });
 
-/* ── Drawer interactions ── */
 document.getElementById('drawerItems').addEventListener('click', e => {
   const btn = e.target.closest('[data-action]'); if (!btn) return;
   const id = +btn.dataset.id, idx = cart.findIndex(c => c.id === id); if (idx < 0) return;
@@ -1133,7 +1070,6 @@ document.getElementById('cartBtn').addEventListener('click', openDrawer);
 document.getElementById('closeDrawer').addEventListener('click', closeDrawer);
 document.getElementById('ov').addEventListener('click', closeDrawer);
 
-/* ── Checkout ── */
 document.getElementById('coBtn').addEventListener('click', () => {
   const t = T[lang];
   closeDrawer();
@@ -1160,16 +1096,15 @@ document.getElementById('closeSuccess').addEventListener('click', () => {
   document.getElementById('f_msg').value = '';
 });
 
-/* ── Category filter ── */
 document.getElementById('cats').addEventListener('click', e => {
   const btn = e.target.closest('.cat-btn'); if (!btn) return;
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   currentCat = btn.dataset.cat;
+  try { localStorage.setItem(CAT_KEY, currentCat); } catch {}
   renderGrid();
 });
 
-/* ── Sort ── */
 document.getElementById('sortAsc').addEventListener('click', () => {
   sortDir = 'asc';
   document.getElementById('sortAsc').classList.add('active');
@@ -1183,7 +1118,6 @@ document.getElementById('sortDesc').addEventListener('click', () => {
   renderGrid();
 });
 
-/* ── Policy texts ── */
 const POLICIES = {
   privacy: { title:'Privacy Policy', body:`<p style="font-size:.68rem;color:var(--text-muted);margin-bottom:1.2rem">Last updated: 18 February 2026</p><p>This Privacy Policy explains how we collect, use, and protect your personal information when you use this website.</p><h3>1. Information We Collect</h3><p>We may collect: name and email (if provided), optional message content, payment confirmation details, IP address, browser/device info, and cookies.</p><h3>2. How We Use Your Information</h3><p>To process payments, communicate with you, provide support, and prevent fraud.</p><h3>3. Payment Processing</h3><p>Payments are processed securely by Volet. We do not store card details.</p><h3>4. Data Retention</h3><p>Retained only as long as necessary. You may request deletion by contacting us.</p><h3>5. Cookies</h3><p>We use browser localStorage for language preferences and session data only. No third-party tracking.</p><h3>6. Age Restriction</h3><p>This site is for individuals aged 18+.</p><h3>7. Contact</h3><p><strong>supp.wishme@gmail.com</strong><br>Telegram: <strong>@suppwishme</strong></p>` },
   terms:   { title:'Terms of Service', body:`<p style="font-size:.68rem;color:var(--text-muted);margin-bottom:1.2rem">Last updated: 18 February 2026</p><p>By accessing this website or completing a payment, you agree to these Terms.</p><h3>1. Nature of Service</h3><p>This is a personal wishlist platform. Contributions are voluntary. We do not sell or ship physical goods.</p><h3>2. Payments</h3><p>Processed securely via Volet. By completing a payment you confirm you are authorised to use the selected method and that the contribution is voluntary.</p><h3>3. Age Restriction</h3><p>You confirm you are at least 18 years old.</p><h3>4. Limitation of Liability</h3><p>This site is provided "as is". We are not responsible for temporary service interruptions.</p><h3>5. Contact</h3><p><strong>supp.wishme@gmail.com</strong><br>Telegram: <strong>@suppwishme</strong></p>` },
@@ -1201,7 +1135,6 @@ document.getElementById('policyOv').addEventListener('click', e => {
   if (e.target === document.getElementById('policyOv')) closePolicy();
 });
 
-/* ── Contact form ── */
 document.getElementById('cfSend').addEventListener('click', () => {
   const name  = document.getElementById('cfName').value.trim();
   const email = document.getElementById('cfEmail').value.trim();
@@ -1217,7 +1150,21 @@ document.getElementById('cfSend').addEventListener('click', () => {
 });
 
 /* ── Init ── */
-loadCart(); applyLang(); renderGrid(); updateBadge();
+loadCart(); applyLang();
+(function() {
+  try {
+    var saved = localStorage.getItem(CAT_KEY);
+    if (saved) {
+      currentCat = saved;
+      var catBtn = document.querySelector('.cat-btn[data-cat="' + saved + '"]');
+      if (catBtn) {
+        document.querySelectorAll('.cat-btn').forEach(function(b){ b.classList.remove('active'); });
+        catBtn.classList.add('active');
+      }
+    }
+  } catch(e) {}
+})();
+renderGrid(); updateBadge();
 </script>
 </body>
 </html>

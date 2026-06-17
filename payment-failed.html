@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment Failed — Wish Me ✨</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #c9a84c; --gold-light: #e8d5a3; --gold-dark: #8a6a1f;
+  --bg: #0a0a0f; --bg2: #11111a; --card-bg: #16161f;
+  --text: #f0ead8; --text-muted: #7a7060; --rose: #c47a6a;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 300; min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column; }
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; background-image: radial-gradient(1px 1px at 10% 15%, rgba(201,168,76,.6) 0%, transparent 100%), radial-gradient(1px 1px at 30% 40%, rgba(255,255,255,.4) 0%, transparent 100%), radial-gradient(1.5px 1.5px at 50% 10%, rgba(201,168,76,.5) 0%, transparent 100%), radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,.3) 0%, transparent 100%), radial-gradient(1px 1px at 85% 25%, rgba(201,168,76,.4) 0%, transparent 100%), radial-gradient(1px 1px at 20% 75%, rgba(255,255,255,.3) 0%, transparent 100%); animation: twinkle 8s ease-in-out infinite alternate; }
+@keyframes twinkle { 0%{opacity:.6} 100%{opacity:1} }
+header { position: relative; z-index: 10; background: linear-gradient(180deg, rgba(10,10,15,.98) 0%, rgba(10,10,15,.88) 100%); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(201,168,76,.15); padding: 0 2.5rem; display: flex; align-items: center; height: 78px; }
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 300; font-style: italic; letter-spacing: .08em; background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-decoration: none; }
+.logo b { font-style: normal; font-weight: 600; }
+main { flex: 1; position: relative; z-index: 1; display: flex; align-items: center; justify-content: center; padding: 4rem 1.5rem; }
+.card { background: var(--card-bg); border: 1px solid rgba(196,122,106,.22); border-radius: 2px; max-width: 520px; width: 100%; padding: 3.5rem 3rem; text-align: center; box-shadow: 0 0 60px rgba(196,122,106,.04), 0 20px 60px rgba(0,0,0,.5); animation: fadeUp .7s ease-out forwards; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:none} }
+.icon-wrap { width: 80px; height: 80px; border-radius: 50%; background: rgba(196,122,106,.1); border: 1px solid rgba(196,122,106,.28); display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem; font-size: 2.2rem; }
+.eyebrow { font-size: .58rem; letter-spacing: .35em; text-transform: uppercase; color: var(--rose); margin-bottom: .8rem; }
+h1 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; font-style: italic; color: var(--gold-light); line-height: 1.1; margin-bottom: 1rem; }
+.divider { width: 50px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 1.4rem auto; }
+.desc { font-size: .78rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1.8rem; }
+.desc strong { color: var(--text); font-weight: 400; }
+.contact-note { font-size: .62rem; letter-spacing: .06em; color: var(--text-muted); line-height: 1.7; }
+.contact-note a { color: var(--gold-light); text-decoration: none; transition: color .2s; }
+.contact-note a:hover { color: var(--gold); }
+.btn-row { display: flex; gap: .8rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap; }
+.back-btn { background: linear-gradient(135deg, var(--gold), var(--gold-dark)); border: none; color: #0a0a0f; font-family: 'Montserrat', sans-serif; font-size: .62rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; padding: .9rem 2rem; border-radius: 1px; cursor: pointer; text-decoration: none; transition: all .3s; display: inline-block; }
+.back-btn:hover { box-shadow: 0 6px 25px rgba(201,168,76,.4); transform: translateY(-1px); }
+.try-btn { background: none; border: 1px solid rgba(201,168,76,.25); color: var(--text-muted); font-family: 'Montserrat', sans-serif; font-size: .62rem; letter-spacing: .22em; text-transform: uppercase; padding: .9rem 2rem; border-radius: 1px; cursor: pointer; text-decoration: none; transition: all .3s; display: inline-block; }
+.try-btn:hover { border-color: var(--gold); color: var(--text); }
+footer { position: relative; z-index: 1; border-top: 1px solid rgba(201,168,76,.1); padding: 1.8rem 2.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+.footer-copy { font-size: .56rem; color: var(--text-muted); letter-spacing: .08em; }
+.footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-links a { color: var(--text-muted); font-size: .56rem; letter-spacing: .08em; text-decoration: none; transition: color .2s; }
+.footer-links a:hover { color: var(--gold); }
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo"><b>Wish</b> Me</a>
+</header>
+<main>
+  <div class="card">
+    <div class="icon-wrap">🌙</div>
+    <div class="eyebrow" id="t-eyebrow"></div>
+    <h1 id="t-title"></h1>
+    <div class="divider"></div>
+    <p class="desc" id="t-desc"></p>
+    <p class="contact-note">
+      <span id="t-contact"></span><br>
+      <a href="mailto:supp.wishme@gmail.com">supp.wishme@gmail.com</a>
+    </p>
+    <div class="btn-row">
+      <a href="javascript:history.back()" class="back-btn" id="t-try"></a>
+      <a href="index.html" class="try-btn" id="t-back"></a>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="footer-copy">© 2025 Wish Me. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#" id="t-privacy"></a>
+    <a href="#" id="t-terms"></a>
+    <a href="#" id="t-refund"></a>
+  </div>
+</footer>
+<script>
+const T = {
+  en: { eyebrow:"✦ Something went wrong ✦", title:"Payment Failed", desc:"Your transaction was not completed.<br><strong>Please try again</strong> or use a different payment method.", contact:"Need help? We're here for you:", try:"Try Again ✦", back:"← Back to Wishes", privacy:"Privacy Policy", terms:"Terms of Service", refund:"Refund Policy" },
+  ru: { eyebrow:"✦ Что-то пошло не так ✦", title:"Ошибка оплаты", desc:"Транзакция не была завершена.<br><strong>Попробуйте ещё раз</strong> или используйте другой способ оплаты.", contact:"Нужна помощь? Мы здесь:", try:"Попробовать снова ✦", back:"← Назад к желаниям", privacy:"Политика конфиденциальности", terms:"Условия использования", refund:"Политика возврата" },
+  zh: { eyebrow:"✦ 出现了问题 ✦", title:"付款失败", desc:"您的交易未能完成。<br><strong>请重试</strong> 或使用其他付款方式。", contact:"需要帮助？联系我们：", try:"重试 ✦", back:"← 返回心愿", privacy:"隐私政策", terms:"服务条款", refund:"退款政策" },
+  ar: { eyebrow:"✦ حدث خطأ ما ✦", title:"فشل الدفع", desc:"لم تكتمل معاملتك.<br><strong>يرجى المحاولة مرة أخرى</strong> أو استخدام طريقة دفع مختلفة.", contact:"هل تحتاج مساعدة؟ نحن هنا:", try:"حاول مجدداً ✦", back:"← العودة إلى الأمنيات", privacy:"سياسة الخصوصية", terms:"شروط الخدمة", refund:"سياسة الاسترداد" },
+  fr: { eyebrow:"✦ Quelque chose a mal tourné ✦", title:"Paiement échoué", desc:"Votre transaction n'a pas abouti.<br><strong>Veuillez réessayer</strong> ou utiliser un autre mode de paiement.", contact:"Besoin d'aide ? Contactez-nous :", try:"Réessayer ✦", back:"← Retour aux désirs", privacy:"Politique de confidentialité", terms:"Conditions d'utilisation", refund:"Politique de remboursement" },
+  es: { eyebrow:"✦ Algo salió mal ✦", title:"Pago fallido", desc:"Tu transacción no se completó.<br><strong>Por favor intenta de nuevo</strong> o usa otro método de pago.", contact:"¿Necesitas ayuda? Contáctanos:", try:"Intentar de nuevo ✦", back:"← Volver a los deseos", privacy:"Política de privacidad", terms:"Términos de servicio", refund:"Política de reembolso" },
+  de: { eyebrow:"✦ Etwas ist schiefgelaufen ✦", title:"Zahlung fehlgeschlagen", desc:"Deine Transaktion wurde nicht abgeschlossen.<br><strong>Bitte versuche es erneut</strong> oder verwende eine andere Zahlungsmethode.", contact:"Brauchst du Hilfe? Wir sind da:", try:"Erneut versuchen ✦", back:"← Zurück zu den Wünschen", privacy:"Datenschutzrichtlinie", terms:"Nutzungsbedingungen", refund:"Rückgaberecht" },
+  ja: { eyebrow:"✦ 問題が発生しました ✦", title:"お支払い失敗", desc:"取引が完了しませんでした。<br><strong>もう一度お試しください</strong>、または別のお支払い方法をご使用ください。", contact:"お困りですか？ご連絡ください：", try:"再試行 ✦", back:"← ウィッシュに戻る", privacy:"プライバシーポリシー", terms:"利用規約", refund:"返金ポリシー" },
+};
+
+const lang = localStorage.getItem('wl_lang_v1') || 'en';
+const t = T[lang] || T.en;
+document.body.style.direction = lang === 'ar' ? 'rtl' : 'ltr';
+document.getElementById('t-eyebrow').textContent = t.eyebrow;
+document.getElementById('t-title').textContent = t.title;
+document.getElementById('t-desc').innerHTML = t.desc;
+document.getElementById('t-contact').textContent = t.contact;
+document.getElementById('t-try').textContent = t.try;
+document.getElementById('t-back').textContent = t.back;
+document.getElementById('t-privacy').textContent = t.privacy;
+document.getElementById('t-terms').textContent = t.terms;
+document.getElementById('t-refund').textContent = t.refund;
+</script>
+</body>
+</html>

@@ -232,16 +232,8 @@ header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180
 .sdot { width:6px; height:6px; border-radius:50%; background:rgba(201,168,76,.25); cursor:pointer; transition:background .2s,transform .2s; }
 .sdot.active { background:var(--gold); transform:scale(1.3); }
 
-.about-contact { background:var(--card-bg); border:1px solid rgba(201,168,76,.12); border-radius:2px; padding:2.2rem 2rem; text-align:center; }
-.about-contact-title { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-style:italic; color:var(--gold-light); margin-bottom:.5rem; }
-.about-contact-sub { font-size:.68rem; color:var(--text-muted); margin-bottom:1.3rem; line-height:1.7; }
-.contact-links { display:flex; gap:.8rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.5rem; }
-.contact-link { display:flex; align-items:center; gap:.5rem; background:rgba(201,168,76,.06); border:1px solid rgba(201,168,76,.18); border-radius:2px; padding:.6rem 1.2rem; color:var(--gold-light); font-size:.66rem; letter-spacing:.1em; text-decoration:none; transition:all .25s; }
-.contact-link:hover { background:rgba(201,168,76,.12); border-color:var(--gold); color:var(--gold); }
-.browse-btn { background:linear-gradient(135deg,var(--gold),var(--gold-dark)); border:none; color:#0a0a0f; font-family:'Montserrat',sans-serif; font-size:.63rem; font-weight:500; letter-spacing:.22em; text-transform:uppercase; padding:.9rem 2.4rem; border-radius:1px; cursor:pointer; transition:all .3s; }
-.browse-btn:hover { box-shadow:0 6px 25px rgba(201,168,76,.4); transform:translateY(-1px); }
 @media(max-width:768px){ .about-steps{grid-template-columns:1fr;} .slide{flex:0 0 calc(50% - .5rem);} }
-@media(max-width:600px){ .about-section{padding:0 .8rem 4rem;} .slide{flex:0 0 calc(100%);} .contact-links{flex-direction:column;align-items:center;} }
+@media(max-width:600px){ .about-section{padding:0 .8rem 4rem;} .slide{flex:0 0 calc(100%);} }
 @media(max-width:600px){
   header { padding: 0 1.2rem; }
   .grid { grid-template-columns: repeat(2, 1fr); padding: 0 .8rem 4rem; gap: .8rem; }
@@ -354,16 +346,6 @@ header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180
     <button class="slide-btn" id="slidePrev">‹</button>
     <div class="slides-dots" id="slidesDots"></div>
     <button class="slide-btn" id="slideNext">›</button>
-  </div>
-
-  <div class="about-contact" style="margin-top:2.5rem">
-    <div class="about-contact-title" id="ab-contact-title"></div>
-    <div class="about-contact-sub" id="ab-contact-sub"></div>
-    <div class="contact-links">
-      <a href="mailto:supp.wishme@gmail.com" class="contact-link">✉️ supp.wishme@gmail.com</a>
-      <a href="https://t.me/suppwishme" target="_blank" class="contact-link">✈️ @suppwishme</a>
-    </div>
-    <button class="browse-btn" id="ab-browse-btn" onclick="switchToAll()"></button>
   </div>
 
 </div>
@@ -1175,39 +1157,30 @@ document.getElementById('cfSend').addEventListener('click', () => {
   sent.style.display = 'inline';
   setTimeout(() => { sent.style.display = 'none'; }, 3000);
 });
-// ══ ABOUT — переводы (добавить в объект T каждого языка) ══
-// Добавить в каждый язык эти ключи:
-
-/*
-  cat_about: "✨ About",   // EN
-  ab_title: "Welcome to Wish Me ✨",
-  ab_intro: "This is my personal wishlist — a place where you can discover the things I truly love and send me a gift as a voluntary gesture. Every item here is curated with care and reflects my genuine desires.",
-  ab_note: "✦ Please note: any gift is a completely voluntary gesture. I am free to decide how I use received funds at my own discretion. By gifting, you confirm you understand and accept this.",
-  ab_s1_title: "Browse the Wishlist",
-  ab_s1_desc: "Explore categories — flowers, jewelry, bags, travel, and more. Find something that feels right.",
-  ab_s2_title: "Add to Your Gift",
-  ab_s2_desc: "Click the Gift button on any item. You can add several items at once and see the total.",
-  ab_s3_title: "Complete the Payment",
-  ab_s3_desc: "Leave a warm message if you like, then proceed to secure payment. Done — the gift is on its way!",
-  ab_slides_lbl: "✦ Explore by Category ✦",
-  ab_contact_title: "Questions?",
-  ab_contact_sub: "Reach out anytime — I'm always happy to help.",
-  ab_browse: "✦ Browse All Gifts",
-*/
+const AB = {
+  en: { ab_title:"Welcome to Wish Me ✨", ab_intro:"This is my personal wishlist — a place where you can discover the things I truly love and send me a gift as a voluntary gesture. Every item here is curated with care and reflects my genuine desires.", ab_note:"✦ Please note: any gift is a completely voluntary gesture. I am free to decide how I use received funds at my own discretion. By gifting, you confirm you understand and accept this.", ab_s1_title:"Choose a Gift", ab_s1_desc:"Browse the categories and pick something that feels right to you.", ab_s2_title:"Add to Cart", ab_s2_desc:"Click the Gift button — you can add several items and see the total.", ab_s3_title:"Pay by Card or Crypto", ab_s3_desc:"Leave a warm message if you like, then complete secure payment.", ab_slides_lbl:"✦ Explore by Category ✦" },
+  ru: { ab_title:"Добро пожаловать в Wish Me ✨", ab_intro:"Это мой личный вишлист — место, где вы можете найти вещи, которые мне действительно нравятся, и отправить подарок как добровольный жест. Каждый товар подобран с любовью.", ab_note:"✦ Обращаю внимание: любой подарок — это полностью добровольный жест. Я вправе самостоятельно решать, как распоряжаться полученными средствами по своему усмотрению. Делая подарок, вы подтверждаете, что понимаете и принимаете это.", ab_s1_title:"Выбери подарок", ab_s1_desc:"Просмотри категории и найди то, что откликается именно тебе.", ab_s2_title:"Добавь в корзину", ab_s2_desc:"Нажми кнопку «Подарить» — можно добавить несколько товаров и увидеть общую сумму.", ab_s3_title:"Оплати картой или криптой", ab_s3_desc:"Оставь тёплое пожелание, если хочешь, и перейди к безопасной оплате.", ab_slides_lbl:"✦ Категории ✦" },
+  zh: { ab_title:"欢迎来到 Wish Me ✨", ab_intro:"这是我的个人心愿单——在这里您可以发现我真正喜欢的东西，并以自愿的方式送我礼物。每件商品都是精心挑选的。", ab_note:"✦ 请注意：任何礼物都是完全自愿的行为。我有权自行决定如何使用所收到的资金。送礼即表示您理解并接受这一点。", ab_s1_title:"选择礼物", ab_s1_desc:"浏览各个类别，找到适合的礼物。", ab_s2_title:"添加到购物车", ab_s2_desc:"点击礼物按钮——可以添加多件商品并查看总额。", ab_s3_title:"使用卡片或加密货币支付", ab_s3_desc:"如果愿意，留下温馨留言，然后进行安全支付。", ab_slides_lbl:"✦ 按类别探索 ✦" },
+  ar: { ab_title:"مرحباً بك في Wish Me ✨", ab_intro:"هذه قائمة أمنياتي الشخصية — مكان يمكنك فيه اكتشاف الأشياء التي أحبها وإرسال هدية كإيماءة طوعية. كل عنصر مختار بعناية.", ab_note:"✦ يرجى ملاحظة: أي هدية هي إيماءة طوعية تماماً. لي الحرية الكاملة في تحديد كيفية التصرف في المبالغ المستلمة وفق تقديري الخاص. بالإهداء تؤكد فهمك وقبولك لذلك.", ab_s1_title:"اختر هدية", ab_s1_desc:"تصفح الفئات واختر ما يناسبك.", ab_s2_title:"أضف إلى السلة", ab_s2_desc:"انقر على زر الهدية — يمكنك إضافة عناصر متعددة ومشاهدة الإجمالي.", ab_s3_title:"الدفع بالبطاقة أو العملات المشفرة", ab_s3_desc:"اترك رسالة دافئة إن أردت، ثم أكمل الدفع الآمن.", ab_slides_lbl:"✦ استكشف حسب الفئة ✦" },
+  fr: { ab_title:"Bienvenue sur Wish Me ✨", ab_intro:"Voici ma liste de souhaits personnelle — un endroit où vous pouvez découvrir les choses que j'aime vraiment et m'envoyer un cadeau comme geste volontaire. Chaque article est sélectionné avec soin.", ab_note:"✦ À noter : tout cadeau est un geste entièrement volontaire. Je suis libre de décider comment utiliser les fonds reçus à ma propre discrétion. En offrant, vous confirmez comprendre et accepter cela.", ab_s1_title:"Choisissez un cadeau", ab_s1_desc:"Parcourez les catégories et trouvez ce qui vous plaît.", ab_s2_title:"Ajoutez au panier", ab_s2_desc:"Cliquez sur le bouton Offrir — vous pouvez ajouter plusieurs articles et voir le total.", ab_s3_title:"Payez par carte ou crypto", ab_s3_desc:"Laissez un message chaleureux si vous le souhaitez, puis finalisez le paiement sécurisé.", ab_slides_lbl:"✦ Explorer par Catégorie ✦" },
+  es: { ab_title:"Bienvenido a Wish Me ✨", ab_intro:"Esta es mi lista de deseos personal — un lugar donde puedes descubrir las cosas que realmente me encantan y enviarme un regalo como gesto voluntario. Cada artículo está elegido con cuidado.", ab_note:"✦ Ten en cuenta: cualquier regalo es un gesto completamente voluntario. Soy libre de decidir cómo usar los fondos recibidos a mi propia discreción. Al regalar, confirmas que entiendes y aceptas esto.", ab_s1_title:"Elige un regalo", ab_s1_desc:"Explora las categorías y encuentra algo que te guste.", ab_s2_title:"Añade al carrito", ab_s2_desc:"Haz clic en el botón Regalar — puedes añadir varios artículos y ver el total.", ab_s3_title:"Paga con tarjeta o cripto", ab_s3_desc:"Deja un mensaje cálido si quieres y completa el pago seguro.", ab_slides_lbl:"✦ Explorar por Categoría ✦" },
+  de: { ab_title:"Willkommen bei Wish Me ✨", ab_intro:"Dies ist meine persönliche Wunschliste — ein Ort, wo du die Dinge entdecken kannst, die ich wirklich liebe, und mir als freiwillige Geste ein Geschenk schicken kannst. Jeder Artikel ist sorgfältig ausgewählt.", ab_note:"✦ Bitte beachte: Jedes Geschenk ist eine vollkommen freiwillige Geste. Ich bin frei, nach eigenem Ermessen zu entscheiden, wie ich erhaltene Mittel verwende. Mit dem Schenken bestätigst du, dass du dies verstehst und akzeptierst.", ab_s1_title:"Geschenk auswählen", ab_s1_desc:"Durchstöbere die Kategorien und finde, was dir gefällt.", ab_s2_title:"Zum Warenkorb hinzufügen", ab_s2_desc:"Klicke auf den Schenken-Button — du kannst mehrere Artikel hinzufügen und die Summe sehen.", ab_s3_title:"Mit Karte oder Krypto zahlen", ab_s3_desc:"Hinterlasse eine herzliche Nachricht und schließe die sichere Zahlung ab.", ab_slides_lbl:"✦ Nach Kategorie entdecken ✦" },
+  ja: { ab_title:"Wish Me へようこそ ✨", ab_intro:"これは私のパーソナルウィッシュリストです — 私が本当に好きなものを見つけて、自発的なジェスチャーとしてプレゼントを送れる場所です。すべてのアイテムは丁寧に選ばれています。", ab_note:"✦ ご注意：どのギフトも完全に自発的なジェスチャーです。受け取った資金の使い方は私自身の裁量で自由に決める権利があります。ギフトを送ることで、あなたはこれを理解し同意したことを確認します。", ab_s1_title:"ギフトを選ぶ", ab_s1_desc:"カテゴリを見て、気に入ったものを見つけてください。", ab_s2_title:"カートに追加", ab_s2_desc:"ギフトボタンをクリック — 複数追加でき、合計が表示されます。", ab_s3_title:"カードまたは暗号資産で支払う", ab_s3_desc:"温かいメッセージを残して、安全なお支払いを完了してください。", ab_slides_lbl:"✦ カテゴリで探す ✦" },
+};
 
 // ══ ABOUT JS functions (добавить в конец скрипта) ══
 
 const SLIDES = [
-  { cat:'flowers',    icon:'🌸', img:'',  label_en:'Flowers & Sweets',    label_ru:'Цветы и сладкое',    label_zh:'花卉与甜点',    label_ar:'الزهور والحلويات',    label_fr:'Fleurs & Douceurs',    label_es:'Flores y Dulces',    label_de:'Blumen & Süßes',    label_ja:'花とスイーツ' },
-  { cat:'jewelry',    icon:'💎', img:'',  label_en:'Jewelry & Watches',   label_ru:'Украшения и часы',   label_zh:'珠宝与腕表',    label_ar:'المجوهرات والساعات', label_fr:'Bijoux & Montres',    label_es:'Joyería y Relojes',  label_de:'Schmuck & Uhren',   label_ja:'ジュエリー＆時計' },
-  { cat:'bags',       icon:'👜', img:'',  label_en:'Bags',               label_ru:'Сумки',              label_zh:'包袋',          label_ar:'الحقائب',            label_fr:'Sacs',                label_es:'Bolsos',             label_de:'Taschen',           label_ja:'バッグ' },
-  { cat:'shoes',      icon:'👠', img:'',  label_en:'Shoes',              label_ru:'Обувь',              label_zh:'鞋子',          label_ar:'الأحذية',            label_fr:'Chaussures',          label_es:'Zapatos',            label_de:'Schuhe',            label_ja:'靴' },
-  { cat:'lingerie',   icon:'🩷', img:'',  label_en:'Lingerie',           label_ru:'Бельё',              label_zh:'内衣',          label_ar:'الملابس الداخلية',   label_fr:'Lingerie',            label_es:'Lencería',           label_de:'Dessous',           label_ja:'ランジェリー' },
-  { cat:'travel',     icon:'✈️', img:'',  label_en:'Travel',             label_ru:'Путешествия',        label_zh:'旅行',          label_ar:'السفر',              label_fr:'Voyage',              label_es:'Viajes',             label_de:'Reisen',            label_ja:'旅行' },
-  { cat:'cars',       icon:'🚗', img:'',  label_en:'Cars',               label_ru:'Авто',               label_zh:'汽车',          label_ar:'السيارات',           label_fr:'Voitures',            label_es:'Coches',             label_de:'Autos',             label_ja:'車' },
-  { cat:'tech',       icon:'📱', img:'',  label_en:'Tech',               label_ru:'Техника',            label_zh:'科技',          label_ar:'التقنية',            label_fr:'Tech',                label_es:'Tech',               label_de:'Tech',              label_ja:'テック' },
-  { cat:'realestate', icon:'🏠', img:'',  label_en:'Real Estate',        label_ru:'Недвижимость',       label_zh:'房产',          label_ar:'العقارات',           label_fr:'Immobilier',          label_es:'Inmuebles',          label_de:'Immobilien',        label_ja:'不動産' },
-  { cat:'money',      icon:'💰', img:'',  label_en:'Money',              label_ru:'Деньги',             label_zh:'金钱',          label_ar:'المال',              label_fr:'Argent',              label_es:'Dinero',             label_de:'Geld',              label_ja:'お金' },
+  { cat:'flowers',    icon:'🌸', img:'images/photo_2026-05-26_19-16-39.jpg.jpg',  label_en:'Flowers & Sweets',    label_ru:'Цветы и сладкое',    label_zh:'花卉与甜点',    label_ar:'الزهور والحلويات',    label_fr:'Fleurs & Douceurs',    label_es:'Flores y Dulces',    label_de:'Blumen & Süßes',    label_ja:'花とスイーツ' },
+  { cat:'jewelry',    icon:'💎', img:'images/1026398571341854816.jpg',  label_en:'Jewelry & Watches',   label_ru:'Украшения и часы',   label_zh:'珠宝与腕表',    label_ar:'المجوهرات والساعات', label_fr:'Bijoux & Montres',    label_es:'Joyería y Relojes',  label_de:'Schmuck & Uhren',   label_ja:'ジュエリー＆時計' },
+  { cat:'bags',       icon:'👜', img:'images/234046511878268636.jpg',  label_en:'Bags',               label_ru:'Сумки',              label_zh:'包袋',          label_ar:'الحقائب',            label_fr:'Sacs',                label_es:'Bolsos',             label_de:'Taschen',           label_ja:'バッグ' },
+  { cat:'shoes',      icon:'👠', img:'images/630855860345395369.jpg',  label_en:'Shoes',              label_ru:'Обувь',              label_zh:'鞋子',          label_ar:'الأحذية',            label_fr:'Chaussures',          label_es:'Zapatos',            label_de:'Schuhe',            label_ja:'靴' },
+  { cat:'lingerie',   icon:'🩷', img:'images/1392196.jpg',  label_en:'Lingerie',           label_ru:'Бельё',              label_zh:'内衣',          label_ar:'الملابس الداخلية',   label_fr:'Lingerie',            label_es:'Lencería',           label_de:'Dessous',           label_ja:'ランジェリー' },
+  { cat:'travel',     icon:'✈️', img:'images/This.jpg',  label_en:'Travel',             label_ru:'Путешествия',        label_zh:'旅行',          label_ar:'السفر',              label_fr:'Voyage',              label_es:'Viajes',             label_de:'Reisen',            label_ja:'旅行' },
+  { cat:'cars',       icon:'🚗', img:'images/photo_2026-05-26_19-04-43.jpg',  label_en:'Cars',               label_ru:'Авто',               label_zh:'汽车',          label_ar:'السيارات',           label_fr:'Voitures',            label_es:'Coches',             label_de:'Autos',             label_ja:'車' },
+  { cat:'tech',       icon:'📱', img:'images/silver.jpg',  label_en:'Tech',               label_ru:'Техника',            label_zh:'科技',          label_ar:'التقنية',            label_fr:'Tech',                label_es:'Tech',               label_de:'Tech',              label_ja:'テック' },
+  { cat:'realestate', icon:'🏠', img:'images/485544403597062175.jpg',  label_en:'Real Estate',        label_ru:'Недвижимость',       label_zh:'房产',          label_ar:'العقارات',           label_fr:'Immobilier',          label_es:'Inmuebles',          label_de:'Immobilien',        label_ja:'不動産' },
+  { cat:'money',      icon:'💰', img:'images/618963542582855937.jpg',  label_en:'Money',              label_ru:'Деньги',             label_zh:'金钱',          label_ar:'المال',              label_fr:'Argent',              label_es:'Dinero',             label_de:'Geld',              label_ja:'お金' },
 ];
 
 let slideIdx = 0;
@@ -1281,22 +1254,21 @@ document.getElementById('slideNext').addEventListener('click', () => goSlide(sli
 window.addEventListener('resize', () => updateSlider());
 
 function renderAbout() {
-  const t = T[lang];
+  const a = AB[lang] || AB.en;
   const ids = {
     'ab-title': 'ab_title', 'ab-intro': 'ab_intro', 'ab-note': 'ab_note',
     'ab-s1-title': 'ab_s1_title', 'ab-s1-desc': 'ab_s1_desc',
     'ab-s2-title': 'ab_s2_title', 'ab-s2-desc': 'ab_s2_desc',
     'ab-s3-title': 'ab_s3_title', 'ab-s3-desc': 'ab_s3_desc',
     'ab-slides-lbl': 'ab_slides_lbl',
-    'ab-contact-title': 'ab_contact_title', 'ab-contact-sub': 'ab_contact_sub',
-    'ab-browse-btn': 'ab_browse',
   };
   Object.entries(ids).forEach(([id, key]) => {
     const el = document.getElementById(id);
-    if (el && t[key]) el.textContent = t[key];
+    if (el && a[key]) el.textContent = a[key];
   });
   buildSlides();
 }
+
 
 function switchToAll() {
   document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));

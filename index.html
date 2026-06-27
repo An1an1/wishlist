@@ -386,6 +386,7 @@ header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180
       </div>
       <div class="modal-actions">
         <button class="btn-sec" id="cancelModal" data-t="btn_back">Back</button>
+        <button class="btn-sec" id="cryptoBtn">₿ Crypto</button>
         <button class="btn-pri" id="submitBtn" data-t="btn_send">Gift ✦</button>
       </div>
     </div>
@@ -1136,6 +1137,34 @@ document.getElementById('submitBtn').addEventListener('click', async () => {
   }
 });
 
+document.getElementById('cryptoBtn').addEventListener('click', async () => {
+  const btn = document.getElementById('cryptoBtn');
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '...';
+
+  try {
+    const total = cart.reduce((s,i) => s + i.price*(i.qty||1), 0);
+    const orderId = 'wm' + Date.now();
+    const msg = document.getElementById('f_msg').value.trim();
+
+    const resp = await fetch('https://wishme-backend.vercel.app/api/create-crypto-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount: total, orderId: orderId, comments: msg })
+    });
+
+    if (!resp.ok) throw new Error('Crypto payment request failed');
+    const data = await resp.json();
+    window.location.href = data.invoice_url;
+  } catch (err) {
+    console.error('Crypto payment error:', err);
+    btn.disabled = false;
+    btn.textContent = originalText;
+    alert('Something went wrong. Please try again in a moment.');
+  }
+});
+  
 document.getElementById('closeSuccess').addEventListener('click', () => {
   document.getElementById('modalOv').classList.remove('open');
   document.getElementById('formView').style.display = 'block';

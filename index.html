@@ -397,13 +397,13 @@ header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180
       <div class="modal-actions">
         <button class="btn-pay btn-pay-main" id="submitBtn">
           <span class="btn-pay-icon">✦</span>
-          <span class="btn-pay-title">Gift Now</span>
-          <span class="btn-pay-sub">card &amp; wallet</span>
+          <span class="btn-pay-title" data-t="pay1_title">Method 1</span>
+          <span class="btn-pay-sub" data-t="pay1_sub">Crypto payment</span>
         </button>
         <button class="btn-pay btn-pay-alt" id="cryptoBtn">
           <span class="btn-pay-icon">🪙</span>
-          <span class="btn-pay-title">Crypto</span>
-          <span class="btn-pay-sub">BTC, ETH, USDT +more</span>
+          <span class="btn-pay-title" data-t="pay2_title">Method 2</span>
+          <span class="btn-pay-sub" data-t="pay2_sub">Crypto payment</span>
         </button>
       </div>
       <button class="btn-back-link" id="cancelModal" data-t="btn_back">Back</button>
@@ -501,7 +501,9 @@ const T = {
     success_ttl:"Gift sent!", success_txt:"Thank you for the magic.",
     empty_p:"Your wish list is empty.<br>Add something magical.",
     order_sel:"You selected:", order_total:"Total:",
-    gift_btn:"🎁 Gift", added_btn:"✓ Added", rm_btn:"✕"
+    gift_btn:"🎁 Gift", added_btn:"✓ Added", rm_btn:"✕",
+    pay1_title:"Method 1", pay1_sub:"Crypto payment",
+    pay2_title:"Method 2", pay2_sub:"Crypto payment"
   },
   zh: { sub:"我的梦想 ✦", eyebrow:"✦ 精心挑选，用爱呈现 ✦",
     cat_about:"✨ 关于",
@@ -514,7 +516,9 @@ const T = {
     success_ttl:"礼物已发送！", success_txt:"感谢您的慢慈。",
     empty_p:"心愿清单为空。<br>添加一些神奇的东西吧。",
     order_sel:"您选择了：", order_total:"合计：",
-    gift_btn:"🎁 赠送", added_btn:"✓ 已添加", rm_btn:"✕"
+    gift_btn:"🎁 赠送", added_btn:"✓ 已添加", rm_btn:"✕",
+    pay1_title:"方式一", pay1_sub:"加密货币支付",
+    pay2_title:"方式二", pay2_sub:"加密货币支付"
   },
   ar: { sub:"ما أحلم به ✦", eyebrow:"✦ مختار بحب ✦",
     cat_about:"✨ حول",
@@ -527,7 +531,9 @@ const T = {
     success_ttl:"تم إرسال الهدية!", success_txt:"شكراً لك على هذا الجمال.",
     empty_p:"قائمة الأمنيات فارغة.<br>أضف شيئاً رائعاً.",
     order_sel:"اخترت:", order_total:"المجموع:",
-    gift_btn:"🎁 هدية", added_btn:"✓ تمت الإضافة", rm_btn:"✕"
+    gift_btn:"🎁 هدية", added_btn:"✓ تمت الإضافة", rm_btn:"✕",
+    pay1_title:"الطريقة 1", pay1_sub:"الدفع بالعملات المشفرة",
+    pay2_title:"الطريقة 2", pay2_sub:"الدفع بالعملات المشفرة"
   },
   fr: { sub:"ce dont je rêve ✦", eyebrow:"✦ Sélectionné avec amour ✦",
     cat_about:"✨ À propos",
@@ -540,7 +546,9 @@ const T = {
     success_ttl:"Cadeau envoyé !", success_txt:"Merci pour cette générosité.",
     empty_p:"Votre liste est vide.<br>Ajoutez quelque chose de magique.",
     order_sel:"Vous avez choisi :", order_total:"Total :",
-    gift_btn:"🎁 Offrir", added_btn:"✓ Ajouté", rm_btn:"✕"
+    gift_btn:"🎁 Offrir", added_btn:"✓ Ajouté", rm_btn:"✕",
+    pay1_title:"Méthode 1", pay1_sub:"Paiement en crypto",
+    pay2_title:"Méthode 2", pay2_sub:"Paiement en crypto"
   },
   es: { sub:"lo que sueño ✦", eyebrow:"✦ Seleccionado con amor ✦",
     cat_about:"✨ Acerca de",
@@ -553,7 +561,9 @@ const T = {
     success_ttl:"¡Regalo enviado!", success_txt:"Gracias por tu generosidad.",
     empty_p:"Tu lista está vacía.<br>Agrega algo mágico.",
     order_sel:"Elegiste:", order_total:"Total:",
-    gift_btn:"🎁 Regalar", added_btn:"✓ Agregado", rm_btn:"✕"
+    gift_btn:"🎁 Regalar", added_btn:"✓ Agregado", rm_btn:"✕",
+    pay1_title:"Método 1", pay1_sub:"Pago con cripto",
+    pay2_title:"Método 2", pay2_sub:"Pago con cripto"
   },
   ru: { sub:"о чём я мечтаю ✦", eyebrow:"✦ Собрано с любовью ✦",
     cat_about:"✨ О сайте",
@@ -566,7 +576,9 @@ const T = {
     success_ttl:"Подарок отправлен!", success_txt:"Спасибо за этот чудесный жест.",
     empty_p:"Список желаний пуст.<br>Добавьте что-нибудь волшебное.",
     order_sel:"Вы выбрали:", order_total:"Сумма:",
-    gift_btn:"🎁 Подарить", added_btn:"✓ Добавлено", rm_btn:"✕"
+    gift_btn:"🎁 Подарить", added_btn:"✓ Добавлено", rm_btn:"✕",
+    pay1_title:"Способ 1", pay1_sub:"Оплата криптой",
+    pay2_title:"Способ 2", pay2_sub:"Оплата криптой"
   },
   de: { sub:"wovon ich träume ✦", eyebrow:"✦ Mit Liebe kuratiert ✦",
     cat_about:"✨ Über uns",
@@ -579,7 +591,9 @@ const T = {
     success_ttl:"Geschenk gesendet!", success_txt:"Danke für deine Großzügigkeit.",
     empty_p:"Deine Wunschliste ist leer.<br>Füge etwas Magisches hinzu.",
     order_sel:"Du hast gewählt:", order_total:"Gesamt:",
-    gift_btn:"🎁 Schenken", added_btn:"✓ Hinzugefügt", rm_btn:"✕"
+    gift_btn:"🎁 Schenken", added_btn:"✓ Hinzugefügt", rm_btn:"✕",
+    pay1_title:"Methode 1", pay1_sub:"Zahlung in Krypto",
+    pay2_title:"Methode 2", pay2_sub:"Zahlung in Krypto"
   },
   ja: { sub:"夢見るもの ✦", eyebrow:"✦ 愛を込めて厳選 ✦",
     cat_about:"✨ について",
@@ -592,7 +606,9 @@ const T = {
     success_ttl:"ギフトが送られました！", success_txt:"ありがとうございます。",
     empty_p:"ウィッシュリストが空です。<br>素敵なものを追加してください。",
     order_sel:"選択:", order_total:"合計:",
-    gift_btn:"🎁 贈る", added_btn:"✓ 追加済み", rm_btn:"✕"
+    gift_btn:"🎁 贈る", added_btn:"✓ 追加済み", rm_btn:"✕",
+    pay1_title:"方法1", pay1_sub:"暗号資産で支払う",
+    pay2_title:"方法2", pay2_sub:"暗号資産で支払う"
   },
 };
 
@@ -1110,6 +1126,51 @@ document.getElementById('coBtn').addEventListener('click', () => {
 
 document.getElementById('cancelModal').addEventListener('click', () => document.getElementById('modalOv').classList.remove('open'));
 
+document.getElementById('submitBtn').addEventListener('click', async () => {
+  const submitBtn = document.getElementById('submitBtn');
+  const titleEl = submitBtn.querySelector('.btn-pay-title');
+  const originalText = titleEl.textContent;
+  submitBtn.disabled = true;
+  titleEl.textContent = '...';
+
+  try {
+    const total = cart.reduce((s,i) => s + i.price*(i.qty||1), 0);
+    const orderId = 'wm' + Date.now();
+    const msg = document.getElementById('f_msg').value.trim();
+
+    const resp = await fetch('https://wishme-backend.vercel.app/api/create-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        amount: total,
+        orderId: orderId,
+        comments: msg
+      })
+    });
+
+    if (!resp.ok) throw new Error('Payment request failed');
+    const data = await resp.json();
+
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = data.action;
+    Object.entries(data.fields).forEach(([key, value]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = value;
+      form.appendChild(input);
+    });
+    document.body.appendChild(form);
+    form.submit();
+  } catch (err) {
+    console.error('Payment error:', err);
+    submitBtn.disabled = false;
+    titleEl.textContent = originalText;
+    alert('Something went wrong. Please try again in a moment.');
+  }
+});
+
 document.getElementById('cryptoBtn').addEventListener('click', async () => {
   const cryptoBtn = document.getElementById('cryptoBtn');
   const titleEl = cryptoBtn.querySelector('.btn-pay-title');
@@ -1135,34 +1196,6 @@ document.getElementById('cryptoBtn').addEventListener('click', async () => {
     console.error('Crypto payment error:', err);
     cryptoBtn.disabled = false;
     titleEl.textContent = originalText;
-    alert('Something went wrong. Please try again in a moment.');
-  }
-});
-
-document.getElementById('cryptoBtn').addEventListener('click', async () => {
-  const btn = document.getElementById('cryptoBtn');
-  const originalText = btn.textContent;
-  btn.disabled = true;
-  btn.textContent = '...';
-
-  try {
-    const total = cart.reduce((s,i) => s + i.price*(i.qty||1), 0);
-    const orderId = 'wm' + Date.now();
-    const msg = document.getElementById('f_msg').value.trim();
-
-    const resp = await fetch('https://wishme-backend.vercel.app/api/create-crypto-payment', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount: total, orderId: orderId, comments: msg })
-    });
-
-    if (!resp.ok) throw new Error('Crypto payment request failed');
-    const data = await resp.json();
-    window.location.href = data.invoice_url;
-  } catch (err) {
-    console.error('Crypto payment error:', err);
-    btn.disabled = false;
-    btn.textContent = originalText;
     alert('Something went wrong. Please try again in a moment.');
   }
 });

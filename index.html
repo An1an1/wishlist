@@ -236,7 +236,9 @@ header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180
 .slide-cat { font-size:.52rem; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); margin-bottom:.25rem; }
 .slide-name { font-family:'Cormorant Garamond',serif; font-size:1rem; color:var(--text); }
 .slides-nav { display:flex; align-items:center; justify-content:center; gap:.8rem; margin-top:1rem; }
-.slide-btn { background:none; border:1px solid rgba(201,168,76,.25); color:var(--gold); width:36px; height:36px; border-radius:50%; cursor:pointer; font-size:.9rem; display:flex; align-items:center; justify-content:center; transition:all .2s; outline:none; }
+.slide-btn { background:none; border:1px solid rgba(201,168,76,.25); color:var(--gold); width:36px; height:36px; border-radius:50%; cursor:pointer; font-size:.9rem; display:flex; align-items:center; justify-content:center; transition:all .2s; outline:none; -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; user-select: none; }
+.slide-btn:focus { outline: none; }
+.slide-btn::-moz-focus-inner { border: 0; }
 .slide-btn:hover { background:rgba(201,168,76,.1); border-color:var(--gold); }
 .slides-dots { display:flex; gap:.4rem; }
 .sdot { width:6px; height:6px; border-radius:50%; background:rgba(201,168,76,.25); cursor:pointer; transition:background .2s,transform .2s; }

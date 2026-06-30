@@ -1172,13 +1172,16 @@ document.getElementById('submitBtn').addEventListener('click', () => {
   document.getElementById('cryptoPickOv').classList.add('open');
 });
 
-document.getElementById('chainGrid').addEventListener('click', e => {
+const COINGECKO_IDS = { btc: 'bitcoin', solana: 'solana', tron: 'tron' };
+
+document.getElementById('chainGrid').addEventListener('click', async e => {
   const btn = e.target.closest('.chain-btn'); if (!btn) return;
   document.querySelectorAll('.chain-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
   const chain = btn.dataset.chain;
   const address = WALLET_ADDRESSES[chain];
+  const total = cart.reduce((s,i) => s + i.price*(i.qty||1), 0);
 
   document.getElementById('qrWrap').innerHTML = '';
   new QRCode(document.getElementById('qrWrap'), {
@@ -1195,6 +1198,28 @@ document.getElementById('chainGrid').addEventListener('click', e => {
   const copyBtn = document.getElementById('copyAddrBtn');
   copyBtn.classList.remove('copied');
   copyBtn.textContent = 'Copy Address';
+
+  const noteEl = document.getElementById('cryptoAmountNote');
+
+  if (chain === 'eth' || chain === 'bsc' || chain === 'polygon') {
+    noteEl.textContent = `Amount: ${total.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USDT`;
+  } else {
+    noteEl.textContent = 'Loading exchange rate...';
+    try {
+      const coinId = COINGECKO_IDS[chain];
+      const resp = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd`);
+      const data = await resp.json();
+      const price = data[coinId].usd;
+      const cryptoAmount = total / price;
+
+      const symbol = chain === 'btc' ? 'BTC' : (chain === 'solana' ? 'SOL' : 'TRX');
+      const decimals = chain === 'btc' ? 8 : 4;
+      noteEl.textContent = `Amount: ${cryptoAmount.toFixed(decimals)} ${symbol} (≈ $${total.toLocaleString('en-US')})`;
+    } catch (err) {
+      console.error('Exchange rate error:', err);
+      noteEl.textContent = `Amount: $${total.toLocaleString('en-US')} equivalent — please check the current rate yourself before sending.`;
+    }
+  }
 });
 
 document.getElementById('copyAddrBtn').addEventListener('click', () => {

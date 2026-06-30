@@ -1206,6 +1206,7 @@ document.getElementById('cats').addEventListener('click', e => {
   currentCat = btn.dataset.cat;
   try { localStorage.setItem(CAT_KEY, currentCat); } catch {}
   if (currentCat === 'about') { showAbout(); } else { showGrid(); }
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
 document.getElementById('sortAsc').addEventListener('click', () => {
@@ -1312,6 +1313,7 @@ function buildSlides() {
       currentCat = s.cat;
       try { localStorage.setItem(CAT_KEY, s.cat); } catch {}
       showGrid();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
     track.appendChild(div);
 

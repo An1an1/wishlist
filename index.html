@@ -166,8 +166,8 @@ header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180
 .addr-text { font-size: .68rem; color: var(--text-muted); word-break: break-all; background: rgba(201,168,76,.04); border: 1px solid rgba(201,168,76,.12); border-radius: 2px; padding: .7rem .9rem; margin-bottom: .8rem; }
 .copy-addr-btn { background: linear-gradient(135deg,var(--gold),var(--gold-dark)); border: none; color: #0a0a0f; font-family: 'Montserrat', sans-serif; font-size: .62rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; padding: .65rem 1.4rem; border-radius: 1px; cursor: pointer; transition: all .2s; -webkit-tap-highlight-color: transparent; outline: none; }
 .copy-addr-btn:hover { box-shadow: 0 4px 16px rgba(201,168,76,.3); }
-.copy-addr-btn.copied { background: linear-gradient(135deg,#7abf7a,#5a9d5a); }
-.crypto-amount-note { font-size: .65rem; color: var(--text-muted); margin-top: .9rem; line-height: 1.6; }
+.copy-addr-btn.copied { background: linear-gradient(135deg,#7abf7a,#5a9d5a); transform: scale(.96); box-shadow: 0 0 0 3px rgba(122,191,122,.25); }
+.crypto-amount-note { font-size: 1.05rem; font-weight: 600; color: var(--gold-light); margin-top: 1rem; line-height: 1.5; font-family: 'Cormorant Garamond', serif; }
 .success { display: none; text-align: center; padding: 2.8rem 2rem; }
 .success.show { display: block; }
 .s-icon { font-size: 2.8rem; margin-bottom: .9rem; animation: pulse 2s infinite; display: block; }
@@ -451,6 +451,7 @@ header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180
       <div class="addr-text" id="addrText"></div>
       <button class="copy-addr-btn" id="copyAddrBtn">Copy Address</button>
       <p class="crypto-amount-note" id="cryptoAmountNote"></p>
+      <button class="copy-addr-btn" id="iGiftedBtn" style="margin-top:.8rem;background:linear-gradient(135deg,var(--gold-light),var(--gold))">✦ I Gifted ✦</button>
     </div>
     <button class="btn-back-link" id="cryptoPickClose" style="padding-top:1.2rem">Close</button>
   </div>
@@ -1224,17 +1225,50 @@ document.getElementById('chainGrid').addEventListener('click', async e => {
 
 document.getElementById('copyAddrBtn').addEventListener('click', () => {
   const addr = document.getElementById('addrText').textContent;
-  navigator.clipboard.writeText(addr).then(() => {
-    const btn = document.getElementById('copyAddrBtn');
+  const btn = document.getElementById('copyAddrBtn');
+
+  function showCopied() {
     btn.textContent = '✓ Copied';
     btn.classList.add('copied');
     setTimeout(() => {
       btn.textContent = 'Copy Address';
       btn.classList.remove('copied');
     }, 2000);
-  });
-});
+  }
 
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(addr).then(showCopied).catch(() => fallbackCopy());
+  } else {
+    fallbackCopy();
+  }
+
+  function fallbackCopy() {
+    const tempInput = document.createElement('textarea');
+    tempInput.value = addr;
+    tempInput.style.position = 'fixed';
+    tempInput.style.opacity = '0';
+    document.body.appendChild(tempInput);
+    tempInput.focus();
+    tempInput.select();
+    try {
+      document.execCommand('copy');
+      showCopied();
+    } catch (err) {
+      alert('Could not copy automatically. Please copy the address manually.');
+    }
+    document.body.removeChild(tempInput);
+  }
+});
+  
+document.getElementById('iGiftedBtn').addEventListener('click', e => {
+  const r = e.target.getBoundingClientRect();
+  sparkles(r.left + r.width/2, r.top);
+  document.getElementById('cryptoPickOv').classList.remove('open');
+  document.getElementById('modalOv').classList.add('open');
+  document.getElementById('formView').style.display = 'none';
+  document.getElementById('successView').classList.add('show');
+});
+  
 document.getElementById('cryptoPickClose').addEventListener('click', () => {
   document.getElementById('cryptoPickOv').classList.remove('open');
 });

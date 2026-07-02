@@ -464,43 +464,43 @@ header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180
     <div class="footer-cols">
       <div class="footer-col">
         <div class="footer-brand"><b>Wish</b> Me</div>
-        <div class="footer-tagline">Dreams &amp; Desires ✦</div>
-        <p class="footer-about">A personal gift wishlist platform where your loved ones can discover and gift the things you truly desire. Every item curated with love.</p>
+        <div class="footer-tagline" data-t="footer_tagline">Dreams &amp; Desires ✦</div>
+        <p class="footer-about" data-t="footer_about">A personal gift wishlist platform where your loved ones can discover and gift the things you truly desire. Every item curated with love.</p>
       </div>
       <div class="footer-col">
-        <div class="footer-col-title">Contact Us</div>
+        <div class="footer-col-title" data-t="contact_us_title">Contact Us</div>
         <div class="contact-list">
           <div class="contact-item">
             <span class="contact-icon">✉️</span>
             <div class="contact-info">
-              <div class="contact-label">Email</div>
+              <div class="contact-label" data-t="email_label">Email</div>
               <div class="contact-val"><a href="mailto:supp.wishme@gmail.com">supp.wishme@gmail.com</a></div>
             </div>
           </div>
         </div>
       </div>
       <div class="footer-col">
-        <div class="footer-col-title">Send a Message</div>
+        <div class="footer-col-title" data-t="send_msg_title">Send a Message</div>
         <div class="contact-form">
           <div class="cf-row">
-            <input class="cf-input" id="cfName" type="text" placeholder="Your name">
-            <input class="cf-input" id="cfEmail" type="email" placeholder="Email">
+            <input class="cf-input" id="cfName" type="text" data-t-ph="name_ph" placeholder="Your name">
+            <input class="cf-input" id="cfEmail" type="email" data-t-ph="email_ph" placeholder="Email">
           </div>
-          <textarea class="cf-input cf-textarea" id="cfMsg" placeholder="Your message..."></textarea>
+          <textarea class="cf-input cf-textarea" id="cfMsg" data-t-ph="message_ph" placeholder="Your message..."></textarea>
           <div style="display:flex;align-items:center;gap:.8rem">
-            <button class="cf-btn" id="cfSend">Send ✦</button>
-            <span class="cf-sent" id="cfSent">✓ Message sent!</span>
+            <button class="cf-btn" id="cfSend" data-t="send_btn">Send ✦</button>
+            <span class="cf-sent" id="cfSent" data-t="cf_sent">✓ Message sent!</span>
           </div>
         </div>
       </div>
     </div>
     <div class="footer-divider"></div>
     <div class="footer-bottom">
-      <div class="footer-copy">&copy; 2025 Wish Me. All rights reserved.</div>
+      <div class="footer-copy" data-t="footer_copy">&copy; 2025 Wish Me. All rights reserved.</div>
       <div class="footer-links">
-        <button onclick="openPolicy('privacy')">Privacy Policy</button>
-        <button onclick="openPolicy('terms')">Terms of Service</button>
-        <button onclick="openPolicy('refund')">Refund Policy</button>
+        <button onclick="openPolicy('privacy')" data-t="privacy_link">Privacy Policy</button>
+        <button onclick="openPolicy('terms')" https://claude.ai/chat/6ffebf4e-25e6-4aef-885b-f8bef5c808ac#:~:text=terms%27)%22-,data%2Dt%3D%22terms_link%22,-%3ETerms%20of>Terms of Service</button>
+        <button onclick="openPolicy('refund')" data-t="refund_link">Refund Policy</button>
       </div>
     </div>
   </div>
@@ -539,7 +539,15 @@ const T = {
     crypto_pick_title:"Choose a network", copy_addr_btn:"Copy Address", copy_addr_copied:"✓ Copied",
     gifted_btn:"✦ Gift Sent ✦", amt_initial:"Amount: {AMT} (equivalent in crypto)",
     amt_usdt:"Amount: {AMT} USDT", amt_crypto:"Amount: {AMT} {SYM} (≈ {USD})",
-    amt_loading:"Loading exchange rate...", amt_error:"Amount: {USD} equivalent — please check the current rate yourself before sending."
+    amt_loading:"Loading exchange rate...", amt_error:"Amount: {USD} equivalent — please check the current rate yourself before sending.",
+    footer_tagline:"Dreams & Desires ✦",
+    footer_about:"A personal gift wishlist platform where your loved ones can discover and gift the things you truly desire. Every item curated with love.",
+    contact_us_title:"Contact Us", email_label:"Email",
+    send_msg_title:"Send a Message",
+    name_ph:"Your name", email_ph:"Email", message_ph:"Your message...",
+    send_btn:"Send ✦", cf_sent:"✓ Message sent!",
+    footer_copy:"© 2025 Wish Me. All rights reserved.",
+    privacy_link:"Privacy Policy", terms_link:"Terms of Service", refund_link:"Refund Policy"
   },
   zh: { sub:"我的梦想 ✦", eyebrow:"✦ 精心挑选，用爱呈现 ✦",
     cat_about:"✨ 关于",
@@ -558,7 +566,15 @@ const T = {
     crypto_pick_title:"选择网络", copy_addr_btn:"复制地址", copy_addr_copied:"✓ 已复制",
     gifted_btn:"✦ 礼物已送出 ✦", amt_initial:"金额：{AMT}（等值加密货币）",
     amt_usdt:"金额：{AMT} USDT", amt_crypto:"金额：{AMT} {SYM}（≈ {USD}）",
-    amt_loading:"正在加载汇率...", amt_error:"金额：约合 {USD} — 请在发送前自行核实当前汇率。" 
+    amt_loading:"正在加载汇率...", amt_error:"金额：约合 {USD} — 请在发送前自行核实当前汇率。",
+    footer_tagline:"梦想与愿望 ✦",
+    footer_about:"一个个人心愿单平台，让您的亲人可以发现并送您真正想要的东西。每件商品都用心挑选。",
+    contact_us_title:"联系我们", email_label:"邮箱",
+    send_msg_title:"发送留言",
+    name_ph:"您的姓名", email_ph:"邮箱", message_ph:"您的留言...",
+    send_btn:"发送 ✦", cf_sent:"✓ 留言已发送！",
+    footer_copy:"© 2025 Wish Me. 保留所有权利。",
+    privacy_link:"隐私政策", terms_link:"服务条款", refund_link:"退款政策"
   },
   ar: { sub:"ما أحلم به ✦", eyebrow:"✦ مختار بحب ✦",
     cat_about:"✨ حول",
@@ -577,7 +593,15 @@ const T = {
     crypto_pick_title:"اختر الشبكة", copy_addr_btn:"نسخ العنوان", copy_addr_copied:"✓ تم النسخ",
     gifted_btn:"✦ تم إرسال الهدية ✦", amt_initial:"المبلغ: {AMT} (ما يعادله بالعملات المشفرة)",
     amt_usdt:"المبلغ: {AMT} USDT", amt_crypto:"المبلغ: {AMT} {SYM} (≈ {USD})",
-    amt_loading:"جارٍ تحميل سعر الصرف...", amt_error:"المبلغ: ما يعادل {USD} — يرجى التحقق من السعر الحالي بنفسك قبل الإرسال."
+    amt_loading:"جارٍ تحميل سعر الصرف...", amt_error:"المبلغ: ما يعادل {USD} — يرجى التحقق من السعر الحالي بنفسك قبل الإرسال.",
+    footer_tagline:"أحلام ورغبات ✦",
+    footer_about:"منصة قائمة أمنيات شخصية حيث يمكن لأحبائك اكتشاف الأشياء التي ترغب بها حقاً وإهدائها لك. كل عنصر مختار بعناية.",
+    contact_us_title:"اتصل بنا", email_label:"البريد الإلكتروني",
+    send_msg_title:"إرسال رسالة",
+    name_ph:"اسمك", email_ph:"البريد الإلكتروني", message_ph:"رسالتك...",
+    send_btn:"إرسال ✦", cf_sent:"✓ تم إرسال الرسالة!",
+    footer_copy:"© 2025 Wish Me. جميع الحقوق محفوظة.",
+    privacy_link:"سياسة الخصوصية", terms_link:"شروط الخدمة", refund_link:"سياسة الاسترداد"
   },
   fr: { sub:"ce dont je rêve ✦", eyebrow:"✦ Sélectionné avec amour ✦",
     cat_about:"✨ À propos",
@@ -596,7 +620,15 @@ const T = {
     crypto_pick_title:"Choisissez un réseau", copy_addr_btn:"Copier l'adresse", copy_addr_copied:"✓ Copié",
     gifted_btn:"✦ Cadeau envoyé ✦", amt_initial:"Montant : {AMT} (équivalent en crypto)",
     amt_usdt:"Montant : {AMT} USDT", amt_crypto:"Montant : {AMT} {SYM} (≈ {USD})",
-    amt_loading:"Chargement du taux de change...", amt_error:"Montant : équivalent à {USD} — veuillez vérifier le taux actuel avant l'envoi."
+    amt_loading:"Chargement du taux de change...", amt_error:"Montant : équivalent à {USD} — veuillez vérifier le taux actuel avant l'envoi.",
+    footer_tagline:"Rêves & Désirs ✦",
+    footer_about:"Une plateforme personnelle de liste de souhaits où vos proches peuvent découvrir et vous offrir ce que vous désirez vraiment. Chaque article est sélectionné avec soin.",
+    contact_us_title:"Contactez-nous", email_label:"Email",
+    send_msg_title:"Envoyer un message",
+    name_ph:"Votre nom", email_ph:"Email", message_ph:"Votre message...",
+    send_btn:"Envoyer ✦", cf_sent:"✓ Message envoyé !",
+    footer_copy:"© 2025 Wish Me. Tous droits réservés.",
+    privacy_link:"Politique de confidentialité", terms_link:"Conditions d'utilisation", refund_link:"Politique de remboursement"
   },
   es: { sub:"lo que sueño ✦", eyebrow:"✦ Seleccionado con amor ✦",
     cat_about:"✨ Acerca de",
@@ -615,7 +647,15 @@ const T = {
     crypto_pick_title:"Elige una red", copy_addr_btn:"Copiar dirección", copy_addr_copied:"✓ Copiado",
     gifted_btn:"✦ Regalo enviado ✦", amt_initial:"Monto: {AMT} (equivalente en cripto)",
     amt_usdt:"Monto: {AMT} USDT", amt_crypto:"Monto: {AMT} {SYM} (≈ {USD})",
-    amt_loading:"Cargando tipo de cambio...", amt_error:"Monto: equivalente a {USD} — verifica la tasa actual antes de enviar."
+    amt_loading:"Cargando tipo de cambio...", amt_error:"Monto: equivalente a {USD} — verifica la tasa actual antes de enviar.",
+    footer_tagline:"Sueños y Deseos ✦",
+    footer_about:"Una plataforma personal de lista de deseos donde tus seres queridos pueden descubrir y regalarte lo que realmente deseas. Cada artículo está elegido con cuidado.",
+    contact_us_title:"Contáctanos", email_label:"Email",
+    send_msg_title:"Enviar un mensaje",
+    name_ph:"Tu nombre", email_ph:"Email", message_ph:"Tu mensaje...",
+    send_btn:"Enviar ✦", cf_sent:"✓ ¡Mensaje enviado!",
+    footer_copy:"© 2025 Wish Me. Todos los derechos reservados.",
+    privacy_link:"Política de privacidad", terms_link:"Términos de servicio", refund_link:"Política de reembolso"
   },
   ru: { sub:"о чём я мечтаю ✦", eyebrow:"✦ Собрано с любовью ✦",
     cat_about:"✨ О сайте",
@@ -634,7 +674,15 @@ const T = {
     crypto_pick_title:"Выберите сеть", copy_addr_btn:"Скопировать адрес", copy_addr_copied:"✓ Скопировано",
     gifted_btn:"✦ Подарок отправлен ✦", amt_initial:"Сумма: {AMT} (эквивалент в криптовалюте)",
     amt_usdt:"Сумма: {AMT} USDT", amt_crypto:"Сумма: {AMT} {SYM} (≈ {USD})",
-    amt_loading:"Загрузка курса обмена...", amt_error:"Сумма: эквивалент {USD} — проверьте текущий курс самостоятельно перед отправкой."
+    amt_loading:"Загрузка курса обмена...", amt_error:"Сумма: эквивалент {USD} — проверьте текущий курс самостоятельно перед отправкой.",
+    footer_tagline:"Мечты и желания ✦",
+    footer_about:"Персональная платформа со списком желаний, где близкие могут найти и подарить вам то, что вы действительно хотите. Каждый товар подобран с любовью.",
+    contact_us_title:"Связаться с нами", email_label:"Email",
+    send_msg_title:"Написать сообщение",
+    name_ph:"Ваше имя", email_ph:"Email", message_ph:"Ваше сообщение...",
+    send_btn:"Отправить ✦", cf_sent:"✓ Сообщение отправлено!",
+    footer_copy:"© 2025 Wish Me. Все права защищены.",
+    privacy_link:"Политика конфиденциальности", terms_link:"Условия использования", refund_link:"Политика возврата"
   },
   de: { sub:"wovon ich träume ✦", eyebrow:"✦ Mit Liebe kuratiert ✦",
     cat_about:"✨ Über uns",
@@ -653,7 +701,15 @@ const T = {
     crypto_pick_title:"Netzwerk wählen", copy_addr_btn:"Adresse kopieren", copy_addr_copied:"✓ Kopiert",
     gifted_btn:"✦ Geschenk gesendet ✦", amt_initial:"Betrag: {AMT} (Krypto-Äquivalent)",
     amt_usdt:"Betrag: {AMT} USDT", amt_crypto:"Betrag: {AMT} {SYM} (≈ {USD})",
-    amt_loading:"Wechselkurs wird geladen...", amt_error:"Betrag: entspricht {USD} — bitte prüfe den aktuellen Kurs selbst vor dem Senden."
+    amt_loading:"Wechselkurs wird geladen...", amt_error:"Betrag: entspricht {USD} — bitte prüfe den aktuellen Kurs selbst vor dem Senden.",
+    footer_tagline:"Träume & Wünsche ✦",
+    footer_about:"Eine persönliche Wunschlisten-Plattform, auf der deine Liebsten entdecken können, was du dir wirklich wünschst, und es dir schenken können. Jeder Artikel ist sorgfältig ausgewählt.",
+    contact_us_title:"Kontaktiere uns", email_label:"E-Mail",
+    send_msg_title:"Nachricht senden",
+    name_ph:"Dein Name", email_ph:"E-Mail", message_ph:"Deine Nachricht...",
+    send_btn:"Senden ✦", cf_sent:"✓ Nachricht gesendet!",
+    footer_copy:"© 2025 Wish Me. Alle Rechte vorbehalten.",
+    privacy_link:"Datenschutzrichtlinie", terms_link:"Nutzungsbedingungen", refund_link:"Rückerstattungsrichtlinie"
   },
   ja: { sub:"夢見るもの ✦", eyebrow:"✦ 愛を込めて厳選 ✦",
     cat_about:"✨ について",
@@ -672,7 +728,15 @@ const T = {
     crypto_pick_title:"ネットワークを選択", copy_addr_btn:"アドレスをコピー", copy_addr_copied:"✓ コピーしました",
     gifted_btn:"✦ ギフトを送信しました ✦", amt_initial:"金額：{AMT}（暗号資産相当）",
     amt_usdt:"金額：{AMT} USDT", amt_crypto:"金額：{AMT} {SYM}（≈ {USD}）",
-    amt_loading:"レートを読み込み中...", amt_error:"金額：約 {USD} 相当 — 送信前に現在のレートをご自身でご確認ください。"
+    amt_loading:"レートを読み込み中...", amt_error:"金額：約 {USD} 相当 — 送信前に現在のレートをご自身でご確認ください。",
+    footer_tagline:"夢と願い ✦",
+    footer_about:"大切な人があなたが本当に欲しいものを見つけて贈ることができる、パーソナルウィッシュリストプラットフォームです。すべてのアイテムは丁寧に選ばれています。",
+    contact_us_title:"お問い合わせ", email_label:"メール",
+    send_msg_title:"メッセージを送る",
+    name_ph:"お名前", email_ph:"メール", message_ph:"メッセージ...",
+    send_btn:"送信 ✦", cf_sent:"✓ メッセージを送信しました！",
+    footer_copy:"© 2025 Wish Me. 無断複写・転載を禁じます。",
+    privacy_link:"プライバシーポリシー", terms_link:"利用規約", refund_link:"返金ポリシー"
   },
 };
 

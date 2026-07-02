@@ -6,6 +6,7 @@
 <title>Wish Me ✨</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 :root {
   --gold: #c9a84c; --gold-light: #e8d5a3; --gold-dark: #8a6a1f;
@@ -499,7 +500,7 @@ header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180
       <div class="footer-copy" data-t="footer_copy">&copy; 2025 Wish Me. All rights reserved.</div>
       <div class="footer-links">
         <button onclick="openPolicy('privacy')" data-t="privacy_link">Privacy Policy</button>
-        <button onclick="openPolicy('terms')" https://claude.ai/chat/6ffebf4e-25e6-4aef-885b-f8bef5c808ac#:~:text=terms%27)%22-,data%2Dt%3D%22terms_link%22,-%3ETerms%20of>Terms of Service</button>
+        <button onclick="openPolicy('terms')" data-t="terms_link">Terms of Service</button>
         <button onclick="openPolicy('refund')" data-t="refund_link">Refund Policy</button>
       </div>
     </div>
@@ -521,6 +522,8 @@ header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180
 </div>
 
 <script>
+emailjs.init({ publicKey: "xNER9n8QivKe3Qorv" });
+
 const T = {
   en: { sub:"what I dream of ✦", eyebrow:"✦ Curated with love ✦",
     cat_about:"✨ About",
@@ -1323,7 +1326,11 @@ document.getElementById('chainGrid').addEventListener('click', async e => {
 
   document.getElementById('qrWrap').innerHTML = '';
   new QRCode(document.getElementById('qrWrap'), {
-    text: address, width: 180, height: 180, colorDark: '#0a0a0f', colorLight: '#ffffff'
+    text: address,
+    width: 180,
+    height: 180,
+    colorDark: '#0a0a0f',
+    colorLight: '#ffffff'
   });
 
   document.getElementById('addrText').textContent = address;
@@ -1345,6 +1352,7 @@ document.getElementById('chainGrid').addEventListener('click', async e => {
       const data = await resp.json();
       const price = data[coinId].usd;
       const cryptoAmount = total / price;
+
       const symbol = chain === 'btc' ? 'BTC' : (chain === 'solana' ? 'SOL' : 'TRX');
       const decimals = chain === 'btc' ? 8 : 4;
       noteEl.textContent = t.amt_crypto
@@ -1505,13 +1513,30 @@ document.getElementById('cfSend').addEventListener('click', () => {
   const email = document.getElementById('cfEmail').value.trim();
   const msg   = document.getElementById('cfMsg').value.trim();
   if (!msg) return;
-  window.open(`mailto:supp.wishme@gmail.com?subject=${encodeURIComponent('Message from Wish Me')}&body=${encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+msg)}`);
-  document.getElementById('cfName').value = '';
-  document.getElementById('cfEmail').value = '';
-  document.getElementById('cfMsg').value = '';
-  const sent = document.getElementById('cfSent');
-  sent.style.display = 'inline';
-  setTimeout(() => { sent.style.display = 'none'; }, 3000);
+
+  const btn = document.getElementById('cfSend');
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = '...';
+
+  emailjs.send('service_0oeli0a', 'template_54dze3r', {
+    from_name: name || 'Anonymous',
+    from_email: email || 'no-reply@wishme.store',
+    message: msg
+  }).then(() => {
+    document.getElementById('cfName').value = '';
+    document.getElementById('cfEmail').value = '';
+    document.getElementById('cfMsg').value = '';
+    const sent = document.getElementById('cfSent');
+    sent.style.display = 'inline';
+    setTimeout(() => { sent.style.display = 'none'; }, 3000);
+  }).catch(err => {
+    console.error('EmailJS error:', err);
+    alert('Something went wrong. Please try again in a moment.');
+  }).finally(() => {
+    btn.disabled = false;
+    btn.textContent = originalText;
+  });
 });
 const AB = {
   en: { ab_title:"Welcome to Wish Me ✨", ab_intro:"This is my personal wishlist — a place where you can discover the things I truly love and send me a gift as a voluntary gesture. Every item here is curated with care and reflects my genuine desires.", ab_note:"✦ Please note: any gift is a completely voluntary gesture. I am free to decide how I use received funds at my own discretion. By gifting, you confirm you understand and accept this.", ab_s1_title:"Choose a Gift", ab_s1_desc:"Browse the categories and pick something that feels right to you.", ab_s2_title:"Add to Cart", ab_s2_desc:"Click the Gift button — you can add several items and see the total.", ab_s3_title:"Pay with Crypto", ab_s3_desc:"Leave a warm message if you like, then complete secure payment.", ab_slides_lbl:"✦ Explore by Category ✦" },
@@ -1666,6 +1691,7 @@ loadCart(); applyLang();
   if (savedCat === 'about') { showAbout(); } else { showGrid(); }
 })();
 updateBadge();
+
 </script>
 </body>
 </html>

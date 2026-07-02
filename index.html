@@ -439,7 +439,7 @@ header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180
 <!-- Crypto network picker modal -->
 <div class="modal-ov" id="cryptoPickOv">
   <div class="modal crypto-pick-modal">
-    <div class="crypto-pick-title" id="cryptoPickTitle">Choose a network</div>
+    <div class="crypto-pick-title" id="cryptoPickTitle" data-t="crypto_pick_title">Choose a network</div>
     <div class="chain-grid" id="chainGrid">
       <button class="chain-btn" data-chain="eth"><span class="chain-icon">Ξ</span>Ethereum<span class="chain-currency">USDT</span></button>
       <button class="chain-btn" data-chain="bsc"><span class="chain-icon">🟡</span>BSC<span class="chain-currency">USDT</span></button>
@@ -451,11 +451,11 @@ header { position: sticky; top: 0; z-index: 100; background: linear-gradient(180
     <div class="address-box" id="addressBox">
       <div class="qr-wrap" id="qrWrap"></div>
       <div class="addr-text" id="addrText"></div>
-      <button class="copy-addr-btn" id="copyAddrBtn">Copy Address</button>
+      <button class="copy-addr-btn" id="copyAddrBtn" data-t="copy_addr_btn">Copy Address</button>
       <p class="crypto-amount-note" id="cryptoAmountNote"></p>
-      <button class="copy-addr-btn" id="iGiftedBtn" style="margin-top:.8rem;background:linear-gradient(135deg,var(--gold-light),var(--gold))">✦ Gift Sent ✦</button>
+      <button class="copy-addr-btn" id="iGiftedBtn" style="margin-top:.8rem;background:linear-gradient(135deg,var(--gold-light),var(--gold))" data-t="gifted_btn">✦ Gift Sent ✦</button>
     </div>
-    <button class="btn-back-link" id="cryptoPickClose" style="padding-top:1.2rem">Close</button>
+    <button class="btn-back-link" id="cryptoPickClose" style="padding-top:1.2rem" data-t="btn_close">Close</button>
   </div>
 </div>
 <!-- Footer -->
@@ -535,7 +535,11 @@ const T = {
     order_sel:"You selected:", order_total:"Total:",
     gift_btn:"🎁 Gift", added_btn:"✓ Added", rm_btn:"✕",
     pay1_title:"Method 1", pay1_sub:"Crypto payment",
-    pay2_title:"Method 2", pay2_sub:"Crypto payment"
+    pay2_title:"Method 2", pay2_sub:"Crypto payment",
+    crypto_pick_title:"Choose a network", copy_addr_btn:"Copy Address", copy_addr_copied:"✓ Copied",
+    gifted_btn:"✦ Gift Sent ✦", amt_initial:"Amount: {AMT} (equivalent in crypto)",
+    amt_usdt:"Amount: {AMT} USDT", amt_crypto:"Amount: {AMT} {SYM} (≈ {USD})",
+    amt_loading:"Loading exchange rate...", amt_error:"Amount: {USD} equivalent — please check the current rate yourself before sending."
   },
   zh: { sub:"我的梦想 ✦", eyebrow:"✦ 精心挑选，用爱呈现 ✦",
     cat_about:"✨ 关于",
@@ -550,7 +554,11 @@ const T = {
     order_sel:"您选择了：", order_total:"合计：",
     gift_btn:"🎁 赠送", added_btn:"✓ 已添加", rm_btn:"✕",
     pay1_title:"方式一", pay1_sub:"加密货币支付",
-    pay2_title:"方式二", pay2_sub:"加密货币支付"
+    pay2_title:"方式二", pay2_sub:"加密货币支付",
+    crypto_pick_title:"选择网络", copy_addr_btn:"复制地址", copy_addr_copied:"✓ 已复制",
+    gifted_btn:"✦ 礼物已送出 ✦", amt_initial:"金额：{AMT}（等值加密货币）",
+    amt_usdt:"金额：{AMT} USDT", amt_crypto:"金额：{AMT} {SYM}（≈ {USD}）",
+    amt_loading:"正在加载汇率...", amt_error:"金额：约合 {USD} — 请在发送前自行核实当前汇率。" 
   },
   ar: { sub:"ما أحلم به ✦", eyebrow:"✦ مختار بحب ✦",
     cat_about:"✨ حول",
@@ -565,7 +573,11 @@ const T = {
     order_sel:"اخترت:", order_total:"المجموع:",
     gift_btn:"🎁 هدية", added_btn:"✓ تمت الإضافة", rm_btn:"✕",
     pay1_title:"الطريقة 1", pay1_sub:"الدفع بالعملات المشفرة",
-    pay2_title:"الطريقة 2", pay2_sub:"الدفع بالعملات المشفرة"
+    pay2_title:"الطريقة 2", pay2_sub:"الدفع بالعملات المشفرة",
+    crypto_pick_title:"اختر الشبكة", copy_addr_btn:"نسخ العنوان", copy_addr_copied:"✓ تم النسخ",
+    gifted_btn:"✦ تم إرسال الهدية ✦", amt_initial:"المبلغ: {AMT} (ما يعادله بالعملات المشفرة)",
+    amt_usdt:"المبلغ: {AMT} USDT", amt_crypto:"المبلغ: {AMT} {SYM} (≈ {USD})",
+    amt_loading:"جارٍ تحميل سعر الصرف...", amt_error:"المبلغ: ما يعادل {USD} — يرجى التحقق من السعر الحالي بنفسك قبل الإرسال."
   },
   fr: { sub:"ce dont je rêve ✦", eyebrow:"✦ Sélectionné avec amour ✦",
     cat_about:"✨ À propos",
@@ -580,7 +592,11 @@ const T = {
     order_sel:"Vous avez choisi :", order_total:"Total :",
     gift_btn:"🎁 Offrir", added_btn:"✓ Ajouté", rm_btn:"✕",
     pay1_title:"Méthode 1", pay1_sub:"Paiement en crypto",
-    pay2_title:"Méthode 2", pay2_sub:"Paiement en crypto"
+    pay2_title:"Méthode 2", pay2_sub:"Paiement en crypto",
+    crypto_pick_title:"Choisissez un réseau", copy_addr_btn:"Copier l'adresse", copy_addr_copied:"✓ Copié",
+    gifted_btn:"✦ Cadeau envoyé ✦", amt_initial:"Montant : {AMT} (équivalent en crypto)",
+    amt_usdt:"Montant : {AMT} USDT", amt_crypto:"Montant : {AMT} {SYM} (≈ {USD})",
+    amt_loading:"Chargement du taux de change...", amt_error:"Montant : équivalent à {USD} — veuillez vérifier le taux actuel avant l'envoi."
   },
   es: { sub:"lo que sueño ✦", eyebrow:"✦ Seleccionado con amor ✦",
     cat_about:"✨ Acerca de",
@@ -595,7 +611,11 @@ const T = {
     order_sel:"Elegiste:", order_total:"Total:",
     gift_btn:"🎁 Regalar", added_btn:"✓ Agregado", rm_btn:"✕",
     pay1_title:"Método 1", pay1_sub:"Pago con cripto",
-    pay2_title:"Método 2", pay2_sub:"Pago con cripto"
+    pay2_title:"Método 2", pay2_sub:"Pago con cripto",
+    crypto_pick_title:"Elige una red", copy_addr_btn:"Copiar dirección", copy_addr_copied:"✓ Copiado",
+    gifted_btn:"✦ Regalo enviado ✦", amt_initial:"Monto: {AMT} (equivalente en cripto)",
+    amt_usdt:"Monto: {AMT} USDT", amt_crypto:"Monto: {AMT} {SYM} (≈ {USD})",
+    amt_loading:"Cargando tipo de cambio...", amt_error:"Monto: equivalente a {USD} — verifica la tasa actual antes de enviar."
   },
   ru: { sub:"о чём я мечтаю ✦", eyebrow:"✦ Собрано с любовью ✦",
     cat_about:"✨ О сайте",
@@ -610,7 +630,11 @@ const T = {
     order_sel:"Вы выбрали:", order_total:"Сумма:",
     gift_btn:"🎁 Подарить", added_btn:"✓ Добавлено", rm_btn:"✕",
     pay1_title:"Способ 1", pay1_sub:"Оплата криптой",
-    pay2_title:"Способ 2", pay2_sub:"Оплата криптой"
+    pay2_title:"Способ 2", pay2_sub:"Оплата криптой",
+    crypto_pick_title:"Выберите сеть", copy_addr_btn:"Скопировать адрес", copy_addr_copied:"✓ Скопировано",
+    gifted_btn:"✦ Подарок отправлен ✦", amt_initial:"Сумма: {AMT} (эквивалент в криптовалюте)",
+    amt_usdt:"Сумма: {AMT} USDT", amt_crypto:"Сумма: {AMT} {SYM} (≈ {USD})",
+    amt_loading:"Загрузка курса обмена...", amt_error:"Сумма: эквивалент {USD} — проверьте текущий курс самостоятельно перед отправкой."
   },
   de: { sub:"wovon ich träume ✦", eyebrow:"✦ Mit Liebe kuratiert ✦",
     cat_about:"✨ Über uns",
@@ -625,7 +649,11 @@ const T = {
     order_sel:"Du hast gewählt:", order_total:"Gesamt:",
     gift_btn:"🎁 Schenken", added_btn:"✓ Hinzugefügt", rm_btn:"✕",
     pay1_title:"Methode 1", pay1_sub:"Zahlung in Krypto",
-    pay2_title:"Methode 2", pay2_sub:"Zahlung in Krypto"
+    pay2_title:"Methode 2", pay2_sub:"Zahlung in Krypto",
+    crypto_pick_title:"Netzwerk wählen", copy_addr_btn:"Adresse kopieren", copy_addr_copied:"✓ Kopiert",
+    gifted_btn:"✦ Geschenk gesendet ✦", amt_initial:"Betrag: {AMT} (Krypto-Äquivalent)",
+    amt_usdt:"Betrag: {AMT} USDT", amt_crypto:"Betrag: {AMT} {SYM} (≈ {USD})",
+    amt_loading:"Wechselkurs wird geladen...", amt_error:"Betrag: entspricht {USD} — bitte prüfe den aktuellen Kurs selbst vor dem Senden."
   },
   ja: { sub:"夢見るもの ✦", eyebrow:"✦ 愛を込めて厳選 ✦",
     cat_about:"✨ について",
@@ -640,7 +668,11 @@ const T = {
     order_sel:"選択:", order_total:"合計:",
     gift_btn:"🎁 贈る", added_btn:"✓ 追加済み", rm_btn:"✕",
     pay1_title:"方法1", pay1_sub:"暗号資産で支払う",
-    pay2_title:"方法2", pay2_sub:"暗号資産で支払う"
+    pay2_title:"方法2", pay2_sub:"暗号資産で支払う",
+    crypto_pick_title:"ネットワークを選択", copy_addr_btn:"アドレスをコピー", copy_addr_copied:"✓ コピーしました",
+    gifted_btn:"✦ ギフトを送信しました ✦", amt_initial:"金額：{AMT}（暗号資産相当）",
+    amt_usdt:"金額：{AMT} USDT", amt_crypto:"金額：{AMT} {SYM}（≈ {USD}）",
+    amt_loading:"レートを読み込み中...", amt_error:"金額：約 {USD} 相当 — 送信前に現在のレートをご自身でご確認ください。"
   },
 };
 
@@ -1069,6 +1101,20 @@ function sparkles(x, y) {
   });
 }
 
+function heartSparkles(x, y) {
+  ['❤️','♥️','💕','💗','💖'].forEach((e,i) => {
+    setTimeout(() => {
+      const el = document.createElement('div');
+      el.className = 'sparkle'; el.textContent = e;
+      el.style.left = (x + (Math.random()-.5)*60) + 'px';
+      el.style.top  = (y + (Math.random()-.5)*40) + 'px';
+      el.style.animationDuration = (.8 + Math.random()*.6) + 's';
+      document.body.appendChild(el);
+      el.addEventListener('animationend', () => el.remove());
+    }, i * 65);
+  });
+}
+
 function updateBadge() {
   const n = cart.reduce((s,i) => s + (i.qty||1), 0);
   const b = document.getElementById('cartBadge');
@@ -1168,8 +1214,9 @@ const WALLET_ADDRESSES = {
 };
 
 document.getElementById('submitBtn').addEventListener('click', () => {
+  const t = T[lang];
   const total = cart.reduce((s,i) => s + i.price*(i.qty||1), 0);
-  document.getElementById('cryptoAmountNote').textContent = 'Amount: $' + total.toLocaleString('en-US') + ' (equivalent in crypto)';
+  document.getElementById('cryptoAmountNote').textContent = t.amt_initial.replace('{AMT}', '$' + total.toLocaleString('en-US'));
   document.querySelectorAll('.chain-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('addressBox').classList.remove('show');
   document.getElementById('cryptoPickOv').classList.add('open');
@@ -1179,6 +1226,7 @@ const COINGECKO_IDS = { btc: 'bitcoin', solana: 'solana', tron: 'tron' };
 
 document.getElementById('chainGrid').addEventListener('click', async e => {
   const btn = e.target.closest('.chain-btn'); if (!btn) return;
+  const t = T[lang];
   document.querySelectorAll('.chain-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
@@ -1188,11 +1236,7 @@ document.getElementById('chainGrid').addEventListener('click', async e => {
 
   document.getElementById('qrWrap').innerHTML = '';
   new QRCode(document.getElementById('qrWrap'), {
-    text: address,
-    width: 180,
-    height: 180,
-    colorDark: '#0a0a0f',
-    colorLight: '#ffffff'
+    text: address, width: 180, height: 180, colorDark: '#0a0a0f', colorLight: '#ffffff'
   });
 
   document.getElementById('addrText').textContent = address;
@@ -1200,27 +1244,29 @@ document.getElementById('chainGrid').addEventListener('click', async e => {
 
   const copyBtn = document.getElementById('copyAddrBtn');
   copyBtn.classList.remove('copied');
-  copyBtn.textContent = 'Copy Address';
+  copyBtn.textContent = t.copy_addr_btn;
 
   const noteEl = document.getElementById('cryptoAmountNote');
 
   if (chain === 'eth' || chain === 'bsc' || chain === 'polygon') {
-    noteEl.textContent = `Amount: ${total.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2})} USDT`;
+    noteEl.textContent = t.amt_usdt.replace('{AMT}', total.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
   } else {
-    noteEl.textContent = 'Loading exchange rate...';
+    noteEl.textContent = t.amt_loading;
     try {
       const coinId = COINGECKO_IDS[chain];
       const resp = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd`);
       const data = await resp.json();
       const price = data[coinId].usd;
       const cryptoAmount = total / price;
-
       const symbol = chain === 'btc' ? 'BTC' : (chain === 'solana' ? 'SOL' : 'TRX');
       const decimals = chain === 'btc' ? 8 : 4;
-      noteEl.textContent = `Amount: ${cryptoAmount.toFixed(decimals)} ${symbol} (≈ $${total.toLocaleString('en-US')})`;
+      noteEl.textContent = t.amt_crypto
+        .replace('{AMT}', cryptoAmount.toFixed(decimals))
+        .replace('{SYM}', symbol)
+        .replace('{USD}', '$' + total.toLocaleString('en-US'));
     } catch (err) {
       console.error('Exchange rate error:', err);
-      noteEl.textContent = `Amount: $${total.toLocaleString('en-US')} equivalent — please check the current rate yourself before sending.`;
+      noteEl.textContent = t.amt_error.replace('{USD}', '$' + total.toLocaleString('en-US'));
     }
   }
 });
@@ -1228,12 +1274,13 @@ document.getElementById('chainGrid').addEventListener('click', async e => {
 document.getElementById('copyAddrBtn').addEventListener('click', () => {
   const addr = document.getElementById('addrText').textContent;
   const btn = document.getElementById('copyAddrBtn');
+  const t = T[lang];
 
   function showCopied() {
-    btn.textContent = '✓ Copied';
+    btn.textContent = t.copy_addr_copied;
     btn.classList.add('copied');
     setTimeout(() => {
-      btn.textContent = 'Copy Address';
+      btn.textContent = t.copy_addr_btn;
       btn.classList.remove('copied');
     }, 2000);
   }
@@ -1264,7 +1311,7 @@ document.getElementById('copyAddrBtn').addEventListener('click', () => {
   
 document.getElementById('iGiftedBtn').addEventListener('click', e => {
   const r = e.target.getBoundingClientRect();
-  sparkles(r.left + r.width/2, r.top);
+  heartSparkles(r.left + r.width/2, r.top);
   document.getElementById('cryptoPickOv').classList.remove('open');
   document.getElementById('modalOv').classList.add('open');
   document.getElementById('formView').style.display = 'none';

@@ -1222,7 +1222,10 @@ document.getElementById('coBtn').addEventListener('click', () => {
   document.getElementById('modalOv').classList.add('open');
 });
 
-document.getElementById('cancelModal').addEventListener('click', () => document.getElementById('modalOv').classList.remove('open'));
+document.getElementById('cancelModal').addEventListener('click', () => {
+  document.getElementById('modalOv').classList.remove('open');
+  openDrawer();
+});
 
 const WALLET_ADDRESSES = {
   eth:     "0x5759dBD9DF0A25CEc2B38C15eCfCE887c41Af894",
@@ -1329,8 +1332,19 @@ document.getElementById('copyAddrBtn').addEventListener('click', () => {
   }
 });
   
-document.getElementById('iGiftedBtn').addEventListener('click', e => {
+document.getElementById('iGiftedBtn').addEventListener('click', async e => {
   heartSparklesFullscreen();
+
+  const total = cart.reduce((s,i) => s + i.price*(i.qty||1), 0);
+  const names = cart.map(i => `${i.brand} ${i.name}${(i.qty||1)>1?' ×'+i.qty:''}`).join(', ');
+  const msg = document.getElementById('f_msg').value.trim();
+
+  fetch('https://wishme-backend.vercel.app/api/notify-telegram', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ method: 'Способ 1 (QR)', items: names, total, message: msg })
+  }).catch(err => console.error('Telegram notify error:', err));
+
   document.getElementById('cryptoPickOv').classList.remove('open');
   document.getElementById('modalOv').classList.add('open');
   document.getElementById('formView').style.display = 'none';
